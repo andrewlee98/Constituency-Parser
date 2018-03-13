@@ -31,12 +31,7 @@ for t in tree_string_list:
         if w[0] == "(" and len(w) > 1:
             labels.add(w.strip("("))
 
-
-# turn tree strings into tree_list
-for t in tree_string_list:
-    tree_list.append(parse_tree(t))
-
-# transform string into tree
+# method for transforming one string into a tree
 def parse_tree(tree_str):
     root = Node(tree_str.split()[0])
 
@@ -56,18 +51,34 @@ def parse_tree(tree_str):
             root.r = tree_str[1]
         return root
 
-    # search for right child
-    s = tree_st[tree_st.find("(")+1:tree_st.rfind(")")]
-    root.l = parse_tree(s)
+    # use stack to find left and right children
+    stack = []
+    start_idx = tree_str.find("(")
+    for i in range(len(tree_str)):
 
-    # search for left child
-    for word in tree_str:
-        root.r = parse_tree(s)
+        # left child
+        if tree_str[i] == "(":
+            stack.push("(")
+        elif tree_str[i] == ")":
+            stack.pop()
+            if not stack:
+                root.l = parse_tree(tree_str[start_idx:i + 1])
+
+        # right child
+        if tree_str[i] == "(":
+            stack.push("(")
+        elif tree_str[i] == ")":
+            stack.pop()
+            if not stack:
+                root.l = parse_tree(tree_str[start_idx:i + 1])
 
     return root
 
-# use DFS for each constituent
+# turn tree strings into tree_list
+for t in tree_string_list:
+    tree_list.append(parse_tree(t))
 
+# use DFS for each constituent
 
 # print testing
 for t in tree_string_list:
@@ -75,3 +86,5 @@ for t in tree_string_list:
     print("********************************")
 
 print(labels)
+print(len(tree_list))
+print(len(tree_string_list))
