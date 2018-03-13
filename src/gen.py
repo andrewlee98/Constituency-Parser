@@ -10,45 +10,68 @@ treepath = "../treebank/treebank_3/parsed/mrg/atis/"
 outpath = "../data/"
 
 labels = set()
-text_list = []
-buffer = ""
+tree_list = []
 
+# open file and save as one large string
 for filename in os.listdir(treepath):
     with open(treepath + filename, 'r') as f:
         text = f.read().replace('\n', '')
 
-text_list = text.split("( END_OF_TEXT_UNIT )")
-tree_text_list = []
-for t in text_list:
+# split the text into a list of tree strings
+text = text.split("( END_OF_TEXT_UNIT )")
+tree_string_list = []
+for t in text:
     if "@" not in t and len(t) != 0:
-        tree_text_list.append(t)
+        tree_string_list.append(t)
 
-for t in tree_text_list:
+
+# compile labels
+for t in tree_string_list:
     for w in t.split():
         if w[0] == "(" and len(w) > 1:
             labels.add(w.strip("("))
 
 
-#
-# def rec_parse(tree_str):
-#     root = Node(string[0])
-#     # remove surrounding parentheses
-#
-#     # unary case
-#     if word
-#
-#     # search for right child
-#     s = tree_st[tree_st.find("(")+1:tree_st.rfind(")")]
-#     root.l = rec_parse(s)
-#
-#     # search for left child
-#     for word in tree_str:
-#         root.r = rec_parse(s)
-#
-#     return root
+# turn tree strings into tree_list
+for t in tree_string_list:
+    tree_list.append(parse_tree(t))
 
-for t in tree_text_list:
+# transform string into tree
+def parse_tree(tree_str):
+    root = Node(tree_str.split()[0])
+
+    # remove surrounding parentheses
+    tree_str = tree_str[1:-1]
+
+    # set first word as root
+    root = Node(tree_str.split()[0])
+
+    # remove first word
+    tree_str = tree_str.split()[1:]
+
+    # base case (single/two words)
+    if tree_str[0] != "(":
+        root.l = tree_str[0]
+        if tree_str[1]:
+            root.r = tree_str[1]
+        return root
+
+    # search for right child
+    s = tree_st[tree_st.find("(")+1:tree_st.rfind(")")]
+    root.l = parse_tree(s)
+
+    # search for left child
+    for word in tree_str:
+        root.r = parse_tree(s)
+
+    return root
+
+# use DFS for each constituent
+
+
+# print testing
+for t in tree_string_list:
     print(t)
-    print("**********")
+    print("********************************")
 
 print(labels)
