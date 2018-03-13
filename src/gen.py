@@ -34,9 +34,9 @@ for t in tree_string_list:
 
 # method for transforming one string into a tree
 def parse_tree(tree_str):
-    print("input string: " + tree_str)
 
-    tree_str = tree_str[1:-1] # remove surrounding parentheses
+    if tree_str[0] == "(":
+        tree_str = tree_str[1:-1] # remove surrounding parentheses
     root = Node(tree_str.split()[0]) # set first word as root
     tree_str = tree_str.split()[1:] # remove first (root) word
     tree_str = ' '.join(tree_str) # convert back to string
@@ -44,9 +44,10 @@ def parse_tree(tree_str):
 
     stack = [] # use to keep track of parentheses
     nested = False # boolean for if in nested statement
-    left = False # boolean for if a left child has been called on
-    for i in range(len(tree_str)):
+    children = [] # list of strings for children
 
+    i = 0
+    while i < len(tree_str): # collect children into list
         # nested parentheses case
         if tree_str[i] == "(":
             stack.append("(")
@@ -56,26 +57,33 @@ def parse_tree(tree_str):
         elif tree_str[i] == ")" and nested:
             stack.pop()
             if not stack:
-                if not left:
-                    left_end = i
-                    root.l = parse_tree(tree_str[start_idx:left_end + 1])
-                    left = True
-                else:
-                    root.r = parse_tree(tree_str[left_end + 1:i + 1])
+                children.append(tree_str[start_idx:i + 1])
                 nested = False
 
+
         # handle base case string
-        elif tree_str[i] not in "() " and not nested:
-            start_idx = 1
-            while tree_str[i] not in "() " and i < len(tree_str) - 1:
+        elif tree_str[i] not in "() \n\t" and not nested:
+            start_idx = i
+            while tree_str[i] not in "() \n\t" and i < len(tree_str) - 1:
                 i += 1
-            if not left:
-                left_end = i
-                root.l = Node(tree_str[start_idx:left_end + 1])
-                left = True
-                i += 10
-            else:
-                root.r = Node(tree_str[left_end + 1:i + 1])
+            children.append(tree_str[start_idx:i + 1])
+
+        i += 1
+
+    print(root.label)
+    print("children: " + str(children))
+
+    if len(children) == 1:
+        root.l = parse_tree(children[0])
+    elif len(children) == 2:
+        root.l = parse_tree(children[0])
+        root.r = parse_tree(children[1])
+    elif len(children) > 2:
+        root.l = parse_tree(children[0])
+        binarize_str = "(" + root.label
+        binarize_str += "_inner " if "_inner" not in binarize_str else " "
+        binarize_str += ' '.join(children[1:]) + ")"
+        root.r = parse_tree(binarize_str)
 
     return root
 
@@ -85,19 +93,7 @@ def parse_tree(tree_str):
 # for t in tree_string_list:
 #     tree_list.append(parse_tree(t))
 
-parse_tree(tree_string_list[0][2:-1])
-
-# print out by levels
-def traverse(rootnode):
-  thislevel = [rootnode]
-  while thislevel:
-    nextlevel = list()
-    for n in thislevel:
-      print(n.label),
-      if n.l: nextlevel.append(n.l)
-      if n.r: nextlevel.append(n.r)
-    print()
-    thislevel = nextlevel
+parse_tree(tree_string_list[0])
 
 def tree_dfs(root):
     print(root.label)
@@ -105,3 +101,5 @@ def tree_dfs(root):
         tree_dfs(root.l)
     if root.r:
         tree_dfs(root.r)
+
+tree_dfs(parse_tree(tree_string_list[0]))
