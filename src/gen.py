@@ -50,7 +50,7 @@ def parse_tree(tree_str):
         # nested parentheses case
         if tree_str[i] == "(":
             stack.append("(")
-            if not nested:
+            if not nested: # save index of outermost left paren
                 start_idx = i
             nested = True
         elif tree_str[i] == ")" and nested:
@@ -61,25 +61,22 @@ def parse_tree(tree_str):
                     root.l = parse_tree(tree_str[start_idx:left_end + 1])
                     left = True
                 else:
-                    root.r = parse_tree(tree_str[left_end:i + 1])
-            nested = False
+                    root.r = parse_tree(tree_str[left_end + 1:i + 1])
+                nested = False
 
         # handle base case string
-        elif tree_str[i].isalpha() and not nested:
+        elif tree_str[i] not in "() " and not nested:
             start_idx = 1
-            while tree_str[i].isalpha() and i < len(tree_str) - 1:
+            while tree_str[i] not in "() " and i < len(tree_str) - 1:
                 i += 1
             if not left:
                 left_end = i
                 root.l = Node(tree_str[start_idx:left_end + 1])
                 left = True
-                print("Left Node: " + root.l.label)
                 i += 10
             else:
-                root.r = Node(tree_str[left_end:i + 1])
-                print("Right Node: " + root.r.label)
+                root.r = Node(tree_str[left_end + 1:i + 1])
 
-    print("-------------------------")
     return root
 
 
