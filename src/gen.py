@@ -6,31 +6,6 @@ class Node:
         self.l = None
         self.r = None
 
-treepath = "../treebank/treebank_3/parsed/mrg/atis/"
-outpath = "../data/"
-
-labels = set()
-tree_list = []
-
-# open file and save as one large string
-for filename in os.listdir(treepath):
-    with open(treepath + filename, 'r') as f:
-        text = f.read().replace('\n', '')
-
-# split the text into a list of tree strings
-text = text.split("( END_OF_TEXT_UNIT )")
-tree_string_list = []
-for t in text:
-    if "@" not in t and len(t) != 0:
-        tree_string_list.append(t)
-
-
-# compile labels
-for t in tree_string_list:
-    for w in t.split():
-        if w[0] == "(" and len(w) > 1:
-            labels.add(w.strip("("))
-
 
 # method for transforming one string into a tree
 def parse_tree(tree_str):
@@ -86,26 +61,42 @@ def parse_tree(tree_str):
     return root
 
 
-
-# turn tree strings into tree_list
-for t in tree_string_list:
-    tree_list.append(parse_tree(t))
-
-def inorder(root, s = ""):
+def inorder_sentence(root, s = ""):
     if not root.l and not root.r:
         s += " " + root.label
         return s
     if root.l:
-        s = inorder(root.l, s)
+        s = inorder_sentence(root.l, s)
     if root.r:
-        s = inorder(root.r, s)
+        s = inorder_sentence(root.r, s)
     return s
 
-sentences = []
-for t in tree_list:
-    sentences.append(inorder(t))
+if __name__ == '__main__':
+    treepath = "../treebank/treebank_3/parsed/mrg/atis/"
+    outpath = "../data/"
 
-print(sentences)
+    # open file and save as one large string
+    for filename in os.listdir(treepath):
+        with open(treepath + filename, 'r') as f:
+            text = f.read().replace('\n', '')
 
-# print testing
-# tree_dfs(parse_tree(tree_string_list[0]))
+    # split the text into a list of tree strings
+    text = text.split("( END_OF_TEXT_UNIT )")
+    tree_string_list = []
+    for t in text:
+        if "@" not in t and len(t) != 0:
+            tree_string_list.append(t)
+
+    # turn tree strings into tree_list
+    tree_list = []
+    for t in tree_string_list:
+        tree_list.append(parse_tree(t))
+
+    # use inorder traveral to generate sentences from trees
+    sentences = []
+    for t in tree_list:
+        sentences.append(inorder_sentence(t))
+
+
+
+
