@@ -101,7 +101,11 @@ def inorder(root, s = ""):
         s = inorder(root.r, s)
     return s
 
-print(inorder(tree_list[0]))
+sentences = []
+for t in tree_list:
+    sentences.append(inorder(t))
+
+print(sentences)
 
 # print testing
 # tree_dfs(parse_tree(tree_string_list[0]))
