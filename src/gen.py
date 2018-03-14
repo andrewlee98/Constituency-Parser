@@ -60,46 +60,48 @@ def parse_tree(tree_str):
                 children.append(tree_str[start_idx:i + 1])
                 nested = False
 
-
         # handle base case string
         elif tree_str[i] not in "() \n\t" and not nested:
             start_idx = i
             while tree_str[i] not in "() \n\t" and i < len(tree_str) - 1:
                 i += 1
             children.append(tree_str[start_idx:i + 1])
-
         i += 1
 
-    print(root.label)
-    print("children: " + str(children))
+    # print(root.label)
+    # print("children: " + str(children))
 
     if len(children) == 1:
         root.l = parse_tree(children[0])
     elif len(children) == 2:
         root.l = parse_tree(children[0])
         root.r = parse_tree(children[1])
-    elif len(children) > 2:
+    elif len(children) > 2: # binarize case
         root.l = parse_tree(children[0])
         binarize_str = "(" + root.label
         binarize_str += "_inner " if "_inner" not in binarize_str else " "
         binarize_str += ' '.join(children[1:]) + ")"
-        root.r = parse_tree(binarize_str)
+        root.r = parse_tree(binarize_str) # recursively binarize
 
     return root
 
 
 
 # turn tree strings into tree_list
-# for t in tree_string_list:
-#     tree_list.append(parse_tree(t))
+for t in tree_string_list:
+    tree_list.append(parse_tree(t))
 
-parse_tree(tree_string_list[0])
-
-def tree_dfs(root):
-    print(root.label)
+def inorder(root, s = ""):
+    if not root.l and not root.r:
+        s += " " + root.label
+        return s
     if root.l:
-        tree_dfs(root.l)
+        s = inorder(root.l, s)
     if root.r:
-        tree_dfs(root.r)
+        s = inorder(root.r, s)
+    return s
 
-tree_dfs(parse_tree(tree_string_list[0]))
+print(inorder(tree_list[0]))
+
+# print testing
+# tree_dfs(parse_tree(tree_string_list[0]))
