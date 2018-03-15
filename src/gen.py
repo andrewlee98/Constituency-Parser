@@ -75,6 +75,7 @@ def inorder_sentence(root, s = ""):
         s = inorder_sentence(root.r, s)
     return s
 
+
 # create stack/buffer actions from sentence and tree
 def generate_actions(t, s):
 
@@ -86,13 +87,22 @@ def generate_actions(t, s):
             match_tree(t1.r, t2.r)
         return False
 
+    def label_dfs(root, s0, s1): # subroutine for determining the label
+        if match_tree(root.l, s0) and match_tree(root.r, s1):
+            return root.label
+
     actions = [] # returns actions list (seq of stack/buff)
     buff = list(map(Node, s.split()[::-1])) # reverse sentence for O(1) pop
 
     while buff or (len(stack) > 1 and isinstance(stack[0], str)):
         # try to reduce top two items
         if len(stack) > 2: # reduce
-            pass
+            right = stack.pop() # check this order
+            left = stack.pop()
+            new_node = Node(label_dfs(t, right, left))
+            new_node.l = left
+            new_node.r = right
+            stack.push(new_node)
         else: # shift
             stack.append(buff.pop)
         actions.append(stack + ["()"] + buff) # record action
