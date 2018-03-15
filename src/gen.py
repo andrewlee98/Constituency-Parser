@@ -82,19 +82,25 @@ def generate_actions(t, s):
     def match_tree(t1, t2): # subroutine for checking matching trees
         if t1 is None and t2 is None: # base case
             return True
-        if a is not None and b is not None:
-            return (t1.label == t2.label) and match_tree(t1.l, t2, l) and \
+        if t1 is not None and t2 is not None:
+            return (t1.label == t2.label) and \
+            match_tree(t1.l, t2.l) and \
             match_tree(t1.r, t2.r)
         return False
 
     def label_dfs(root, s0, s1): # subroutine for determining the label
-        if match_tree(root.l, s0) and match_tree(root.r, s1):
+        if match_tree(root.l, s0) and match_tree(root.r, s1): # base case
             return root.label
+        if root.l and label_dfs(root.l, s0, s1):
+            return label_dfs(root.l, s0, s1)
+        if root.r and label_dfs(root.r, s0, s1):
+            return label_dfs(root.r, s0, s1)
 
     actions = [] # returns actions list (seq of stack/buff)
     buff = list(map(Node, s.split()[::-1])) # reverse sentence for O(1) pop
+    stack = []
 
-    while buff or (len(stack) > 1 and isinstance(stack[0], str)):
+    while buff or len(stack) > 1: # end when buffer consumed & stack has tree
         # try to reduce top two items
         if len(stack) > 2: # reduce
             right = stack.pop() # check this order
@@ -102,9 +108,9 @@ def generate_actions(t, s):
             new_node = Node(label_dfs(t, right, left))
             new_node.l = left
             new_node.r = right
-            stack.push(new_node)
+            stack.append(new_node)
         else: # shift
-            stack.append(buff.pop)
+            stack.append(buff.pop())
         actions.append(stack + ["()"] + buff) # record action
 
     return actions
@@ -136,11 +142,8 @@ if __name__ == '__main__':
     for t in tree_list:
         sentences.append(inorder_sentence(t).lstrip()) # extra space on left
 
-    print(sentences)
-
     with open(outpath + 'all.data', 'w') as f:
         for t, s in zip(tree_list, sentences):
-            print(s)
             f.write('\n'.join(generate_actions(t, s)))
             f.write("----------------------")
 
