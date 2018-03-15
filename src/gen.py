@@ -9,9 +9,13 @@ class Node:
 
 # method for transforming one string into a tree
 def parse_tree(tree_str):
+    def clean(s): # remove excess space
+        s = s.rstrip().lstrip()
+        return s
 
-    if tree_str[0] == "(":
-        tree_str = tree_str[1:-1] # remove surrounding parentheses
+    tree_str = clean(tree_str)
+    if tree_str[0] == "(": # remove surrounding parentheses
+        tree_str = tree_str[1:-1]
     root = Node(tree_str.split()[0]) # set first word as root
     tree_str = tree_str.split()[1:] # remove first (root) word
     tree_str = ' '.join(tree_str) # convert back to string
@@ -43,9 +47,8 @@ def parse_tree(tree_str):
             children.append(tree_str[start_idx:i + 1])
         i += 1
 
-    # print(root.label)
-    # print("children: " + str(children))
-
+    # now the children list is complete, recurse
+    children = list(map(clean, children)) # clean whitespace from children
     if len(children) == 1:
         root.l = parse_tree(children[0])
     elif len(children) == 2:
@@ -61,6 +64,7 @@ def parse_tree(tree_str):
     return root
 
 
+# generate sentences from the tree
 def inorder_sentence(root, s = ""):
     if not root.l and not root.r:
         s += " " + root.label
@@ -70,6 +74,31 @@ def inorder_sentence(root, s = ""):
     if root.r:
         s = inorder_sentence(root.r, s)
     return s
+
+# create stack/buffer actions from sentence and tree
+def generate_actions(t, s):
+
+    def match_tree(t1, t2): # subroutine for checking matching trees
+        if t1 is None and t2 is None: # base case
+            return True
+        if a is not None and b is not None:
+            return (t1.label == t2.label) and match_tree(t1.l, t2, l) and \
+            match_tree(t1.r, t2.r)
+        return False
+
+    actions = [] # returns actions list (seq of stack/buff)
+    buff = list(map(Node, s.split()[::-1])) # reverse sentence for O(1) pop
+
+    while buff or (len(stack) > 1 and isinstance(stack[0], str)):
+        # try to reduce top two items
+        if len(stack) > 2: # reduce
+            pass
+        else: # shift
+            stack.append(buff.pop)
+        actions.append(stack + ["()"] + buff) # record action
+
+    return actions
+
 
 if __name__ == '__main__':
     treepath = "../treebank/treebank_3/parsed/mrg/atis/"
@@ -95,8 +124,13 @@ if __name__ == '__main__':
     # use inorder traveral to generate sentences from trees
     sentences = []
     for t in tree_list:
-        sentences.append(inorder_sentence(t))
+        sentences.append(inorder_sentence(t).lstrip()) # extra space on left
 
+    print(sentences)
 
-
+    with open(outpath + 'all.data', 'w') as f:
+        for t, s in zip(tree_list, sentences):
+            print(s)
+            f.write('\n'.join(generate_actions(t, s)))
+            f.write("----------------------")
 
