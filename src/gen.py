@@ -82,6 +82,8 @@ def generate_actions(t, s):
     def match_tree(t1, t2): # subroutine for checking matching trees
         if t1 is None and t2 is None: # base case
             return True
+        if t1 and t2 and t1.label == t2.label:
+            print("label matched")
         if t1 is not None and t2 is not None:
             return (t1.label == t2.label) and \
             match_tree(t1.l, t2.l) and \
@@ -90,6 +92,7 @@ def generate_actions(t, s):
 
     def label_dfs(root, s0, s1): # subroutine for determining the label
         if match_tree(root.l, s0) and match_tree(root.r, s1): # base case
+            print("tree matched")
             return root.label
         if root.l and label_dfs(root.l, s0, s1):
             return label_dfs(root.l, s0, s1)
@@ -102,14 +105,20 @@ def generate_actions(t, s):
 
     while buff or len(stack) > 1: # end when buffer consumed & stack has tree
         # try to reduce top two items
-        if len(stack) > 2: # reduce
+        if len(stack) > 1: # reduce
             right = stack.pop() # check this order
             left = stack.pop()
             new_node = Node(label_dfs(t, right, left))
-            new_node.l = left
-            new_node.r = right
-            stack.append(new_node)
+            if new_node != None:
+                print("reduce")
+                new_node.l = left
+                new_node.r = right
+                stack.append(new_node)
+            else: # shift
+                print("shift1")
+                stack.append(buff.pop())
         else: # shift
+            print("shift")
             stack.append(buff.pop())
         actions.append(stack + ["()"] + buff) # record action
 
@@ -144,6 +153,6 @@ if __name__ == '__main__':
 
     with open(outpath + 'all.data', 'w') as f:
         for t, s in zip(tree_list, sentences):
-            f.write('\n'.join(generate_actions(t, s)))
+            f.write('\n'.join(str(v) for v in generate_actions(t, s)))
             f.write("----------------------")
-
+            break # test 1 tree
