@@ -126,20 +126,29 @@ def generate_actions(t, s):
 
 
 if __name__ == '__main__':
-    treepath = "../treebank/treebank_3/parsed/mrg/atis/"
+    treepath = "../treebank/treebank_3/parsed/mrg/wsj/"
     outpath = "../data/"
 
     # open file and save as one large string
-    for filename in os.listdir(treepath):
-        with open(treepath + filename, 'r') as f:
-            text = f.read().replace('\n', '')
+    text = ""
+    for folder in os.listdir(treepath):
+        if folder.startswith('.'):
+            continue
+        for filename in os.listdir(treepath + folder):
+            if filename.startswith('.'):
+                continue
+            with open(treepath + folder + "/" + filename, 'r') as f:
+                text += f.read().replace('\n', '')
 
-    # split the text into a list of tree strings
-    text = text.split("( END_OF_TEXT_UNIT )")
+    # # used for atis
+    # text = text.split("( END_OF_TEXT_UNIT )")
+    # tree_string_list = []
+    # for t in text:
+    #     if "@" not in t and len(t) != 0:
+    #         tree_string_list.append(t)
+    print(text)
+
     tree_string_list = []
-    for t in text:
-        if "@" not in t and len(t) != 0:
-            tree_string_list.append(t)
 
     # turn tree strings into tree_list
     tree_list = []
