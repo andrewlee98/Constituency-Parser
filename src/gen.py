@@ -75,6 +75,26 @@ def inorder_sentence(root, s = ""):
         s = inorder_sentence(root.r, s)
     return s
 
+# util to debug
+def print_tree(root, s = ""):
+    if root.l:
+        s = inorder_sentence(root.l, s)
+    s += "(" + root.label + ")"
+    if root.r:
+        s = inorder_sentence(root.r, s)
+    return s
+
+def traverse(root):
+    current_level = [root]
+    while current_level:
+        print(' '.join(str(node.label) for node in current_level))
+        next_level = list()
+        for n in current_level:
+            if n.l:
+                next_level.append(n.l)
+            if n.r:
+                next_level.append(n.r)
+            current_level = next_level
 
 # create stack/buffer actions from sentence and tree
 def generate_actions(t, s):
@@ -131,6 +151,8 @@ if __name__ == '__main__':
 
     # open file and save as one large string
     text = ""
+    test_file = os.listdir(treepath)[0]
+    print("testing: " + test_file + "/" + os.listdir(treepath + test_file)[0])
     for folder in os.listdir(treepath):
         if folder.startswith('.'):
             continue
@@ -139,16 +161,19 @@ if __name__ == '__main__':
                 continue
             with open(treepath + folder + "/" + filename, 'r') as f:
                 text += f.read().replace('\n', '')
-
-    # # used for atis
-    # text = text.split("( END_OF_TEXT_UNIT )")
-    # tree_string_list = []
-    # for t in text:
-    #     if "@" not in t and len(t) != 0:
-    #         tree_string_list.append(t)
-    print(text)
+        break # test only one folder for speed
 
     tree_string_list = []
+    s = []
+    start = 0
+    for i in range(len(text)):
+        if text[i] == "(":
+            s.append("()")
+        elif text[i] == ")":
+            s.pop()
+            if not s:
+                tree_string_list.append(text[start : i + 1])
+                start = i + 1
 
     # turn tree strings into tree_list
     tree_list = []
@@ -159,6 +184,7 @@ if __name__ == '__main__':
     sentences = []
     for t in tree_list:
         sentences.append(inorder_sentence(t).lstrip()) # extra space on left
+    traverse(tree_list[0])
 
     with open(outpath + 'all.data', 'w') as f:
         for t, s in zip(tree_list, sentences):
