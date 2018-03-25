@@ -77,13 +77,19 @@ def inorder_sentence(root, s = ""):
 
 # util to debug
 def print_tree(root, s = ""):
+    sr = ""
+    sl = ""
     if root.l:
-        s = inorder_sentence(root.l, s)
-    s += "(" + root.label + ")"
+        sl = print_tree(root.l, s)
     if root.r:
-        s = inorder_sentence(root.r, s)
+        sr = print_tree(root.r, s)
+    if not root.r and not root.l:
+        s += " " + root.label
+    else:
+        s += "(" + root.label + sl + sr + ")"
     return s
 
+# level order print for debugging
 def traverse(root):
     current_level = [root]
     while current_level:
@@ -178,13 +184,14 @@ if __name__ == '__main__':
     # turn tree strings into tree_list
     tree_list = []
     for t in tree_string_list:
-        tree_list.append(parse_tree(t))
+        tree_list.append(parse_tree(t[1:-1]))
 
     # use inorder traveral to generate sentences from trees
     sentences = []
     for t in tree_list:
         sentences.append(inorder_sentence(t).lstrip()) # extra space on left
     traverse(tree_list[0])
+    print(print_tree(tree_list[0]))
 
     with open(outpath + 'all.data', 'w') as f:
         for t, s in zip(tree_list, sentences):
