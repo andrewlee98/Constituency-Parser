@@ -1,5 +1,7 @@
 import os
 
+debug = open("debug.log", "w")
+
 class Node:
     def __init__(self, label):
         self.label = label
@@ -83,9 +85,9 @@ def print_tree(root, s = ""):
         sl = print_tree(root.l, s)
     if root.r:
         sr = print_tree(root.r, s)
-    if not root.r and not root.l:
+    if root and not root.r and not root.l:
         s += " " + root.label
-    else:
+    elif root.label:
         s += "(" + root.label + sl + sr + ")"
     return s
 
@@ -117,6 +119,17 @@ def generate_actions(t, s):
         return False
 
     def label_dfs(root, s0, s1): # subroutine for determining the label
+
+        # debugging
+        debug.write("\n$$$$$$$$$start$$$$$$$$$\n")
+        debug.write("s0: " + print_tree(s0) + "\n")
+        if root.l:
+            debug.write("root.l: " + print_tree(root.l) + "\n---\n")
+        debug.write("s1: " + print_tree(s1) + "\n")
+        if root.r:
+            debug.write("root.r: " + print_tree(root.r) + "\n")
+        debug.write("\n*********end*********\n")
+
         if match_tree(root.l, s0) and match_tree(root.r, s1): # base case
             print("tree matched")
             return root.label
@@ -132,13 +145,13 @@ def generate_actions(t, s):
     while buff or len(stack) > 1: # end when buffer consumed & stack has tree
         # try to reduce top two items
         if len(stack) > 1: # reduce
-            right = stack.pop() # check this order
-            left = stack.pop()
+            right = stack[len(stack) - 1] # check this order
+            left = stack[len(stack) - 2]
             new_node = Node(label_dfs(t, right, left))
-            if new_node != None:
+            if new_node.label != None:
                 print("reduce")
-                new_node.l = left
-                new_node.r = right
+                new_node.l = stack.pop()
+                new_node.r = stack.pop()
                 stack.append(new_node)
             else: # shift
                 print("shift1")

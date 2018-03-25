@@ -1,0 +1,3480 @@
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l: (NP-SBJ(NNP BUSH)(NP-SBJ_inner(CC AND)(NNP GORBACHEV)))
+---
+s1:  BUSH
+root.r: (S-HLN_inner(VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))(. .))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l: (NNP BUSH)
+---
+s1:  BUSH
+root.r: (NP-SBJ_inner(CC AND)(NNP GORBACHEV))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l:  BUSH
+---
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l: (CC AND)
+---
+s1:  BUSH
+root.r: (NNP GORBACHEV)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l:  AND
+---
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l:  GORBACHEV
+---
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l: (VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))
+---
+s1:  BUSH
+root.r: (. .)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l: (MD WILL)
+---
+s1:  BUSH
+root.r: (VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month))))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l:  WILL
+---
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l: (VB HOLD)
+---
+s1:  BUSH
+root.r: (VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l:  HOLD
+---
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l: (NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))
+---
+s1:  BUSH
+root.r: (NP-TMP(JJ next)(NN month))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l: (NP(CD two)(NNS days))
+---
+s1:  BUSH
+root.r: (PP(IN of)(NP(JJ informal)(NNS talks)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l: (CD two)
+---
+s1:  BUSH
+root.r: (NNS days)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l:  two
+---
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l:  days
+---
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l: (IN of)
+---
+s1:  BUSH
+root.r: (NP(JJ informal)(NNS talks))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l:  of
+---
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l: (JJ informal)
+---
+s1:  BUSH
+root.r: (NNS talks)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l:  informal
+---
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l:  talks
+---
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l: (JJ next)
+---
+s1:  BUSH
+root.r: (NN month)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l:  next
+---
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l:  month
+---
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+root.l:  .
+---
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  AND
+s1:  BUSH
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l: (NP-SBJ(NNP BUSH)(NP-SBJ_inner(CC AND)(NNP GORBACHEV)))
+---
+s1:  AND
+root.r: (S-HLN_inner(VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))(. .))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l: (NNP BUSH)
+---
+s1:  AND
+root.r: (NP-SBJ_inner(CC AND)(NNP GORBACHEV))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l:  BUSH
+---
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l: (CC AND)
+---
+s1:  AND
+root.r: (NNP GORBACHEV)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l:  AND
+---
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l:  GORBACHEV
+---
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l: (VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))
+---
+s1:  AND
+root.r: (. .)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l: (MD WILL)
+---
+s1:  AND
+root.r: (VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month))))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l:  WILL
+---
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l: (VB HOLD)
+---
+s1:  AND
+root.r: (VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l:  HOLD
+---
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l: (NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))
+---
+s1:  AND
+root.r: (NP-TMP(JJ next)(NN month))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l: (NP(CD two)(NNS days))
+---
+s1:  AND
+root.r: (PP(IN of)(NP(JJ informal)(NNS talks)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l: (CD two)
+---
+s1:  AND
+root.r: (NNS days)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l:  two
+---
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l:  days
+---
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l: (IN of)
+---
+s1:  AND
+root.r: (NP(JJ informal)(NNS talks))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l:  of
+---
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l: (JJ informal)
+---
+s1:  AND
+root.r: (NNS talks)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l:  informal
+---
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l:  talks
+---
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l: (JJ next)
+---
+s1:  AND
+root.r: (NN month)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l:  next
+---
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l:  month
+---
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+root.l:  .
+---
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  GORBACHEV
+s1:  AND
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l: (NP-SBJ(NNP BUSH)(NP-SBJ_inner(CC AND)(NNP GORBACHEV)))
+---
+s1:  GORBACHEV
+root.r: (S-HLN_inner(VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))(. .))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l: (NNP BUSH)
+---
+s1:  GORBACHEV
+root.r: (NP-SBJ_inner(CC AND)(NNP GORBACHEV))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l:  BUSH
+---
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l: (CC AND)
+---
+s1:  GORBACHEV
+root.r: (NNP GORBACHEV)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l:  AND
+---
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l:  GORBACHEV
+---
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l: (VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))
+---
+s1:  GORBACHEV
+root.r: (. .)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l: (MD WILL)
+---
+s1:  GORBACHEV
+root.r: (VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month))))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l:  WILL
+---
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l: (VB HOLD)
+---
+s1:  GORBACHEV
+root.r: (VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l:  HOLD
+---
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l: (NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))
+---
+s1:  GORBACHEV
+root.r: (NP-TMP(JJ next)(NN month))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l: (NP(CD two)(NNS days))
+---
+s1:  GORBACHEV
+root.r: (PP(IN of)(NP(JJ informal)(NNS talks)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l: (CD two)
+---
+s1:  GORBACHEV
+root.r: (NNS days)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l:  two
+---
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l:  days
+---
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l: (IN of)
+---
+s1:  GORBACHEV
+root.r: (NP(JJ informal)(NNS talks))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l:  of
+---
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l: (JJ informal)
+---
+s1:  GORBACHEV
+root.r: (NNS talks)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l:  informal
+---
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l:  talks
+---
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l: (JJ next)
+---
+s1:  GORBACHEV
+root.r: (NN month)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l:  next
+---
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l:  month
+---
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+root.l:  .
+---
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  WILL
+s1:  GORBACHEV
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l: (NP-SBJ(NNP BUSH)(NP-SBJ_inner(CC AND)(NNP GORBACHEV)))
+---
+s1:  WILL
+root.r: (S-HLN_inner(VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))(. .))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l: (NNP BUSH)
+---
+s1:  WILL
+root.r: (NP-SBJ_inner(CC AND)(NNP GORBACHEV))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l:  BUSH
+---
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l: (CC AND)
+---
+s1:  WILL
+root.r: (NNP GORBACHEV)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l:  AND
+---
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l:  GORBACHEV
+---
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l: (VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))
+---
+s1:  WILL
+root.r: (. .)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l: (MD WILL)
+---
+s1:  WILL
+root.r: (VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month))))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l:  WILL
+---
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l: (VB HOLD)
+---
+s1:  WILL
+root.r: (VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l:  HOLD
+---
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l: (NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))
+---
+s1:  WILL
+root.r: (NP-TMP(JJ next)(NN month))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l: (NP(CD two)(NNS days))
+---
+s1:  WILL
+root.r: (PP(IN of)(NP(JJ informal)(NNS talks)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l: (CD two)
+---
+s1:  WILL
+root.r: (NNS days)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l:  two
+---
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l:  days
+---
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l: (IN of)
+---
+s1:  WILL
+root.r: (NP(JJ informal)(NNS talks))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l:  of
+---
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l: (JJ informal)
+---
+s1:  WILL
+root.r: (NNS talks)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l:  informal
+---
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l:  talks
+---
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l: (JJ next)
+---
+s1:  WILL
+root.r: (NN month)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l:  next
+---
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l:  month
+---
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+root.l:  .
+---
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  HOLD
+s1:  WILL
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l: (NP-SBJ(NNP BUSH)(NP-SBJ_inner(CC AND)(NNP GORBACHEV)))
+---
+s1:  HOLD
+root.r: (S-HLN_inner(VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))(. .))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l: (NNP BUSH)
+---
+s1:  HOLD
+root.r: (NP-SBJ_inner(CC AND)(NNP GORBACHEV))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l:  BUSH
+---
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l: (CC AND)
+---
+s1:  HOLD
+root.r: (NNP GORBACHEV)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l:  AND
+---
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l:  GORBACHEV
+---
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l: (VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))
+---
+s1:  HOLD
+root.r: (. .)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l: (MD WILL)
+---
+s1:  HOLD
+root.r: (VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month))))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l:  WILL
+---
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l: (VB HOLD)
+---
+s1:  HOLD
+root.r: (VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l:  HOLD
+---
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l: (NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))
+---
+s1:  HOLD
+root.r: (NP-TMP(JJ next)(NN month))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l: (NP(CD two)(NNS days))
+---
+s1:  HOLD
+root.r: (PP(IN of)(NP(JJ informal)(NNS talks)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l: (CD two)
+---
+s1:  HOLD
+root.r: (NNS days)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l:  two
+---
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l:  days
+---
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l: (IN of)
+---
+s1:  HOLD
+root.r: (NP(JJ informal)(NNS talks))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l:  of
+---
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l: (JJ informal)
+---
+s1:  HOLD
+root.r: (NNS talks)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l:  informal
+---
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l:  talks
+---
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l: (JJ next)
+---
+s1:  HOLD
+root.r: (NN month)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l:  next
+---
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l:  month
+---
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+root.l:  .
+---
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  two
+s1:  HOLD
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l: (NP-SBJ(NNP BUSH)(NP-SBJ_inner(CC AND)(NNP GORBACHEV)))
+---
+s1:  two
+root.r: (S-HLN_inner(VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))(. .))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l: (NNP BUSH)
+---
+s1:  two
+root.r: (NP-SBJ_inner(CC AND)(NNP GORBACHEV))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l:  BUSH
+---
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l: (CC AND)
+---
+s1:  two
+root.r: (NNP GORBACHEV)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l:  AND
+---
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l:  GORBACHEV
+---
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l: (VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))
+---
+s1:  two
+root.r: (. .)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l: (MD WILL)
+---
+s1:  two
+root.r: (VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month))))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l:  WILL
+---
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l: (VB HOLD)
+---
+s1:  two
+root.r: (VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l:  HOLD
+---
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l: (NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))
+---
+s1:  two
+root.r: (NP-TMP(JJ next)(NN month))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l: (NP(CD two)(NNS days))
+---
+s1:  two
+root.r: (PP(IN of)(NP(JJ informal)(NNS talks)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l: (CD two)
+---
+s1:  two
+root.r: (NNS days)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l:  two
+---
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l:  days
+---
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l: (IN of)
+---
+s1:  two
+root.r: (NP(JJ informal)(NNS talks))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l:  of
+---
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l: (JJ informal)
+---
+s1:  two
+root.r: (NNS talks)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l:  informal
+---
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l:  talks
+---
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l: (JJ next)
+---
+s1:  two
+root.r: (NN month)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l:  next
+---
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l:  month
+---
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+root.l:  .
+---
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  days
+s1:  two
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l: (NP-SBJ(NNP BUSH)(NP-SBJ_inner(CC AND)(NNP GORBACHEV)))
+---
+s1:  days
+root.r: (S-HLN_inner(VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))(. .))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l: (NNP BUSH)
+---
+s1:  days
+root.r: (NP-SBJ_inner(CC AND)(NNP GORBACHEV))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l:  BUSH
+---
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l: (CC AND)
+---
+s1:  days
+root.r: (NNP GORBACHEV)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l:  AND
+---
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l:  GORBACHEV
+---
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l: (VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))
+---
+s1:  days
+root.r: (. .)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l: (MD WILL)
+---
+s1:  days
+root.r: (VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month))))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l:  WILL
+---
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l: (VB HOLD)
+---
+s1:  days
+root.r: (VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l:  HOLD
+---
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l: (NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))
+---
+s1:  days
+root.r: (NP-TMP(JJ next)(NN month))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l: (NP(CD two)(NNS days))
+---
+s1:  days
+root.r: (PP(IN of)(NP(JJ informal)(NNS talks)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l: (CD two)
+---
+s1:  days
+root.r: (NNS days)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l:  two
+---
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l:  days
+---
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l: (IN of)
+---
+s1:  days
+root.r: (NP(JJ informal)(NNS talks))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l:  of
+---
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l: (JJ informal)
+---
+s1:  days
+root.r: (NNS talks)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l:  informal
+---
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l:  talks
+---
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l: (JJ next)
+---
+s1:  days
+root.r: (NN month)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l:  next
+---
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l:  month
+---
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+root.l:  .
+---
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  of
+s1:  days
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l: (NP-SBJ(NNP BUSH)(NP-SBJ_inner(CC AND)(NNP GORBACHEV)))
+---
+s1:  of
+root.r: (S-HLN_inner(VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))(. .))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l: (NNP BUSH)
+---
+s1:  of
+root.r: (NP-SBJ_inner(CC AND)(NNP GORBACHEV))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l:  BUSH
+---
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l: (CC AND)
+---
+s1:  of
+root.r: (NNP GORBACHEV)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l:  AND
+---
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l:  GORBACHEV
+---
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l: (VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))
+---
+s1:  of
+root.r: (. .)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l: (MD WILL)
+---
+s1:  of
+root.r: (VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month))))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l:  WILL
+---
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l: (VB HOLD)
+---
+s1:  of
+root.r: (VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l:  HOLD
+---
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l: (NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))
+---
+s1:  of
+root.r: (NP-TMP(JJ next)(NN month))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l: (NP(CD two)(NNS days))
+---
+s1:  of
+root.r: (PP(IN of)(NP(JJ informal)(NNS talks)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l: (CD two)
+---
+s1:  of
+root.r: (NNS days)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l:  two
+---
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l:  days
+---
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l: (IN of)
+---
+s1:  of
+root.r: (NP(JJ informal)(NNS talks))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l:  of
+---
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l: (JJ informal)
+---
+s1:  of
+root.r: (NNS talks)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l:  informal
+---
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l:  talks
+---
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l: (JJ next)
+---
+s1:  of
+root.r: (NN month)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l:  next
+---
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l:  month
+---
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+root.l:  .
+---
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  informal
+s1:  of
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l: (NP-SBJ(NNP BUSH)(NP-SBJ_inner(CC AND)(NNP GORBACHEV)))
+---
+s1:  informal
+root.r: (S-HLN_inner(VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))(. .))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l: (NNP BUSH)
+---
+s1:  informal
+root.r: (NP-SBJ_inner(CC AND)(NNP GORBACHEV))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l:  BUSH
+---
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l: (CC AND)
+---
+s1:  informal
+root.r: (NNP GORBACHEV)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l:  AND
+---
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l:  GORBACHEV
+---
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l: (VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))
+---
+s1:  informal
+root.r: (. .)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l: (MD WILL)
+---
+s1:  informal
+root.r: (VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month))))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l:  WILL
+---
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l: (VB HOLD)
+---
+s1:  informal
+root.r: (VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l:  HOLD
+---
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l: (NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))
+---
+s1:  informal
+root.r: (NP-TMP(JJ next)(NN month))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l: (NP(CD two)(NNS days))
+---
+s1:  informal
+root.r: (PP(IN of)(NP(JJ informal)(NNS talks)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l: (CD two)
+---
+s1:  informal
+root.r: (NNS days)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l:  two
+---
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l:  days
+---
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l: (IN of)
+---
+s1:  informal
+root.r: (NP(JJ informal)(NNS talks))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l:  of
+---
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l: (JJ informal)
+---
+s1:  informal
+root.r: (NNS talks)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l:  informal
+---
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l:  talks
+---
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l: (JJ next)
+---
+s1:  informal
+root.r: (NN month)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l:  next
+---
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l:  month
+---
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+root.l:  .
+---
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  talks
+s1:  informal
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l: (NP-SBJ(NNP BUSH)(NP-SBJ_inner(CC AND)(NNP GORBACHEV)))
+---
+s1:  talks
+root.r: (S-HLN_inner(VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))(. .))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l: (NNP BUSH)
+---
+s1:  talks
+root.r: (NP-SBJ_inner(CC AND)(NNP GORBACHEV))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l:  BUSH
+---
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l: (CC AND)
+---
+s1:  talks
+root.r: (NNP GORBACHEV)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l:  AND
+---
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l:  GORBACHEV
+---
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l: (VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))
+---
+s1:  talks
+root.r: (. .)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l: (MD WILL)
+---
+s1:  talks
+root.r: (VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month))))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l:  WILL
+---
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l: (VB HOLD)
+---
+s1:  talks
+root.r: (VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l:  HOLD
+---
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l: (NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))
+---
+s1:  talks
+root.r: (NP-TMP(JJ next)(NN month))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l: (NP(CD two)(NNS days))
+---
+s1:  talks
+root.r: (PP(IN of)(NP(JJ informal)(NNS talks)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l: (CD two)
+---
+s1:  talks
+root.r: (NNS days)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l:  two
+---
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l:  days
+---
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l: (IN of)
+---
+s1:  talks
+root.r: (NP(JJ informal)(NNS talks))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l:  of
+---
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l: (JJ informal)
+---
+s1:  talks
+root.r: (NNS talks)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l:  informal
+---
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l:  talks
+---
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l: (JJ next)
+---
+s1:  talks
+root.r: (NN month)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l:  next
+---
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l:  month
+---
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+root.l:  .
+---
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  next
+s1:  talks
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l: (NP-SBJ(NNP BUSH)(NP-SBJ_inner(CC AND)(NNP GORBACHEV)))
+---
+s1:  next
+root.r: (S-HLN_inner(VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))(. .))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l: (NNP BUSH)
+---
+s1:  next
+root.r: (NP-SBJ_inner(CC AND)(NNP GORBACHEV))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l:  BUSH
+---
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l: (CC AND)
+---
+s1:  next
+root.r: (NNP GORBACHEV)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l:  AND
+---
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l:  GORBACHEV
+---
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l: (VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))
+---
+s1:  next
+root.r: (. .)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l: (MD WILL)
+---
+s1:  next
+root.r: (VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month))))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l:  WILL
+---
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l: (VB HOLD)
+---
+s1:  next
+root.r: (VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l:  HOLD
+---
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l: (NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))
+---
+s1:  next
+root.r: (NP-TMP(JJ next)(NN month))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l: (NP(CD two)(NNS days))
+---
+s1:  next
+root.r: (PP(IN of)(NP(JJ informal)(NNS talks)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l: (CD two)
+---
+s1:  next
+root.r: (NNS days)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l:  two
+---
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l:  days
+---
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l: (IN of)
+---
+s1:  next
+root.r: (NP(JJ informal)(NNS talks))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l:  of
+---
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l: (JJ informal)
+---
+s1:  next
+root.r: (NNS talks)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l:  informal
+---
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l:  talks
+---
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l: (JJ next)
+---
+s1:  next
+root.r: (NN month)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l:  next
+---
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l:  month
+---
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+root.l:  .
+---
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  month
+s1:  next
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l: (NP-SBJ(NNP BUSH)(NP-SBJ_inner(CC AND)(NNP GORBACHEV)))
+---
+s1:  month
+root.r: (S-HLN_inner(VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))(. .))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l: (NNP BUSH)
+---
+s1:  month
+root.r: (NP-SBJ_inner(CC AND)(NNP GORBACHEV))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l:  BUSH
+---
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l: (CC AND)
+---
+s1:  month
+root.r: (NNP GORBACHEV)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l:  AND
+---
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l:  GORBACHEV
+---
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l: (VP(MD WILL)(VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))))
+---
+s1:  month
+root.r: (. .)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l: (MD WILL)
+---
+s1:  month
+root.r: (VP(VB HOLD)(VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month))))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l:  WILL
+---
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l: (VB HOLD)
+---
+s1:  month
+root.r: (VP_inner(NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))(NP-TMP(JJ next)(NN month)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l:  HOLD
+---
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l: (NP(NP(CD two)(NNS days))(PP(IN of)(NP(JJ informal)(NNS talks))))
+---
+s1:  month
+root.r: (NP-TMP(JJ next)(NN month))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l: (NP(CD two)(NNS days))
+---
+s1:  month
+root.r: (PP(IN of)(NP(JJ informal)(NNS talks)))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l: (CD two)
+---
+s1:  month
+root.r: (NNS days)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l:  two
+---
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l:  days
+---
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l: (IN of)
+---
+s1:  month
+root.r: (NP(JJ informal)(NNS talks))
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l:  of
+---
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l: (JJ informal)
+---
+s1:  month
+root.r: (NNS talks)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l:  informal
+---
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l:  talks
+---
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l: (JJ next)
+---
+s1:  month
+root.r: (NN month)
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l:  next
+---
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l:  month
+---
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+root.l:  .
+---
+s1:  month
+
+*********end*********
+
+$$$$$$$$$start$$$$$$$$$
+s0:  .
+s1:  month
+
+*********end*********
