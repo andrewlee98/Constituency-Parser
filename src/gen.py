@@ -111,17 +111,17 @@ def generate_actions(t, s):
         if t1 is None and t2 is None: # base case
             return True
         if t1 and t2 and t1.label == t2.label:
-            print("label matched")
+            debug.write("label matched\n")
         if t1 is not None and t2 is not None:
             return (t1.label == t2.label) and \
             match_tree(t1.l, t2.l) and \
             match_tree(t1.r, t2.r)
         return False
 
-    def label_dfs(root, s0, s1): # subroutine for determining the label
+    def binary_label_dfs(root, s0, s1): # subroutine for determining the label
 
         # debugging
-        debug.write("\n$$$$$$$$$start$$$$$$$$$\n")
+        debug.write("\n$$$$$$$$$start_binary$$$$$$$$$\n")
         debug.write("s0: " + print_tree(s0) + "\n")
         if root.l:
             debug.write("root.l: " + print_tree(root.l) + "\n---\n")
@@ -131,12 +131,35 @@ def generate_actions(t, s):
         debug.write("\n*********end*********\n")
 
         if match_tree(root.l, s0) and match_tree(root.r, s1): # base case
-            print("tree matched")
+            print("binary tree matched")
             return root.label
-        if root.l and label_dfs(root.l, s0, s1):
-            return label_dfs(root.l, s0, s1)
-        if root.r and label_dfs(root.r, s0, s1):
-            return label_dfs(root.r, s0, s1)
+        if root.l:
+            left_label = binary_label_dfs(root.l, s0, s1)
+            return left_label if left_label else None
+        if root.r and binary_label_dfs(root.r, s0, s1):
+            right_label = binary_label_dfs(root.r, s0, s1)
+            return right_label if right_label else None
+
+    def unary_label_dfs(root, s0): # subroutine for determining the label
+
+        # debugging
+        debug.write("\n$$$$$$$$$start_unary$$$$$$$$$\n")
+        debug.write("s0: " + print_tree(s0) + "\n")
+        if root.l:
+            debug.write("child: " + print_tree(root.l) + "\n")
+
+        if match_tree(root.l, s0) and root.r == None: # base case
+            print("unary tree matched")
+            debug.write("match\n")
+            debug.write("*********end*********\n\n")
+            return root.label
+        debug.write("*********end*********\n\n")
+        if root.l:
+            child_label = unary_label_dfs(root.l, s0)
+            return child_label if child_label else None
+        if root.r:
+            child_label = unary_label_dfs(root.r, s0)
+            return child_label if child_label else None
 
     actions = [] # returns actions list (seq of stack/buff)
     buff = list(map(Node, s.split()[::-1])) # reverse sentence for O(1) pop
@@ -145,16 +168,31 @@ def generate_actions(t, s):
     while buff or len(stack) > 1: # end when buffer consumed & stack has tree
         # try to reduce top two items
         if len(stack) > 1: # reduce
-            right = stack[len(stack) - 1] # check this order
-            left = stack[len(stack) - 2]
-            new_node = Node(label_dfs(t, right, left))
-            if new_node.label != None:
+            right = stack[len(stack) - 2] # check this order
+            left = stack[len(stack) - 1]
+            new_node = Node(binary_label_dfs(t, left, right))
+            if new_node.label: # found a matching reduce
                 print("reduce")
                 new_node.l = stack.pop()
                 new_node.r = stack.pop()
                 stack.append(new_node)
+            else: # try to unary reduce
+                child = stack[len(stack) - 1]
+                new_node = Node(unary_label_dfs(t, left))
+                if new_node.label: # found a unary reduce
+                    new_node.l = stack.pop()
+                    stack.append(new_node)
+                else: # shift
+                    print("shift1")
+                    stack.append(buff.pop())
+        elif len(stack) == 1: # just try unary reduce
+            child = stack[len(stack) - 1]
+            new_node = Node(unary_label_dfs(t, child))
+            if new_node.label: # found a unary reduce
+                new_node.l = stack.pop()
+                stack.append(new_node)
             else: # shift
-                print("shift1")
+                print("shift2")
                 stack.append(buff.pop())
         else: # shift
             print("shift")
@@ -204,10 +242,12 @@ if __name__ == '__main__':
     for t in tree_list:
         sentences.append(inorder_sentence(t).lstrip()) # extra space on left
     traverse(tree_list[0])
-    print(print_tree(tree_list[0]))
+    # print(print_tree(tree_list[0]))
 
     with open(outpath + 'all.data', 'w') as f:
         for t, s in zip(tree_list, sentences):
             f.write('\n'.join(str(v) for v in generate_actions(t, s)))
             f.write("----------------------")
             break # test 1 tree
+
+debug.close()
