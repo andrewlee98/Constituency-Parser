@@ -90,6 +90,12 @@ def print_tree(root, s = ""):
     elif root.label:
         s += "(" + root.label + sl + sr + ")"
     return s
+def print_stack(s):
+    ret = "["
+    for t in s:
+        ret += print_tree(t) + " ;;"
+    ret += "]"
+    return ret
 
 # level order print for debugging
 def traverse(root):
@@ -122,6 +128,7 @@ def generate_actions(t, s):
 
         # debugging
         debug.write("\n$$$$$$$$$start_binary$$$$$$$$$\n")
+        debug.write("root: " + print_tree(root) + "\n")
         debug.write("s0: " + print_tree(s0) + "\n")
         if root.l:
             debug.write("root.l: " + print_tree(root.l) + "\n---\n")
@@ -151,12 +158,15 @@ def generate_actions(t, s):
         if match_tree(root.l, s0) and root.r == None: # base case
             print("unary tree matched")
             debug.write("match\n")
-            debug.write("*********end*********\n\n")
+            debug.write("*********endsucc*********\n\n")
             return root.label
-        debug.write("*********end*********\n\n")
+        debug.write("*********endfail*********\n\n")
+
+        # recursive calls
         if root.l:
             child_label = unary_label_dfs(root.l, s0)
-            return child_label if child_label else None
+            if child_label:
+                return child_label
         if root.r:
             child_label = unary_label_dfs(root.r, s0)
             return child_label if child_label else None
@@ -172,31 +182,39 @@ def generate_actions(t, s):
             left = stack[len(stack) - 1]
             new_node = Node(binary_label_dfs(t, left, right))
             if new_node.label: # found a matching reduce
-                print("reduce")
+                debug.write("~~~binary reduce~~~\n\n")
                 new_node.l = stack.pop()
                 new_node.r = stack.pop()
                 stack.append(new_node)
+                debug.write("stack: " + print_stack(stack) + "----------------------------------")
             else: # try to unary reduce
                 child = stack[len(stack) - 1]
                 new_node = Node(unary_label_dfs(t, left))
                 if new_node.label: # found a unary reduce
+                    debug.write("~~~unary reduce~~~\n\n")
                     new_node.l = stack.pop()
                     stack.append(new_node)
+                    debug.write("stack: " + print_stack(stack)+ "----------------------------------")
                 else: # shift
-                    print("shift1")
+                    debug.write("~~~shift1~~~\n\n")
                     stack.append(buff.pop())
+                    debug.write("stack: " + print_stack(stack)+ "----------------------------------")
         elif len(stack) == 1: # just try unary reduce
             child = stack[len(stack) - 1]
             new_node = Node(unary_label_dfs(t, child))
             if new_node.label: # found a unary reduce
+                debug.write("~~~unary reduce~~~\n\n")
                 new_node.l = stack.pop()
                 stack.append(new_node)
+                debug.write("stack: " + print_stack(stack)+ "----------------------------------")
             else: # shift
-                print("shift2")
+                debug.write("~~~shift2~~~\n\n")
                 stack.append(buff.pop())
+                debug.write("stack: " + print_stack(stack)+ "----------------------------------")
         else: # shift
-            print("shift")
+            debug.write("~~~shift3~~~\n\n")
             stack.append(buff.pop())
+            debug.write("stack: " + print_stack(stack))
         actions.append(stack + ["()"] + buff) # record action
 
     return actions
