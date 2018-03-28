@@ -125,7 +125,7 @@ def generate_actions(t, s):
         return False
 
     def binary_label_dfs(root, s0, s1): # subroutine for determining the label
-
+        #print("binary")
         # debugging
         debug.write("\n$$$$$$$$$start_binary$$$$$$$$$\n")
         debug.write("root: " + print_tree(root) + "\n")
@@ -142,13 +142,14 @@ def generate_actions(t, s):
             return root.label
         if root.l:
             left_label = binary_label_dfs(root.l, s0, s1)
-            return left_label if left_label else None
-        if root.r and binary_label_dfs(root.r, s0, s1):
+            if left_label:
+                return left_label
+        if root.r:
             right_label = binary_label_dfs(root.r, s0, s1)
             return right_label if right_label else None
 
     def unary_label_dfs(root, s0): # subroutine for determining the label
-
+        print("unary: "+ s0.label + " " + root.label)
         # debugging
         debug.write("\n$$$$$$$$$start_unary$$$$$$$$$\n")
         debug.write("s0: " + print_tree(s0) + "\n")
@@ -156,30 +157,39 @@ def generate_actions(t, s):
             debug.write("child: " + print_tree(root.l) + "\n")
 
         if match_tree(root.l, s0) and root.r == None: # base case
-            print("unary tree matched")
             debug.write("match\n")
             debug.write("*********endsucc*********\n\n")
             return root.label
         debug.write("*********endfail*********\n\n")
 
         # recursive calls
+        child_label = None
         if root.l:
             child_label = unary_label_dfs(root.l, s0)
-            if child_label:
-                return child_label
-        if root.r:
+        #     if child_label:
+        #         print("child label: " + child_label)
+        #         print("match3")
+        #         return child_label
+        # print("after")
+        if root.r and not child_label:
             child_label = unary_label_dfs(root.r, s0)
-            return child_label if child_label else None
+
+        if child_label:
+            print("match2")
+            return child_label
+
+
+        print("end of function")
 
     actions = [] # returns actions list (seq of stack/buff)
     buff = list(map(Node, s.split()[::-1])) # reverse sentence for O(1) pop
     stack = []
-
+    i = 0
     while buff or len(stack) > 1: # end when buffer consumed & stack has tree
         # try to reduce top two items
         if len(stack) > 1: # reduce
-            right = stack[len(stack) - 2] # check this order
-            left = stack[len(stack) - 1]
+            left = stack[len(stack) - 2] # check this order
+            right = stack[len(stack) - 1]
             new_node = Node(binary_label_dfs(t, left, right))
             if new_node.label: # found a matching reduce
                 debug.write("~~~binary reduce~~~\n\n")
@@ -193,6 +203,8 @@ def generate_actions(t, s):
                 if new_node.label: # found a unary reduce
                     debug.write("~~~unary reduce~~~\n\n")
                     new_node.l = stack.pop()
+                    print("adls;fkjas;lfk:" + new_node.label)
+                    print("adl:" + new_node.l.label)
                     stack.append(new_node)
                     debug.write("stack: " + print_stack(stack)+ "----------------------------------")
                 else: # shift
@@ -205,6 +217,8 @@ def generate_actions(t, s):
             if new_node.label: # found a unary reduce
                 debug.write("~~~unary reduce~~~\n\n")
                 new_node.l = stack.pop()
+                print("adls;fkjas;lfk:" + new_node.label)
+                print("adl:" + new_node.l.label)
                 stack.append(new_node)
                 debug.write("stack: " + print_stack(stack)+ "----------------------------------")
             else: # shift
@@ -216,6 +230,9 @@ def generate_actions(t, s):
             stack.append(buff.pop())
             debug.write("stack: " + print_stack(stack))
         actions.append(stack + ["()"] + buff) # record action
+        print("one action done" + str(i))
+        print(print_stack(stack))
+        i += 1
 
     return actions
 
