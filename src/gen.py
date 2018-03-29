@@ -1,6 +1,8 @@
 import os
 
-debug = open("debug.log", "w")
+debug_on = True
+
+if debug_on: debug = open("debug.log", "w")
 
 class Node:
     def __init__(self, label):
@@ -116,8 +118,6 @@ def generate_actions(t, s):
     def match_tree(t1, t2): # subroutine for checking matching trees
         if t1 is None and t2 is None: # base case
             return True
-        if t1 and t2 and t1.label == t2.label:
-            debug.write("label matched\n")
         if t1 is not None and t2 is not None:
             return (t1.label == t2.label) and \
             match_tree(t1.l, t2.l) and \
@@ -125,7 +125,6 @@ def generate_actions(t, s):
         return False
 
     def binary_label_dfs(root, s0, s1): # subroutine for determining the label
-        #print("binary")
         # debugging
         debug.write("\n$$$$$$$$$start_binary$$$$$$$$$\n")
         debug.write("root: " + print_tree(root) + "\n")
@@ -138,7 +137,6 @@ def generate_actions(t, s):
         debug.write("\n*********end*********\n")
 
         if match_tree(root.l, s0) and match_tree(root.r, s1): # base case
-            print("binary tree matched")
             return root.label
         if root.l:
             left_label = binary_label_dfs(root.l, s0, s1)
@@ -194,8 +192,6 @@ def generate_actions(t, s):
                 if new_node.label: # found a unary reduce
                     debug.write("~~~unary reduce~~~\n\n")
                     new_node.l = stack.pop()
-                    print("adls;fkjas;lfk:" + new_node.label)
-                    print("adl:" + new_node.l.label)
                     stack.append(new_node)
                     debug.write("stack: " + print_stack(stack))
                 else: # shift
@@ -218,8 +214,12 @@ def generate_actions(t, s):
             debug.write("~~~shift3~~~\n\n")
             stack.append(buff.pop())
             debug.write("stack: " + print_stack(stack))
-        actions.append(stack + ["()"] + buff) # record action
+        actions.append(list(map(lambda x: x.label, stack)) +
+            ["\n"] + list(map(lambda x: x.label, buff))) # record action
         print(print_stack(stack) + "\n")
+
+    for a in actions: # get the label and action
+        pass
 
     return actions
 
@@ -267,7 +267,7 @@ if __name__ == '__main__':
     # print(print_tree(tree_list[0]))
 
     with open(outpath + 'all.data', 'w') as f:
-        for t, s in zip(tree_list, sentences):
+        for t, s in zip(tree_list[1:], sentences[1:]):
             f.write('\n'.join(str(v) for v in generate_actions(t, s)))
             f.write("----------------------")
             break # test 1 tree
