@@ -184,8 +184,8 @@ def generate_actions(t, s):
             new_node = Node(binary_label_dfs(t, left, right))
             if new_node.label: # found a matching reduce
                 debug.write("~~~binary reduce~~~\n\n")
-                new_node.l = stack.pop()
                 new_node.r = stack.pop()
+                new_node.l = stack.pop()
                 stack.append(new_node)
                 debug.write("stack: " + print_stack(stack))
             else: # try to unary reduce
