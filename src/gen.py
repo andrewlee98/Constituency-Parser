@@ -1,6 +1,6 @@
 import os
 
-debug_on = True
+debug_on = False
 
 if debug_on: debug = open("debug.log", "w")
 
@@ -126,15 +126,15 @@ def generate_actions(t, s):
 
     def binary_label_dfs(root, s0, s1): # subroutine for determining the label
         # debugging
-        debug.write("\n$$$$$$$$$start_binary$$$$$$$$$\n")
-        debug.write("root: " + print_tree(root) + "\n")
-        debug.write("s0: " + print_tree(s0) + "\n")
+        if debug_on: debug.write("\n$$$$$$$$$start_binary$$$$$$$$$\n")
+        if debug_on: debug.write("root: " + print_tree(root) + "\n")
+        if debug_on: debug.write("s0: " + print_tree(s0) + "\n")
         if root.l:
-            debug.write("root.l: " + print_tree(root.l) + "\n---\n")
-        debug.write("s1: " + print_tree(s1) + "\n")
+            if debug_on: debug.write("root.l: " + print_tree(root.l) + "\n---\n")
+        if debug_on: debug.write("s1: " + print_tree(s1) + "\n")
         if root.r:
-            debug.write("root.r: " + print_tree(root.r) + "\n")
-        debug.write("\n*********end*********\n")
+            if debug_on: debug.write("root.r: " + print_tree(root.r) + "\n")
+        if debug_on: debug.write("\n*********end*********\n")
 
         if match_tree(root.l, s0) and match_tree(root.r, s1): # base case
             return root.label
@@ -148,16 +148,16 @@ def generate_actions(t, s):
 
     def unary_label_dfs(root, s0): # subroutine for determining the label
         # debugging
-        debug.write("\n$$$$$$$$$start_unary$$$$$$$$$\n")
-        debug.write("s0: " + print_tree(s0) + "\n")
+        if debug_on: debug.write("\n$$$$$$$$$start_unary$$$$$$$$$\n")
+        if debug_on: debug.write("s0: " + print_tree(s0) + "\n")
         if root.l:
-            debug.write("child: " + print_tree(root.l) + "\n")
+            if debug_on: debug.write("child: " + print_tree(root.l) + "\n")
 
         if match_tree(root.l, s0) and root.r == None: # base case
-            debug.write("match\n")
-            debug.write("*********endsucc*********\n\n")
+            if debug_on: debug.write("match\n")
+            if debug_on: debug.write("*********endsucc*********\n\n")
             return root.label
-        debug.write("*********endfail*********\n\n")
+        if debug_on: debug.write("*********endfail*********\n\n")
 
         # recursive calls
         child_label = None
@@ -170,58 +170,81 @@ def generate_actions(t, s):
         if child_label:
             return child_label
 
-    actions = [] # returns actions list (seq of stack/buff)
+    stack_seq = []
+    buffer_seq = []
+    final_actions = []
+    final_labels = []
     buff = list(map(Node, s.split()[::-1])) # reverse sentence for O(1) pop
     stack = []
 
     while buff or len(stack) > 1: # end when buffer consumed & stack has tree
+        final_label = ""
+        final_action = ""
         # try to reduce top two items
         if len(stack) > 1: # reduce
             left = stack[len(stack) - 2] # check this order
             right = stack[len(stack) - 1]
             new_node = Node(binary_label_dfs(t, left, right))
             if new_node.label: # found a matching reduce
-                debug.write("~~~binary reduce~~~\n\n")
+                final_label = new_node.label
+                final_action = "binary"
+                if debug_on: debug.write("~~~binary reduce~~~\n\n")
                 new_node.r = stack.pop()
                 new_node.l = stack.pop()
                 stack.append(new_node)
-                debug.write("stack: " + print_stack(stack))
+                if debug_on: debug.write("stack: " + print_stack(stack))
             else: # try to unary reduce
                 child = stack[len(stack) - 1]
                 new_node = Node(unary_label_dfs(t, child))
                 if new_node.label: # found a unary reduce
-                    debug.write("~~~unary reduce~~~\n\n")
+                    final_label = new_node.label
+                    final_action = "unary"
+                    if debug_on: debug.write("~~~unary reduce~~~\n\n")
                     new_node.l = stack.pop()
                     stack.append(new_node)
-                    debug.write("stack: " + print_stack(stack))
+                    if debug_on: debug.write("stack: " + print_stack(stack))
                 else: # shift
-                    debug.write("~~~shift1~~~\n\n")
+                    final_action = "shift"
+                    if debug_on: debug.write("~~~shift1~~~\n\n")
                     stack.append(buff.pop())
-                    debug.write("stack: " + print_stack(stack))
+                    if debug_on: debug.write("stack: " + print_stack(stack))
         elif len(stack) == 1: # just try unary reduce
             child = stack[len(stack) - 1]
             new_node = Node(unary_label_dfs(t, child))
             if new_node.label: # found a unary reduce
-                debug.write("~~~unary reduce~~~\n\n")
+                final_label = new_node.label
+                final_action = "unary"
+                if debug_on: debug.write("~~~unary reduce~~~\n\n")
                 new_node.l = stack.pop()
                 stack.append(new_node)
-                debug.write("stack: " + print_stack(stack))
+                if debug_on: debug.write("stack: " + print_stack(stack))
             else: # shift
-                debug.write("~~~shift2~~~\n\n")
+                final_action = "shift"
+                if debug_on: debug.write("~~~shift2~~~\n\n")
                 stack.append(buff.pop())
-                debug.write("stack: " + print_stack(stack))
+                if debug_on: debug.write("stack: " + print_stack(stack))
         else: # shift
-            debug.write("~~~shift3~~~\n\n")
+            final_action = "shift"
+            if debug_on: debug.write("~~~shift3~~~\n\n")
             stack.append(buff.pop())
-            debug.write("stack: " + print_stack(stack))
-        actions.append(list(map(lambda x: x.label, stack)) +
-            ["\n"] + list(map(lambda x: x.label, buff))) # record action
-        print(print_stack(stack) + "\n")
+            if debug_on: debug.write("stack: " + print_stack(stack))
+        # append all changes
+        stack_seq.append(list(map(lambda x: x.label, stack)))
+        buffer_seq.append(list(map(lambda x: x.label, buff)))
+        final_actions.append(final_action)
+        final_labels.append(final_label)
 
-    for a in actions: # get the label and action
-        pass
+        # print(print_stack(stack) + "\n")
 
-    return actions
+    action_str = []
+    for s, b, a, l in zip(stack_seq, buffer_seq, final_actions, final_labels):
+        action_str.append(str(s) + "\n" + str(b) + "\n" + a)
+        if l:
+            action_str.append(l)
+        action_str.append("-" * 72 + "\n")
+
+
+    return action_str
 
 
 if __name__ == '__main__':
@@ -269,7 +292,7 @@ if __name__ == '__main__':
     with open(outpath + 'all.data', 'w') as f:
         for t, s in zip(tree_list[1:], sentences[1:]):
             f.write('\n'.join(str(v) for v in generate_actions(t, s)))
-            f.write("----------------------")
+            f.write("*" * 96)
             break # test 1 tree
 
-debug.close()
+if debug_on: debug.close()
