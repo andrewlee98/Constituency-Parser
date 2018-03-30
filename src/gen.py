@@ -1,7 +1,7 @@
 import os
 from random import randint
 
-debug_on = True
+debug_on = False
 
 if debug_on: debug = open("debug.log", "w")
 
@@ -21,7 +21,7 @@ def parse_tree(tree_str):
     tree_str = clean(tree_str)
     if tree_str[0] == "(": # remove surrounding parentheses
         tree_str = tree_str[1:-1]
-    root = Node(tree_str.split()[0] + str(randint(0,1000))) # set first word as root
+    root = Node(tree_str.split()[0]) # set first word as root
     tree_str = tree_str.split()[1:] # remove first (root) word
     tree_str = ' '.join(tree_str) # convert back to string
 
@@ -72,11 +72,12 @@ def idx_tree(root, i = 0):
     if not root.l and not root.r:
         root.label = root.label + "/" + str(i)
         i += 1
+        return (root, i)
     if root.l:
-        idx_tree(root.l, i)
+        (root.l, i) = idx_tree(root.l, i)
     if root.r:
-        idx_tree(root.r, i)
-
+        (root.r, i) = idx_tree(root.r, i)
+    return (root, i)
 
 # generate sentences from the tree
 def inorder_sentence(root, s = ""):
@@ -300,7 +301,7 @@ if __name__ == '__main__':
     for t in tree_string_list:
         tree_list.append((parse_tree(t[1:-1])))
 
-    #tree_list = map(idx_tree, tree_list)
+    tree_list = list(map(lambda x: idx_tree(x)[0], tree_list))
 
     # use inorder traveral to generate sentences from trees
     sentences = []
@@ -312,7 +313,6 @@ if __name__ == '__main__':
     with open(outpath + 'all.data', 'w') as f:
         for t, s in zip(tree_list[1:], sentences[1:]):
             if idx != test_idx:
-                print(inorder_sentence(t))
                 f.write('\n'.join(str(v) for v in generate_actions(t, s)))
                 f.write("*" * 96)
             if idx % 100 == 0: print(idx)
