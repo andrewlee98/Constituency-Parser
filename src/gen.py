@@ -248,12 +248,11 @@ def generate_actions(t, s):
             if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         # append all changes
         stack_seq.append(list(map(lambda x: x.label, stack)))
-        buffer_seq.append(list(map(lambda x: x.label, buff)))
+        buffer_seq.append(list(map(lambda x: x.label, buff[::-1])))
         final_actions.append(final_action)
         final_labels.append(final_label)
 
         # print(stack_to_str(stack) + "\n")
-    print("final stack length: " + str(len(stack)))
 
     action_str = []
     for s, b, a, l in zip(stack_seq, buffer_seq, final_actions, final_labels):
@@ -309,13 +308,12 @@ if __name__ == '__main__':
         sentences.append(inorder_sentence(t).lstrip()) # extra space on left
 
     idx = 0
-    test_idx = 0.4
     with open(outpath + 'all.data', 'w') as f:
         for t, s in zip(tree_list[1:], sentences[1:]):
-            if idx != test_idx:
-                f.write('\n'.join(str(v) for v in generate_actions(t, s)))
-                f.write("*" * 96)
-            if idx % 100 == 0: print(idx)
+            f.write('\n'.join(str(v) for v in generate_actions(t, s)))
+            f.write("*" * 96)
+            if idx % 100 == 0: print(str(idx) + "..." , end = ' ', flush = True)
             idx += 1
+        print()
 
 if debug_on: debug.close()
