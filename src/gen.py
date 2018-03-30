@@ -1,6 +1,7 @@
 import os
+from random import randint
 
-debug_on = False
+debug_on = True
 
 if debug_on: debug = open("debug.log", "w")
 
@@ -20,7 +21,7 @@ def parse_tree(tree_str):
     tree_str = clean(tree_str)
     if tree_str[0] == "(": # remove surrounding parentheses
         tree_str = tree_str[1:-1]
-    root = Node(tree_str.split()[0]) # set first word as root
+    root = Node(tree_str.split()[0] + str(randint(0,1000))) # set first word as root
     tree_str = tree_str.split()[1:] # remove first (root) word
     tree_str = ' '.join(tree_str) # convert back to string
 
@@ -67,6 +68,15 @@ def parse_tree(tree_str):
 
     return root
 
+def idx_tree(root, i = 0):
+    if not root.l and not root.r:
+        root.label = root.label + "/" + str(i)
+        i += 1
+    if root.l:
+        idx_tree(root.l, i)
+    if root.r:
+        idx_tree(root.r, i)
+
 
 # generate sentences from the tree
 def inorder_sentence(root, s = ""):
@@ -92,6 +102,7 @@ def tree_to_str(root, s = ""):
     elif root.label:
         s += "(" + root.label + sl + sr + ")"
     return s
+
 def stack_to_str(s):
     ret = "["
     for t in s:
@@ -177,7 +188,7 @@ def generate_actions(t, s):
     buff = list(map(Node, s.split()[::-1])) # reverse sentence for O(1) pop
     stack = []
 
-    while buff: # end when buffer consumed & stack has tree
+    while buff or len(stack) > 1: # end when buffer consumed & stack has tree
         final_label = ""
         final_action = ""
         # try to reduce top two items
@@ -193,6 +204,7 @@ def generate_actions(t, s):
                 new_node.l = stack.pop()
                 stack.append(new_node)
                 if debug_on: debug.write("stack: " + stack_to_str(stack))
+                if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
             else: # try to unary reduce
                 child = stack[len(stack) - 1]
                 new_node = Node(unary_label_dfs(t, child))
@@ -203,11 +215,13 @@ def generate_actions(t, s):
                     new_node.l = stack.pop()
                     stack.append(new_node)
                     if debug_on: debug.write("stack: " + stack_to_str(stack))
+                    if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
                 else: # shift
                     final_action = "shift"
                     if debug_on: debug.write("~~~shift1~~~\n\n")
                     stack.append(buff.pop())
                     if debug_on: debug.write("stack: " + stack_to_str(stack))
+                    if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         elif len(stack) == 1: # just try unary reduce
             child = stack[len(stack) - 1]
             new_node = Node(unary_label_dfs(t, child))
@@ -218,16 +232,19 @@ def generate_actions(t, s):
                 new_node.l = stack.pop()
                 stack.append(new_node)
                 if debug_on: debug.write("stack: " + stack_to_str(stack))
+                if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
             else: # shift
                 final_action = "shift"
                 if debug_on: debug.write("~~~shift2~~~\n\n")
                 stack.append(buff.pop())
                 if debug_on: debug.write("stack: " + stack_to_str(stack))
+                if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         else: # shift
             final_action = "shift"
             if debug_on: debug.write("~~~shift3~~~\n\n")
             stack.append(buff.pop())
             if debug_on: debug.write("stack: " + stack_to_str(stack))
+            if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         # append all changes
         stack_seq.append(list(map(lambda x: x.label, stack)))
         buffer_seq.append(list(map(lambda x: x.label, buff)))
@@ -235,6 +252,7 @@ def generate_actions(t, s):
         final_labels.append(final_label)
 
         # print(stack_to_str(stack) + "\n")
+    print("final stack length: " + str(len(stack)))
 
     action_str = []
     for s, b, a, l in zip(stack_seq, buffer_seq, final_actions, final_labels):
@@ -280,20 +298,24 @@ if __name__ == '__main__':
     # turn tree strings into tree_list
     tree_list = []
     for t in tree_string_list:
-        tree_list.append(parse_tree(t[1:-1]))
+        tree_list.append((parse_tree(t[1:-1])))
+
+    #tree_list = map(idx_tree, tree_list)
 
     # use inorder traveral to generate sentences from trees
     sentences = []
     for t in tree_list:
         sentences.append(inorder_sentence(t).lstrip()) # extra space on left
 
-    i = 0
+    idx = 0
+    test_idx = 0.4
     with open(outpath + 'all.data', 'w') as f:
         for t, s in zip(tree_list[1:], sentences[1:]):
-            f.write('\n'.join(str(v) for v in generate_actions(t, s)))
-            f.write("*" * 96)
-            #break # test 1 tree
-            print(i)
-            i += 1
+            if idx != test_idx:
+                print(inorder_sentence(t))
+                f.write('\n'.join(str(v) for v in generate_actions(t, s)))
+                f.write("*" * 96)
+            if idx % 100 == 0: print(idx)
+            idx += 1
 
 if debug_on: debug.close()
