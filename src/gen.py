@@ -247,7 +247,7 @@ def generate_actions(t, s):
             if debug_on: debug.write("stack: " + stack_to_str(stack))
             if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         # append all changes
-        stack_seq.append(list(map(lambda x: x.label, stack)))
+        stack_seq.append(list(map(tree_to_str, stack)))
         buffer_seq.append(list(map(lambda x: x.label, buff[::-1])))
         final_actions.append(final_action)
         final_labels.append(final_label)
@@ -256,10 +256,12 @@ def generate_actions(t, s):
 
     action_str = []
     for s, b, a, l in zip(stack_seq, buffer_seq, final_actions, final_labels):
-        action_str.append(str(s) + "\n" + str(b) + "\n" + a)
+        out_str = a + " "
         if l:
-            action_str.append(l)
-        action_str.append("-" * 72 + "\n")
+            out_str += l
+        out_str += "\n\nstack:\n" + str(s) + "\n\nbuffer:\n" + str(b) + "\n"
+        out_str += "-" * 72 + "\n"
+        action_str.append(out_str)
 
 
     return action_str
