@@ -69,8 +69,10 @@ def parse_tree(tree_str):
     return root
 
 def idx_tree(root, i = 0):
-    if not root.l and not root.r:
+    if not root.l and not root.r: #and "*" not in root.label:
         root.label = root.label + "/" + str(i)
+        # if "*" not in root.label:
+        #     i += 1
         i += 1
         return (root, i)
     if root.l:
@@ -190,6 +192,7 @@ def generate_actions(t, s):
     stack = []
 
     while buff or len(stack) > 1: # end when buffer consumed & stack has tree
+        # print(stack_to_str(stack))
         final_label = ""
         final_action = ""
         # try to reduce top two items
@@ -221,6 +224,11 @@ def generate_actions(t, s):
                     final_action = "shift"
                     if debug_on: debug.write("~~~shift1~~~\n\n")
                     stack.append(buff.pop())
+                    # try:
+                    #     stack.append(buff.pop())
+                    # except IndexError:
+                    #     print(stack_to_str(stack))
+                    #     print(stack_to_str(buff))
                     if debug_on: debug.write("stack: " + stack_to_str(stack))
                     if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         elif len(stack) == 1: # just try unary reduce
