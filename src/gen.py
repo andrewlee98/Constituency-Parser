@@ -68,18 +68,20 @@ def parse_tree(tree_str):
 
     return root
 
-def idx_tree(root, i = 0):
+def idx_tree(root, i = 0, star = 0):
     if not root.l and not root.r: #and "*" not in root.label:
-        root.label = root.label + "/" + str(i)
-        # if "*" not in root.label:
-        #     i += 1
-        i += 1
-        return (root, i)
+        if "*" not in root.label:
+            root.label += "/" + str(i)
+            i += 1
+        else:
+            root.label += "/" + str(star)
+            star +=1
+        return (root, i, star)
     if root.l:
-        (root.l, i) = idx_tree(root.l, i)
+        (root.l, i, star) = idx_tree(root.l, i, star)
     if root.r:
-        (root.r, i) = idx_tree(root.r, i)
-    return (root, i)
+        (root.r, i, star) = idx_tree(root.r, i, star)
+    return (root, i, star)
 
 # generate sentences from the tree
 def inorder_sentence(root, s = ""):
@@ -224,11 +226,6 @@ def generate_actions(t, s):
                     final_action = "shift"
                     if debug_on: debug.write("~~~shift1~~~\n\n")
                     stack.append(buff.pop())
-                    # try:
-                    #     stack.append(buff.pop())
-                    # except IndexError:
-                    #     print(stack_to_str(stack))
-                    #     print(stack_to_str(buff))
                     if debug_on: debug.write("stack: " + stack_to_str(stack))
                     if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         elif len(stack) == 1: # just try unary reduce
