@@ -4,6 +4,11 @@ class Node:
         self.l = None
         self.r = None
 
+tree_sep = "\n" + "*" * 24 + "\n" # denotes end of one tree's action sequence
+action_sep = "\n" + "-" * 24 + "\n" # separates actions from each other
+sep = "\n" + "=" * 24 + "\n" # separates action, stack, and buffer in one action
+list_sep = ";;" # separates items in stack/buffer
+
 
 # method for transforming one string into a tree
 def parse_tree(tree_str):

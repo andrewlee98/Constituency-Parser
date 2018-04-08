@@ -5,7 +5,6 @@ import os
 from utils import *
 
 debug_on = False
-
 if debug_on: debug = open("debug.log", "w")
 
 
@@ -50,19 +49,19 @@ def tree_to_str(root, s = ""):
     return s
 
 def stack_to_str(s):
-    ret = "["
+    ret = ""
     for t in s:
-        ret += tree_to_str(t) + " ;;"
-    ret += "]"
+        ret += tree_to_str(t) + list_sep
+    ret += ""
     return ret
 
 def buff_to_str(s):
-    ret = "["
+    ret = ""
     for t in s:
         ts = tree_to_str(t)
         if "*" not in ts:
-            ret += tree_to_str(t) + " ;;"
-    ret += "]"
+            ret += tree_to_str(t) + list_sep
+    ret += ""
     return ret
 
 def remove_star_sentence(s):
@@ -216,7 +215,7 @@ def generate_actions(t, s):
             if debug_on: debug.write("stack: " + stack_to_str(stack))
             if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         # append all changes
-        stack_seq.append(list(map(tree_to_str, stack)))
+        stack_seq.append(stack_to_str(stack))
         buffer_seq.append((buff_to_str(buff[::-1])))
         final_actions.append(final_action)
         final_labels.append(final_label)
@@ -228,8 +227,8 @@ def generate_actions(t, s):
         out_str = a + " "
         if l:
             out_str += l
-        out_str += "\n\nstack:\n" + str(s) + "\n\nbuffer:\n" + str(b) + "\n\n"
-        out_str += "-" * 72 + "\n"
+        out_str += sep + s + sep + b + "\n\n"
+        out_str += action_sep
         action_str.append(out_str)
     return action_str
 
@@ -281,7 +280,7 @@ if __name__ == '__main__':
         for t, s in zip(tree_list[1:], sentences[1:]):
             f.write(remove_star_sentence(s))
             f.write('\n'.join(str(v) for v in generate_actions(t, s)))
-            f.write("*" * 96)
+            f.write(tree_sep)
             if idx % 100 == 0: print(str(idx) + "..." , end = ' ', flush = True)
             idx += 1
         print()
