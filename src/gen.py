@@ -234,6 +234,8 @@ def generate_actions(t, s):
                 else: # shift
                     final_action = "shift"
                     if debug_on: debug.write("~~~shift1~~~\n\n")
+                    if "*" in buff[-1].label:
+                        final_action += " star"
                     stack.append(buff.pop())
                     if debug_on: debug.write("stack: " + stack_to_str(stack))
                     if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
@@ -251,12 +253,16 @@ def generate_actions(t, s):
             else: # shift
                 final_action = "shift"
                 if debug_on: debug.write("~~~shift2~~~\n\n")
+                if "*" in buff[-1].label:
+                        final_action += " star"
                 stack.append(buff.pop())
                 if debug_on: debug.write("stack: " + stack_to_str(stack))
                 if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         else: # shift
             final_action = "shift"
             if debug_on: debug.write("~~~shift3~~~\n\n")
+            if "*" in buff[-1].label:
+                        final_action += " star"
             stack.append(buff.pop())
             if debug_on: debug.write("stack: " + stack_to_str(stack))
             if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
@@ -273,7 +279,7 @@ def generate_actions(t, s):
         out_str = a + " "
         if l:
             out_str += l
-        out_str += "\n\nstack:\n" + str(s) + "\n\nbuffer:\n" + str(b) + "\n"
+        out_str += "\n\nstack:\n" + str(s) + "\n\nbuffer:\n" + str(b) + "\n\n"
         out_str += "-" * 72 + "\n"
         action_str.append(out_str)
 
