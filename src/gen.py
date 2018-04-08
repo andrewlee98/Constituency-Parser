@@ -65,6 +65,14 @@ def buff_to_str(s):
     ret += "]"
     return ret
 
+def remove_star_sentence(s):
+    s = s.split()
+    s1 = []
+    for w in s:
+        if "*" not in s:
+            s1.append(w)
+    return ' '.join(s1)
+
 # level order print for debugging
 def level_order(root):
     current_level = [root]
@@ -271,7 +279,7 @@ if __name__ == '__main__':
     idx = 0
     with open(outpath + 'all.data', 'w') as f:
         for t, s in zip(tree_list[1:], sentences[1:]):
-            f.write(s + "\n")
+            f.write(remove_star_sentence(s))
             f.write('\n'.join(str(v) for v in generate_actions(t, s)))
             f.write("*" * 96)
             if idx % 100 == 0: print(str(idx) + "..." , end = ' ', flush = True)
