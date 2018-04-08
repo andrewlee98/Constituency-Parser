@@ -227,7 +227,7 @@ def generate_actions(t, s):
         out_str = a + " "
         if l:
             out_str += l
-        out_str += sep + s + sep + b + "\n\n"
+        out_str += sep + s + sep + b + "\n"
         out_str += action_sep
         action_str.append(out_str)
     return action_str
@@ -278,7 +278,7 @@ if __name__ == '__main__':
     idx = 0
     with open(outpath + 'all.data', 'w') as f:
         for t, s in zip(tree_list[1:], sentences[1:]):
-            f.write(remove_star_sentence(s))
+            #f.write(remove_star_sentence(s) + "\n")
             f.write('\n'.join(str(v) for v in generate_actions(t, s)))
             f.write(tree_sep)
             if idx % 100 == 0: print(str(idx) + "..." , end = ' ', flush = True)
