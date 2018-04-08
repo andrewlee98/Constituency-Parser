@@ -115,6 +115,15 @@ def stack_to_str(s):
     ret += "]"
     return ret
 
+def buff_to_str(s):
+    ret = "["
+    for t in s:
+        ts = tree_to_str(t)
+        if "*" not in ts:
+            ret += tree_to_str(t) + " ;;"
+    ret += "]"
+    return ret
+
 # level order print for debugging
 def level_order(root):
     current_level = [root]
@@ -253,7 +262,7 @@ def generate_actions(t, s):
             if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         # append all changes
         stack_seq.append(list(map(tree_to_str, stack)))
-        buffer_seq.append(list(map(lambda x: x.label, buff[::-1])))
+        buffer_seq.append((buff_to_str(buff[::-1])))
         final_actions.append(final_action)
         final_labels.append(final_label)
 
