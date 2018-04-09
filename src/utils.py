@@ -9,12 +9,12 @@ action_sep = "\n" + "-" * 24 + "\n" # separates actions from each other
 sep = "\n" + "=" * 24 + "\n" # separates action, stack, and buffer in one action
 list_sep = ";;" # separates items in stack/buffer
 
+def clean(s): # remove excess space
+        s = s.rstrip().lstrip()
+        return s
 
 # method for transforming one string into a tree
 def parse_tree(tree_str):
-    def clean(s): # remove excess space
-        s = s.rstrip().lstrip()
-        return s
     tree_str = clean(tree_str)
     if tree_str[0] == "(": # remove surrounding parentheses
         tree_str = tree_str[1:-1]
