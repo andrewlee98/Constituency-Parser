@@ -65,6 +65,8 @@ if __name__ == '__main__':
                         features.extend(["<null>"]*4)
                 else:
                     features.extend(["<null>"]*5)
-                print(features)
                 final_list.append(features)
-    print(len(final_list))
+
+    with open(outpath + "features.data", "w") as f:
+        for act in final_list:
+            f.write(str(act) + '\n\n')
