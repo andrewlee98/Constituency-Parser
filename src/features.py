@@ -13,12 +13,14 @@ def get_left(t):
     else:
         return get_left(t.l)
 
-
 def get_right(t):
-    if not t.r.r and not t.r.l: # if l child is unary
-        return [t.r.label, t.label]
+    if not t.l.r and not t.l.l: # if l child is unary
+        return [t.l.label, t.label]
     else:
-        return get_right(t.r)
+        if t.r: # handle strange case of "(NP (NNP Moscow) ))"
+            return get_right(t.r)
+        else:
+            return get_right(t.l)
 
 if __name__ == '__main__':
     datapath = "../data/all.data"
@@ -30,6 +32,7 @@ if __name__ == '__main__':
         text += f.read().replace('\n', '')
 
     trees = text.split(tree_sep[1:-1])
+    final_list = [] # list of lists of features
     for t in trees:
         if not t:
             continue
@@ -53,14 +56,15 @@ if __name__ == '__main__':
             for i in range(0,4):
                 if len(stack) > i:
                     tree = parse_tree(stack[i])
-                    print("stack item: " + stack[i])
                     features.append(tree.label)
                     if tree.l and tree.r: # binary rule
-                        # assume a depth of two at least
+                        # assume a depth of 3 at least
                         features.extend(get_left(tree.l))
                         features.extend(get_right(tree.r))
                     else:
                         features.extend(["<null>"]*4)
                 else:
                     features.extend(["<null>"]*5)
-
+                print(features)
+                final_list.append(features)
+    print(len(final_list))
