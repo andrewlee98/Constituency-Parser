@@ -152,6 +152,10 @@ def generate_actions(t, s):
 
     while buff or len(stack) > 1: # end when buffer consumed & stack has tree
         # print(stack_to_str(stack))
+
+        # write the stack and buffer before action is performed
+        stack_seq.append(stack_to_str(stack))
+        buffer_seq.append((buff_to_str(buff[::-1])))
         final_label = ""
         final_action = ""
         # try to reduce top two items
@@ -215,8 +219,6 @@ def generate_actions(t, s):
             if debug_on: debug.write("stack: " + stack_to_str(stack))
             if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         # append all changes
-        stack_seq.append(stack_to_str(stack))
-        buffer_seq.append((buff_to_str(buff[::-1])))
         final_actions.append(final_action)
         final_labels.append(final_label)
 

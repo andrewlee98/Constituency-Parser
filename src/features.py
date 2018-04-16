@@ -1,11 +1,13 @@
 from utils import *
+import pickle
 
 # feature list for one action:
-# 0-3: top four words on buffer, <null> if they don't exist
-# 4-8: label of stack[0], leftmost word and POS, rightmost word and POS
-# 9-13: label of stack[1], leftmost word and POS, rightmost word and POS
-# 14-18: label of stack[2], leftmost word and POS, rightmost word and POS
-# 19-23: label of stack[3], leftmost word and POS, rightmost word and POS
+# 0: ground truth action
+# 1-4: top four words on buffer, <null> if they don't exist
+# 5-9: label of stack[0], leftmost word and POS, rightmost word and POS
+# 10-14: label of stack[1], leftmost word and POS, rightmost word and POS
+# 15-19: label of stack[2], leftmost word and POS, rightmost word and POS
+# 20-24: label of stack[3], leftmost word and POS, rightmost word and POS
 
 def get_left(t):
     if not t.l.r and not t.l.l: # if l child is unary
@@ -65,8 +67,9 @@ if __name__ == '__main__':
                         features.extend(["<null>"]*4)
                 else:
                     features.extend(["<null>"]*5)
-                final_list.append(features)
+            final_list.append(features)
 
-    with open(outpath + "features.data", "w") as f:
-        for act in final_list:
-            f.write(str(act) + '\n\n')
+    with open(outpath + "features.data", "wb") as f:
+        pickle.dump(final_list, f)
+        for fl in final_list:
+            f.write(fl)
