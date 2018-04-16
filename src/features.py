@@ -11,18 +11,21 @@ import pickle
 
 def get_left(t):
     if not t.l.r and not t.l.l: # if l child is unary
-        return [t.l.label, t.label]
+        return [unindex(t.l.label), t.label]
     else:
         return get_left(t.l)
 
 def get_right(t):
     if not t.l.r and not t.l.l: # if l child is unary
-        return [t.l.label, t.label]
+        return [unindex(t.l.label), t.label]
     else:
         if t.r: # handle strange case of "(NP (NNP Moscow) ))"
             return get_right(t.r)
         else:
             return get_right(t.l)
+
+def unindex(a):
+    return a.split("/")[0].rstrip().lstrip() # assume no words contain "/"
 
 if __name__ == '__main__':
     datapath = "../data/all.data"
@@ -50,7 +53,7 @@ if __name__ == '__main__':
             # top four buffer words
             for i in range(0,4):
                 if len(buff) > i:
-                    features.append(buff[i])
+                    features.append(unindex(buff[i]))
                 else:
                     features.append("<null>")
 
@@ -58,18 +61,24 @@ if __name__ == '__main__':
             for i in range(0,4):
                 if len(stack) > i:
                     tree = parse_tree(stack[i])
-                    features.append(tree.label)
+                    features.append(unindex(tree.label))
                     if tree.l and tree.r: # binary rule
                         # assume a depth of 3 at least
                         features.extend(get_left(tree.l))
                         features.extend(get_right(tree.r))
                     else:
-                        features.extend(["<null>"]*4)
+                        features.extend(["<null>"] * 4)
                 else:
-                    features.extend(["<null>"]*5)
+                    features.extend(["<null>"] * 5)
             final_list.append(features)
 
     with open(outpath + "features.data", "wb") as f:
         pickle.dump(final_list, f)
-        for fl in final_list:
-            f.write(fl)
+
+    # write in readable form
+    # i = 1
+    # with open(outpath + "features_read.data", "w") as f:
+    #     for fl in final_list:
+    #         f.write(str(fl) + "\n\n")
+    #         i += 1
+    #         if i == 500: break

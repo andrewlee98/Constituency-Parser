@@ -1,3 +1,6 @@
+from collections import defaultdict
+import pickle
+
 class Node:
     def __init__(self, label):
         self.label = label
@@ -62,3 +65,32 @@ def parse_tree(tree_str):
         binarize_str += ' '.join(children[1:]) + ")"
         root.r = parse_tree(binarize_str) # recursively binarize
     return root
+
+
+class Vocab:
+    def __init__(self, data_path):
+        feature_list = pickle.load(open( "../data/features.data", "rb" ))
+        word_count, actions = defaultdict(int), set()
+
+        for feats in feature_list:
+            actions.add(feats[0])
+            for word in feats[1:]:
+                word_count[word] += 1
+        words = [word for word in word_count.keys() if word_count[word] > 1]
+
+        self.words = ['<UNK>'] + words
+        self.word_dict = {word: i for i, word in enumerate(self.words)}
+
+        self.output_acts = actions
+        self.output_act_dict = {a: i for i, a in enumerate(self.output_acts)}
+
+        self.feat_acts = actions
+        self.feat_act_dict = {a: i for i, a in enumerate(self.output_acts)}
+
+
+
+
+
+
+
+
