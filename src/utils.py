@@ -85,7 +85,28 @@ class Vocab:
         self.output_act_dict = {a: i for i, a in enumerate(self.output_acts)}
 
         self.feat_acts = actions
-        self.feat_act_dict = {a: i for i, a in enumerate(self.output_acts)}
+        self.feat_acts_dict = {a: i for i, a in enumerate(self.output_acts)}
+
+    def tagid2tag_str(self, id):
+        return self.output_acts[id]
+
+    def tag2id(self, tag):
+        return self.output_act_dict[tag]
+
+    def feat_tag2id(self, tag):
+        return self.feat_acts_dict[tag]
+
+    def word2id(self, word):
+        return self.word_dict[word] if word in self.word_dict else self.word_dict['<UNK>']
+
+    def num_words(self):
+        return len(self.words)
+
+    def num_tag_feats(self):
+        return len(self.feat_acts)
+
+    def num_tags(self):
+        return len(self.output_acts)
 
 
 

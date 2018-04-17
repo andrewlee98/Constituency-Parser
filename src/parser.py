@@ -1,6 +1,7 @@
 import pickle
 from net_properties import *
 from utils import *
+from network import *
 
 if __name__ == '__main__':
     we = 100
@@ -10,3 +11,5 @@ if __name__ == '__main__':
     net_properties = NetProperties(we, pe, hidden, minibatch)
 
     vocab = Vocab("../data/features.data")
+
+    network = Network(vocab, net_properties)
