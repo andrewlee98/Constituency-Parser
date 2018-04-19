@@ -67,7 +67,7 @@ class Network:
         plt.ion()
         ax = plt.gca()
         ax.set_xlim([0, 10])
-        ax.set_ylim([0, 3])
+        ax.set_ylim([0, 5])
         plt.title("Loss over time")
         plt.xlabel("Minibatch")
         plt.ylabel("Loss")
@@ -128,3 +128,28 @@ class Network:
             # there are still some minibatch items in the memory but they are smaller than the minibatch size
             # so we ask dynet to forget them
             dynet.renew_cg()
+
+        def decode(self, features):
+
+            # running forward
+            output = self.build_graph(features)
+
+            # getting list value of the output
+            scores = output.npvalue()
+
+            # getting best tag
+            best_tag_id = np.argmax(scores)
+
+            # assigning the best tag
+            pred = self.vocab.tagid2tag_str(best_tag_id)
+
+            # refresh dynet memory (computation graph)
+            dynet.renew_cg()
+
+            return pred
+
+    def load(self, filename):
+        self.model.populate(filename)
+
+    def save(self, filename):
+        self.model.save(filename)
