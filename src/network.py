@@ -75,7 +75,7 @@ class Network:
         for i in range(epochs):
             print('started epoch', (i+1))
             losses = []
-            train_data = pickle.load(open( "../data/features.data", "rb" ))
+            train_data = pickle.load(open( "../data/train.data", "rb" ))
 
             # shuffle the training data.
             random.shuffle(train_data)
@@ -129,24 +129,24 @@ class Network:
             # so we ask dynet to forget them
             dynet.renew_cg()
 
-        def decode(self, features):
+    def decode(self, features):
 
-            # running forward
-            output = self.build_graph(features)
+        # running forward
+        output = self.build_graph(features)
 
-            # getting list value of the output
-            scores = output.npvalue()
+        # getting list value of the output
+        scores = output.npvalue()
 
-            # getting best tag
-            best_tag_id = np.argmax(scores)
+        # getting best tag
+        best_tag_id = np.argmax(scores)
 
-            # assigning the best tag
-            pred = self.vocab.tagid2tag_str(best_tag_id)
+        # assigning the best tag
+        pred = self.vocab.tagid2tag_str(best_tag_id)
 
-            # refresh dynet memory (computation graph)
-            dynet.renew_cg()
+        # refresh dynet memory (computation graph)
+        dynet.renew_cg()
 
-            return pred
+        return pred
 
     def load(self, filename):
         self.model.populate(filename)

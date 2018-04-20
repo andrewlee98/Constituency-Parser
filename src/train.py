@@ -11,9 +11,9 @@ if __name__ == '__main__':
     epochs = 5
 
     net_properties = NetProperties(we, pe, hidden, minibatch)
-    vocab = Vocab("../data/features.data")
+    vocab = Vocab("../data/train.data")
     pickle.dump((vocab, net_properties), open("../data/vocab_net.data", 'wb'))
     network = Network(vocab, net_properties)
-    network.train("../data/features.data", epochs)
+    network.train("../data/train.data", epochs)
     network.save("../networks/net.model")
 

@@ -6,33 +6,32 @@ import pickle
 #----------------------------------------
 # 1-4: top four words on buffer, <null> if they don't exist
 #----------------------------------------
-# 5: label of stack[0] ("null" if word)
-# 6: word of stack[0] ("null" if constituent label)
-# 7-10: leftmost word and POS, rightmost word and POS
+# 5: label of stack[0] ("<word>" if word)
+# 6: word of stack[0] ("<label>" if constituent label)
+# 7-10: leftmost POS and word, rightmost POS and word
 #----------------------------------------
-# 11: label of stack[1] ("null" if word)
-# 12: word of stack[1] ("null" if constituent label)
-# 13-16: leftmost word and POS, rightmost word and POS
+# 11: label of stack[1] ("<word>" if word)
+# 12: word of stack[1] ("<label>" if constituent label)
+# 13-16: leftmost POS and word, rightmost POS and word
 #----------------------------------------
-# 17: label of stack[2] ("null" if word)
-# 18: word of stack[2] ("null" if constituent label)
-# 19-22: leftmost word and POS, rightmost word and POS
+# 17: label of stack[2] ("<word>" if word)
+# 18: word of stack[2] ("<label>" if constituent label)
+# 19-22: leftmost POS and word, rightmost POS and word
 #----------------------------------------
-# 23: label of stack[3] ("null" if word)
-# 24: word of stack[3] ("null" if constituent label)
-# 25-28: leftmost word and POS, rightmost word and POS
+# 23: label of stack[3] ("<word>" if word)
+# 24: word of stack[3] ("<label>" if constituent label)
+# 25-28: leftmost POS and word, rightmost POS and word
 
 def rearrange(f):
     labels = set([5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27])
-    word_start = 12
 
-    new_list = [0] * 28
+    new_list = []
     for i in range(1, len(f)):
         if i in labels:
-            new_list[i] = f[i]
-        else:
-            new_list[word_start] = f[i]
-            word_start += 1
+            new_list.append(f[i])
+    for i in range(1, len(f)):
+        if i not in labels:
+            new_list.append(f[i])
 
     new_list.append(f[0]) # append label to end
 
@@ -69,6 +68,7 @@ if __name__ == '__main__':
 
     trees = text.split(tree_sep[1:-1])
     final_list = [] # list of lists of features
+    final_list_read = [] # list of lists of features for debugging
     for t in trees:
         if not t:
             continue
@@ -92,12 +92,14 @@ if __name__ == '__main__':
             for i in range(0,4):
                 if len(stack) > i:
                     tree = parse_tree(stack[i])
-                    if not tree.l and not tree.r: # word
-                        features.append(unindex(tree.label))
-                        features.append("<null>")
-                    else:
-                        features.append("<null>")
+                    if tree.l or tree.r: # label
                         features.append(tree.label)
+                        features.append("<label>")
+                    else: # word
+                        features.append("<word>")
+                        features.append(unindex(tree.label))
+
+
                     if tree.l and tree.r: # binary rule
                         # assume a depth of 3 at least
                         features.extend(get_left(tree.l))
@@ -105,22 +107,33 @@ if __name__ == '__main__':
                     else:
                         features.extend(["<null>"] * 4)
                 else:
-                    features.extend(["<null>"] * 5)
+                    features.extend(["<null>"] * 6)
             final_list.append(rearrange(features))
+            final_list_read.append(features)
 
-    with open(outpath + "features.data", "wb") as f:
+    print(len(final_list))
+
+    with open(outpath + "train.data", "wb") as f:
+        pickle.dump(final_list[10000:], f)
+
+    with open(outpath + "test.data", "wb") as f:
+        pickle.dump(final_list[:10000], f)
+
+    with open(outpath + "all_features.data", "wb") as f:
         pickle.dump(final_list, f)
 
     # write in readable form
     # i = 1
     # with open(outpath + "features_read.data", "w") as f:
-    #     for fl in final_list:
+    #     for fl1, fl2 in zip(final_list, final_list_read):
+    #         f.write(str(fl[:12]) + "\n")
+    #         f.write(str(fl[12:]) + "\n\n")
+
     #         f.write(str(fl[0:1]) + "\n")
-    #         f.write(str(fl[1:4]) + "\n")
-    #         f.write(str(fl[5:10]) + "\n")
-    #         f.write(str(fl[11:16]) + "\n")
-    #         f.write(str(fl[17:22]) + "\n")
-    #         f.write(str(fl[23:28]) + "\n")
+    #         f.write(str(fl[1:5]) + "\n")
+    #         f.write(str(fl[5:11]) + "\n")
+    #         f.write(str(fl[11:17]) + "\n")
+    #         f.write(str(fl[17:23]) + "\n")
     #         f.write(str(fl[23:28]) + "\n\n\n")
     #         i += 1
-    #         if i == 500: break
+    #         if i == 5000: break
