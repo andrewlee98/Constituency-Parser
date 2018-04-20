@@ -62,15 +62,17 @@ class Network:
         return output
 
     def train(self, train_file, epochs):
+        plot_on = False
         # matplotlib config
         loss_values = []
-        plt.ion()
-        ax = plt.gca()
-        ax.set_xlim([0, 10])
-        ax.set_ylim([0, 5])
-        plt.title("Loss over time")
-        plt.xlabel("Minibatch")
-        plt.ylabel("Loss")
+        if plot_on:
+            plt.ion()
+            ax = plt.gca()
+            ax.set_xlim([0, 10])
+            ax.set_ylim([0, 5])
+            plt.title("Loss over time")
+            plt.xlabel("Minibatch")
+            plt.ylabel("Loss")
 
         for i in range(epochs):
             print('started epoch', (i+1))
@@ -106,10 +108,11 @@ class Network:
                     # printing info and plotting
                     loss_values.append(minibatch_loss_value)
                     if len(loss_values)%10==0:
-                        ax.set_xlim([0, len(loss_values)+10])
-                        ax.plot(loss_values)
-                        plt.draw()
-                        plt.pause(0.0001)
+                        if plot_on:
+                            ax.set_xlim([0, len(loss_values)+10])
+                            ax.plot(loss_values)
+                            plt.draw()
+                            plt.pause(0.0001)
                         progress = round(100 * float(step) / len(train_data), 2)
                         print('current minibatch loss', minibatch_loss_value, 'progress:', progress, '%')
 
