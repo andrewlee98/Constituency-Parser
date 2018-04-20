@@ -4,9 +4,13 @@
 import os
 from utils import *
 import time
+import pickle
 
 debug_on = False
 if debug_on: debug = open("debug.log", "w")
+
+words = open("words.log", 'w')
+labels = open("labels.log", 'w')
 
 
 def idx_tree(root, i = 0, star = 0): # appends indices to tree
@@ -48,22 +52,6 @@ def tree_to_str(root, s = ""):
     elif root.label:
         s += " (" + root.label + sl + sr + ")"
     return s
-
-def stack_to_str(s):
-    ret = ""
-    for t in s:
-        ret += tree_to_str(t) + list_sep
-    ret += ""
-    return ret
-
-def buff_to_str(s):
-    ret = ""
-    for t in s:
-        ts = tree_to_str(t)
-        if "*" not in ts:
-            ret += tree_to_str(t) + list_sep
-    ret += ""
-    return ret
 
 def remove_star_sentence(s):
     s = s.split()
@@ -144,10 +132,7 @@ def generate_actions(t, s):
         if child_label:
             return child_label
 
-    stack_seq = []
-    buffer_seq = []
-    final_actions = []
-    final_labels = []
+    ret = []
     buff = list(map(Node, s.split()[::-1])) # reverse sentence for O(1) pop
     stack = []
 
@@ -155,13 +140,13 @@ def generate_actions(t, s):
         # print(stack_to_str(stack))
 
         # write the stack and buffer before action is performed
-        stack_seq.append(stack_to_str(stack))
-        buffer_seq.append((buff_to_str(buff[::-1])))
+        st = list(map(lambda x: tree_to_str(x), stack))
+        bu = list(map(lambda x: tree_to_str(x), buff[::-1]))
         final_label = ""
         final_action = ""
         # try to reduce top two items
         if len(stack) > 1: # reduce
-            left = stack[len(stack) - 2] # check this order
+            left = stack[len(stack) - 2]
             right = stack[len(stack) - 1]
             new_node = Node(binary_label_dfs(t, left, right))
             if new_node.label: # found a matching reduce
@@ -220,20 +205,12 @@ def generate_actions(t, s):
             if debug_on: debug.write("stack: " + stack_to_str(stack))
             if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         # append all changes
-        final_actions.append(final_action)
-        final_labels.append(final_label)
+        act = final_action
+        lab = final_label
+        ret.append(datum(st, bu, act + " " + lab))
+        labels.write(act + " " + lab)
 
-        # print(stack_to_str(stack) + "\n")
-
-    action_str = []
-    for s, b, a, l in zip(stack_seq, buffer_seq, final_actions, final_labels):
-        out_str = a + " "
-        if l:
-            out_str += l
-        out_str += sep + s + sep + b + "\n"
-        out_str += action_sep
-        action_str.append(out_str)
-    return action_str
+    return ret
 
 
 if __name__ == '__main__':
@@ -267,10 +244,6 @@ if __name__ == '__main__':
                 tree_string_list.append(text[start : i + 1])
                 start = i + 1
 
-    with open("why.data", 'w') as f:
-        for ts in tree_string_list:
-            f.write(ts + "\n\n\n")
-
 
     # turn tree strings into tree_list
     tree_list = []
@@ -285,14 +258,15 @@ if __name__ == '__main__':
         sentences.append(inorder_sentence(t).lstrip()) # extra space on left
 
     idx = 0
-    with open(outpath + 'all.data', 'w') as f:
+    output_list = []
+    with open(outpath + 'all.data', 'wb') as f:
         for t, s in zip(tree_list[1:], sentences[1:]):
-            #f.write(remove_star_sentence(s) + "\n")
-            f.write('\n'.join(str(v) for v in generate_actions(t, s)))
-            f.write(tree_sep)
+            dat = generate_actions(t, s)
+            output_list.extend(dat)
             if idx % 100 == 0: print(str(idx) + "..." , end = ' ', flush = True)
             idx += 1
         print()
+        pickle.dump(output_list, f)
 
     if debug_on: debug.close()
 

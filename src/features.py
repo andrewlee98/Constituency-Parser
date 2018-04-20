@@ -62,54 +62,46 @@ if __name__ == '__main__':
     outpath = "../data/"
 
     # open file and save as one large string
-    text = ""
-    with open(datapath, 'r') as f:
-        text += f.read().replace('\n', '')
+    data_list = pickle.load(open(datapath, 'rb'))
 
-    trees = text.split(tree_sep[1:-1])
     final_list = [] # list of lists of features
     final_list_read = [] # list of lists of features for debugging
-    for t in trees:
-        if not t:
-            continue
-        actions = t.split(action_sep[1:-1])
-        for a in actions:
-            features = []
-            if not a: continue# gets rid of weird empty string error
-            items = a.split(sep[1:-1]) # remove surround \n
-            features.append(items[0]) # features[0] is label
-            stack = list(filter(None, items[1].split(list_sep)))
-            buff = list(filter(None, items[2].split(list_sep)))
+    for d in data_list:
+        features = []
+        if not d: continue# gets rid of weird empty string error
+        features.append(d.label) # features[0] is label
+        stack = d.stack
+        buff = d.buff
 
-            # top four buffer words
-            for i in range(0,4):
-                if len(buff) > i:
-                    features.append(unindex(buff[i]))
+        # top four buffer words
+        for i in range(0,4):
+            if len(buff) > i:
+                features.append(unindex(buff[i]))
+            else:
+                features.append("<null>")
+
+        # stack items
+        for i in range(0,4):
+            if len(stack) > i:
+                tree = parse_tree(stack[i])
+                if tree.l or tree.r: # label
+                    features.append(tree.label)
+                    features.append("<label>")
+                else: # word
+                    features.append("<word>")
+                    features.append(unindex(tree.label))
+
+
+                if tree.l and tree.r: # binary rule
+                    # assume a depth of 3 at least
+                    features.extend(get_left(tree.l))
+                    features.extend(get_right(tree.r))
                 else:
-                    features.append("<null>")
-
-            # stack items
-            for i in range(0,4):
-                if len(stack) > i:
-                    tree = parse_tree(stack[i])
-                    if tree.l or tree.r: # label
-                        features.append(tree.label)
-                        features.append("<label>")
-                    else: # word
-                        features.append("<word>")
-                        features.append(unindex(tree.label))
-
-
-                    if tree.l and tree.r: # binary rule
-                        # assume a depth of 3 at least
-                        features.extend(get_left(tree.l))
-                        features.extend(get_right(tree.r))
-                    else:
-                        features.extend(["<null>"] * 4)
-                else:
-                    features.extend(["<null>"] * 6)
-            final_list.append(rearrange(features))
-            final_list_read.append(features)
+                    features.extend(["<null>"] * 4)
+            else:
+                features.extend(["<null>"] * 6)
+        final_list.append(rearrange(features))
+        final_list_read.append(features)
 
     print(len(final_list))
 
@@ -123,17 +115,17 @@ if __name__ == '__main__':
         pickle.dump(final_list, f)
 
     # write in readable form
-    # i = 1
-    # with open(outpath + "features_read.data", "w") as f:
-    #     for fl1, fl2 in zip(final_list, final_list_read):
-    #         f.write(str(fl[:12]) + "\n")
-    #         f.write(str(fl[12:]) + "\n\n")
+    i = 1
+    with open(outpath + "features_read.data", "w") as f:
+        for fl1, fl2 in zip(final_list, final_list_read):
+            f.write(str(fl1[:12]) + "\n")
+            f.write(str(fl1[12:]) + "\n\n")
 
-    #         f.write(str(fl[0:1]) + "\n")
-    #         f.write(str(fl[1:5]) + "\n")
-    #         f.write(str(fl[5:11]) + "\n")
-    #         f.write(str(fl[11:17]) + "\n")
-    #         f.write(str(fl[17:23]) + "\n")
-    #         f.write(str(fl[23:28]) + "\n\n\n")
-    #         i += 1
-    #         if i == 5000: break
+            f.write(str(fl2[0:1]) + "\n")
+            f.write(str(fl2[1:5]) + "\n")
+            f.write(str(fl2[5:11]) + "\n")
+            f.write(str(fl2[11:17]) + "\n")
+            f.write(str(fl2[17:23]) + "\n")
+            f.write(str(fl2[23:28]) + "\n\n\n")
+            i += 1
+            if i == 5000: break

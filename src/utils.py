@@ -7,6 +7,12 @@ class Node:
         self.l = None
         self.r = None
 
+class datum:
+    def __init__(self, stack, buff, label):
+        self.stack = stack
+        self.buff = buff
+        self.label = label
+
 tree_sep = "\n" + "*" * 24 + "\n" # denotes end of one tree's action sequence
 action_sep = "\n" + "-" * 24 + "\n" # separates actions from each other
 sep = "\n" + "=" * 24 + "\n" # separates action, stack, and buffer in one action
@@ -84,12 +90,15 @@ class Vocab:
 
         self.words = ['<UNK>'] + words
         self.word_dict = {word: i for i, word in enumerate(self.words)}
+        print(self.word_dict.keys())
 
         self.output_acts = list(actions)
         self.output_act_dict = {a: i for i, a in enumerate(self.output_acts)}
+        print(self.output_act_dict.keys())
 
         self.feat_acts = list(labels)
         self.feat_acts_dict = {a: i for i, a in enumerate(self.feat_acts)}
+        print(self.feat_acts_dict.keys())
 
     def tagid2tag_str(self, id):
         return self.output_acts[id]
