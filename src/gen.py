@@ -3,6 +3,7 @@
 
 import os
 from utils import *
+import time
 
 debug_on = False
 if debug_on: debug = open("debug.log", "w")
@@ -236,6 +237,7 @@ def generate_actions(t, s):
 
 
 if __name__ == '__main__':
+    t0 = time.time()
     treepath = "../treebank/treebank_3/parsed/mrg/wsj/"
     outpath = "../data/"
 
@@ -265,6 +267,11 @@ if __name__ == '__main__':
                 tree_string_list.append(text[start : i + 1])
                 start = i + 1
 
+    with open("why.data", 'w') as f:
+        for ts in tree_string_list:
+            f.write(ts + "\n\n\n")
+
+
     # turn tree strings into tree_list
     tree_list = []
     for t in tree_string_list:
@@ -287,4 +294,8 @@ if __name__ == '__main__':
             idx += 1
         print()
 
-if debug_on: debug.close()
+    if debug_on: debug.close()
+
+    t1 = time.time()
+    total = t1-t0
+    print("runtime: " + str(total))
