@@ -75,6 +75,7 @@ def parse_tree(tree_str):
 
 class Vocab:
     def __init__(self, data_path):
+        log = open("vocab.data", "w")
         feature_list = pickle.load(open( "../data/all_features.data", "rb" ))
         word_count, actions, labels = defaultdict(int), set(), set()
 
@@ -90,12 +91,15 @@ class Vocab:
 
         self.words = ['<UNK>'] + words
         self.word_dict = {word: i for i, word in enumerate(self.words)}
+        log.write("words: " + str(words) + "\n\n")
 
         self.output_acts = list(actions)
         self.output_act_dict = {a: i for i, a in enumerate(self.output_acts)}
+        log.write("actions: " + str(actions) + "\n\n")
 
         self.feat_acts = list(labels)
         self.feat_acts_dict = {a: i for i, a in enumerate(self.feat_acts)}
+        log.write("labels: " + str(labels) + "\n\n")
 
     def tagid2tag_str(self, id):
         return self.output_acts[id]

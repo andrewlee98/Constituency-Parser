@@ -220,8 +220,6 @@ if __name__ == '__main__':
 
     # open file and save as one large string
     text = ""
-    test_file = os.listdir(treepath)[0]
-    print("testing: " + test_file + "/" + os.listdir(treepath + test_file)[0])
     for folder in os.listdir(treepath):
         if folder.startswith('.'):
             continue
@@ -230,7 +228,7 @@ if __name__ == '__main__':
                 continue
             with open(treepath + folder + "/" + filename, 'r') as f:
                 text += f.read().replace('\n', '')
-        break # test only one folder for speed
+        #break # test only one folder for speed
 
     tree_string_list = []
     s = []
@@ -265,6 +263,7 @@ if __name__ == '__main__':
             output_list.extend(dat)
             if idx % 100 == 0: print(str(idx) + "..." , end = ' ', flush = True)
             idx += 1
+            if idx == 10000: break # cut the test data short
         print()
         pickle.dump(output_list, f)
 

@@ -23,6 +23,6 @@ if __name__ == '__main__':
     network.save("../networks/net.model")
 
     t1 = time.time()
-    total = t1-t0
+    total = t1 - t0
     print("runtime: " + str(total))
 
