@@ -57,9 +57,12 @@ def get_right(t):
 def unindex(a):
     return a.split("/")[0].rstrip().lstrip() # assume no words contain "/"
 
+
+
 if __name__ == '__main__':
     datapath = "../data/all.data"
     outpath = "../data/"
+    debug = open("feat_labels.log", "w")
 
     # open file and save as one large string
     data_list = pickle.load(open(datapath, 'rb'))
@@ -69,7 +72,8 @@ if __name__ == '__main__':
     for d in data_list:
         features = []
         if not d: continue# gets rid of weird empty string error
-        features.append(d.label) # features[0] is label
+        features.append(d.label.split("-")[0]) # features[0] is label, remove trailing numbers
+        # debug.write(d.label + "; ")
         stack = d.stack
         buff = d.buff
 
@@ -85,7 +89,7 @@ if __name__ == '__main__':
             if len(stack) > i:
                 tree = parse_tree(stack[i])
                 if tree.l or tree.r: # label
-                    features.append(tree.label)
+                    features.append(tree.label.split("-")[0]) # remove the trailing numbers
                     features.append("<label>")
                 else: # word
                     features.append("<word>")
@@ -126,6 +130,6 @@ if __name__ == '__main__':
             f.write(str(fl2[5:11]) + "\n")
             f.write(str(fl2[11:17]) + "\n")
             f.write(str(fl2[17:23]) + "\n")
-            f.write(str(fl2[23:28]) + "\n\n\n")
+            f.write(str(fl2[23:29]) + "\n\n\n")
             i += 1
             if i == 5000: break

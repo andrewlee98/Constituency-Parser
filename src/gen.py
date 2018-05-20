@@ -208,7 +208,7 @@ def generate_actions(t, s):
         act = final_action
         lab = final_label
         ret.append(datum(st, bu, act + " " + lab))
-        labels.write(act + " " + lab)
+        labels.write(act + " " + lab + "\n")
 
     return ret
 
