@@ -53,6 +53,13 @@ def tree_to_str(root, s = ""):
         s += " (" + root.label + sl + sr + ")"
     return s
 
+def stack_to_str(s):
+    ret = "["
+    for t in s[:-1]:
+        ret += tree_to_str(t) + ", "
+    ret += tree_to_str(s[-1]) + "]"
+    return ret
+
 def remove_star_sentence(s):
     s = s.split()
     s1 = []

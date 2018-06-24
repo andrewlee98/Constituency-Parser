@@ -15,7 +15,8 @@ if __name__ == '__main__':
     shiftstars, tps, fps, fns, shifts, tpss, fpss, fnss = 0, 0, 0, 0, 0, 0, 0, 0
     for feature_set in feature_list:
         pred = network.decode(feature_set[:-1])
-        print("features:" + str(feature_set) + " \npred: " + pred + "\n\n") 
+        writer.write("features:" + str(feature_set[:-1]) +
+            "\nground truth: " + feature_set[-1] + " \nprediction: " + pred + "\n\n")
 
         # count shift stars
         if pred == "shift star ":
