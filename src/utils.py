@@ -91,15 +91,15 @@ class Vocab:
 
         self.words = ['<UNK>'] + words
         self.word_dict = {word: i for i, word in enumerate(self.words)}
-        log.write("words: " + str(words) + "\n\n")
+        log.write("words: " + str(self.words) + "\n\n")
 
         self.output_acts = list(actions)
         self.output_act_dict = {a: i for i, a in enumerate(self.output_acts)}
-        log.write("actions: " + str(actions) + "\n\n")
+        log.write("actions: " + str(self.actions) + "\n\n")
 
         self.feat_acts = list(labels)
         self.feat_acts_dict = {a: i for i, a in enumerate(self.feat_acts)}
-        log.write("labels: " + str(labels) + "\n\n")
+        log.write("labels: " + str(self.labels) + "\n\n")
 
     def tagid2tag_str(self, id):
         return self.output_acts[id]

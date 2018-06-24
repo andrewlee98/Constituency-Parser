@@ -23,6 +23,20 @@ import pickle
 # 25-28: leftmost POS and word, rightmost POS and word
 
 def rearrange(f):
+
+    # 0(5): label of stack[0] ("<word>" if word)
+    # 1(7): leftmost POS
+    # 2(9): rightmost POS
+    # 3(11): label of stack[1] ("<word>" if word)
+    # 4(13): leftmost POS
+    # 5(15): rightmost POS
+    # 6(17): label of stack[2] ("<word>" if word)
+    # 7(19): leftmost POS
+    # 8(21): rightmost POS
+    # 9(23): label of stack[3] ("<word>" if word)
+    # 10(25): leftmost POS
+    # 11(27): rightmost POS
+
     labels = set([5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27])
 
     new_list = []

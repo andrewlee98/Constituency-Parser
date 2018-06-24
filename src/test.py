@@ -14,6 +14,7 @@ if __name__ == '__main__':
     correct = 0
     shiftstars, tps, fps, fns, shifts, tpss, fpss, fnss = 0, 0, 0, 0, 0, 0, 0, 0
     for feature_set in feature_list:
+        print(feature_set[0])
         pred = network.decode(feature_set[:-1])
         writer.write("features:" + str(feature_set[:-1]) +
             "\nground truth: " + feature_set[-1] + " \nprediction: " + pred + "\n\n")
@@ -43,6 +44,8 @@ if __name__ == '__main__':
         # total accuracy
         if pred == feature_set[-1]:
             correct += 1
+
+
 
 
     print("accuracy: " + str(float(correct)/len(feature_list)))
