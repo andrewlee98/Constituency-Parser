@@ -95,11 +95,11 @@ class Vocab:
 
         self.output_acts = list(actions)
         self.output_act_dict = {a: i for i, a in enumerate(self.output_acts)}
-        log.write("actions: " + str(self.actions) + "\n\n")
+        log.write("actions: " + str(self.output_acts) + "\n\n")
 
         self.feat_acts = list(labels)
         self.feat_acts_dict = {a: i for i, a in enumerate(self.feat_acts)}
-        log.write("labels: " + str(self.labels) + "\n\n")
+        log.write("labels: " + str(self.feat_acts) + "\n\n")
 
     def tagid2tag_str(self, id):
         return self.output_acts[id]

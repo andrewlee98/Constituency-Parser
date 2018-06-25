@@ -86,7 +86,9 @@ if __name__ == '__main__':
     for d in data_list:
         features = []
         if not d: continue# gets rid of weird empty string error
-        features.append(d.label.split("-")[0]) # features[0] is label, remove trailing numbers
+
+        # features[0] is label, remove trailing numbers
+        features.append(((d.label.split("-")[0]).split('_')[0]).split('=')[0])
         # debug.write(d.label + "; ")
         stack = d.stack
         buff = d.buff
