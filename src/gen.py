@@ -6,7 +6,8 @@ from utils import *
 import time
 import pickle
 
-def idx_tree(root, i = 0, star = 0): # appends indices to tree
+# indexes words in sentence to prevent duplicates
+def idx_tree(root, i = 0, star = 0):
     if not root.l and not root.r:
         if "*" not in root.label:
             root.label += "/" + str(i)
@@ -20,59 +21,6 @@ def idx_tree(root, i = 0, star = 0): # appends indices to tree
     if root.r:
         (root.r, i, star) = idx_tree(root.r, i, star)
     return (root, i, star)
-
-# generate sentences from the tree
-def inorder_sentence(root, s = ""):
-    if not root.l and not root.r:
-        s += " " + root.label
-        return s
-    if root.l:
-        s = inorder_sentence(root.l, s)
-    if root.r:
-        s = inorder_sentence(root.r, s)
-    return s
-
-# util to debug
-def tree_to_str(root, s = ""):
-    sr = ""
-    sl = ""
-    if root.l:
-        sl = tree_to_str(root.l, s)
-    if root.r:
-        sr = tree_to_str(root.r, s)
-    if root and not root.r and not root.l:
-        s += " " + root.label
-    elif root.label:
-        s += " (" + root.label + sl + sr + ")"
-    return s
-
-def stack_to_str(s):
-    ret = "["
-    for t in s[:-1]:
-        ret += tree_to_str(t) + ", "
-    ret += tree_to_str(s[-1]) + "]"
-    return ret
-
-def remove_star_sentence(s):
-    s = s.split()
-    s1 = []
-    for w in s:
-        if "*" not in s:
-            s1.append(w)
-    return ' '.join(s1)
-
-# level order print for debugging
-def level_order(root):
-    current_level = [root]
-    while current_level:
-        print(' '.join(str(node.label) for node in current_level))
-        next_level = list()
-        for n in current_level:
-            if n.l:
-                next_level.append(n.l)
-            if n.r:
-                next_level.append(n.r)
-            current_level = next_level
 
 # create stack/buffer actions from sentence and tree
 def generate_actions(t, s):
@@ -220,7 +168,7 @@ if __name__ == '__main__':
 
     idx = 0
     output_list = []
-    with open(outpath + 'all.data', 'wb') as f:
+    with open(outpath + 'actions.data', 'wb') as f:
         for t, s in zip(tree_list[1:], sentences[1:]):
             dat = generate_actions(t, s)
             output_list.extend(dat)

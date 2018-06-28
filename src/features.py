@@ -23,7 +23,6 @@ import pickle
 # 25-28: leftmost POS and word, rightmost POS and word
 
 def rearrange(f):
-
     # 0(5): label of stack[0] ("<word>" if word)
     # 1(7): leftmost POS
     # 2(9): rightmost POS
@@ -36,10 +35,7 @@ def rearrange(f):
     # 9(23): label of stack[3] ("<word>" if word)
     # 10(25): leftmost POS
     # 11(27): rightmost POS
-
     labels = set([5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27])
-    # prefix = set([29,30,31])
-
     new_list = []
     for i in range(1, len(f)):
         if i in labels:
@@ -47,15 +43,8 @@ def rearrange(f):
     for i in range(1, len(f)):
         if i not in labels: # and i not in prefix:
             new_list.append(f[i])
-    # for i in range(1, len(f)):
-    #     if i in prefix:
-    #         new_list.append(f[i])
-
     new_list.append(f[0]) # append label to end
-
     return new_list
-
-
 
 def get_left(t):
     if not t.l.r and not t.l.l: # if l child is unary
@@ -127,20 +116,7 @@ if __name__ == '__main__':
         final_list.append(rearrange(features))
         final_list_read.append(features)
 
-        # if stack:
-        #     tree = parse_tree(stack[0])
-        #     if not tree.l and not tree.r:
-        #         word = unindex(tree.label)+"__"
-        #         for i in range(3):
-        #             features.append(word[:i+1])
-        #     else:
-        #         features.extend(['_','_','_'])
-        # else:
-        #     features.extend(['_','_','_'])
-
-
-
-    print(len(final_list))
+    print("Feature vectors: " + str(len(final_list)))
 
     with open(outpath + "train.data", "wb") as f:
         pickle.dump(final_list[10000:], f)
@@ -164,6 +140,5 @@ if __name__ == '__main__':
             f.write(str(fl2[11:17]) + "\n")
             f.write(str(fl2[17:23]) + "\n")
             f.write(str(fl2[23:29]) + "\n")
-            # f.write(str(fl2[29:32]) + "\n\n\n")
             i += 1
             if i == 5000: break

@@ -13,10 +13,50 @@ class datum:
         self.buff = buff
         self.label = label
 
-tree_sep = "\n" + "*" * 24 + "\n" # denotes end of one tree's action sequence
-action_sep = "\n" + "-" * 24 + "\n" # separates actions from each other
-sep = "\n" + "=" * 24 + "\n" # separates action, stack, and buffer in one action
-list_sep = ";;" # separates items in stack/buffer
+# generate sentences from the tree
+def inorder_sentence(root, s = ""):
+    if not root.l and not root.r:
+        s += " " + root.label
+        return s
+    if root.l:
+        s = inorder_sentence(root.l, s)
+    if root.r:
+        s = inorder_sentence(root.r, s)
+    return s
+
+# util to debug
+def tree_to_str(root, s = ""):
+    sr = ""
+    sl = ""
+    if root.l:
+        sl = tree_to_str(root.l, s)
+    if root.r:
+        sr = tree_to_str(root.r, s)
+    if root and not root.r and not root.l:
+        s += " " + root.label
+    elif root.label:
+        s += " (" + root.label + sl + sr + ")"
+    return s
+
+def stack_to_str(s):
+    ret = "["
+    for t in s[:-1]:
+        ret += tree_to_str(t) + ", "
+    ret += tree_to_str(s[-1]) + "]"
+    return ret
+
+# level order print for debugging
+def level_order(root):
+    current_level = [root]
+    while current_level:
+        print(' '.join(str(node.label) for node in current_level))
+        next_level = list()
+        for n in current_level:
+            if n.l:
+                next_level.append(n.l)
+            if n.r:
+                next_level.append(n.r)
+            current_level = next_level
 
 def clean(s): # remove excess space
         s = s.rstrip().lstrip()

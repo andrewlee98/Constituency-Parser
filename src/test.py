@@ -45,8 +45,6 @@ if __name__ == '__main__':
             correct += 1
 
 
-
-
     print("accuracy: " + str(float(correct)/len(feature_list)))
 
     print("----------------------------------------")
