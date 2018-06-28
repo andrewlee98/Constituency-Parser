@@ -11,6 +11,9 @@ if __name__ == '__main__':
 
     we = 100
     pe = 50
+    #p1e = 10
+    #p2e = 10
+    #p3e = 10
     hidden = 200
     minibatch = 1000
     epochs = 5

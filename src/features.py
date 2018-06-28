@@ -38,14 +38,18 @@ def rearrange(f):
     # 11(27): rightmost POS
 
     labels = set([5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27])
+    # prefix = set([29,30,31])
 
     new_list = []
     for i in range(1, len(f)):
         if i in labels:
             new_list.append(f[i])
     for i in range(1, len(f)):
-        if i not in labels:
+        if i not in labels: # and i not in prefix:
             new_list.append(f[i])
+    # for i in range(1, len(f)):
+    #     if i in prefix:
+    #         new_list.append(f[i])
 
     new_list.append(f[0]) # append label to end
 
@@ -90,7 +94,7 @@ if __name__ == '__main__':
         # features[0] is label, remove trailing numbers
         features.append(((d.label.split("-")[0]).split('_')[0]).split('=')[0])
         # debug.write(d.label + "; ")
-        stack = d.stack
+        stack = d.stack[::-1]
         buff = d.buff
 
         # top four buffer words
@@ -123,6 +127,19 @@ if __name__ == '__main__':
         final_list.append(rearrange(features))
         final_list_read.append(features)
 
+        # if stack:
+        #     tree = parse_tree(stack[0])
+        #     if not tree.l and not tree.r:
+        #         word = unindex(tree.label)+"__"
+        #         for i in range(3):
+        #             features.append(word[:i+1])
+        #     else:
+        #         features.extend(['_','_','_'])
+        # else:
+        #     features.extend(['_','_','_'])
+
+
+
     print(len(final_list))
 
     with open(outpath + "train.data", "wb") as f:
@@ -146,6 +163,7 @@ if __name__ == '__main__':
             f.write(str(fl2[5:11]) + "\n")
             f.write(str(fl2[11:17]) + "\n")
             f.write(str(fl2[17:23]) + "\n")
-            f.write(str(fl2[23:29]) + "\n\n\n")
+            f.write(str(fl2[23:29]) + "\n")
+            # f.write(str(fl2[29:32]) + "\n\n\n")
             i += 1
             if i == 5000: break
