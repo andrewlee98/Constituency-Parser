@@ -6,13 +6,6 @@ from utils import *
 import time
 import pickle
 
-debug_on = False
-if debug_on: debug = open("debug.log", "w")
-
-words = open("words.log", 'w')
-labels = open("labels.log", 'w')
-
-
 def idx_tree(root, i = 0, star = 0): # appends indices to tree
     if not root.l and not root.r:
         if "*" not in root.label:
@@ -94,16 +87,6 @@ def generate_actions(t, s):
         return False
 
     def binary_label_dfs(root, s0, s1): # subroutine for determining the label
-        # debugging
-        if debug_on: debug.write("\n$$$$$$$$$start_binary$$$$$$$$$\n")
-        if debug_on: debug.write("root: " + tree_to_str(root) + "\n")
-        if debug_on: debug.write("s0: " + tree_to_str(s0) + "\n")
-        if root.l:
-            if debug_on: debug.write("root.l: " + tree_to_str(root.l) + "\n---\n")
-        if debug_on: debug.write("s1: " + tree_to_str(s1) + "\n")
-        if root.r:
-            if debug_on: debug.write("root.r: " + tree_to_str(root.r) + "\n")
-        if debug_on: debug.write("\n*********end*********\n")
 
         if match_tree(root.l, s0) and match_tree(root.r, s1): # base case
             return root.label
@@ -116,17 +99,8 @@ def generate_actions(t, s):
             return right_label if right_label else None
 
     def unary_label_dfs(root, s0): # subroutine for determining the label
-        # debugging
-        if debug_on: debug.write("\n$$$$$$$$$start_unary$$$$$$$$$\n")
-        if debug_on: debug.write("s0: " + tree_to_str(s0) + "\n")
-        if root.l:
-            if debug_on: debug.write("child: " + tree_to_str(root.l) + "\n")
-
         if match_tree(root.l, s0) and root.r == None: # base case
-            if debug_on: debug.write("match\n")
-            if debug_on: debug.write("*********endsucc*********\n\n")
             return root.label
-        if debug_on: debug.write("*********endfail*********\n\n")
 
         # recursive calls
         child_label = None
@@ -159,63 +133,45 @@ def generate_actions(t, s):
             if new_node.label: # found a matching reduce
                 final_label = new_node.label
                 final_action = "binary"
-                if debug_on: debug.write("~~~binary reduce~~~\n\n")
                 new_node.r = stack.pop()
                 new_node.l = stack.pop()
                 stack.append(new_node)
-                if debug_on: debug.write("stack: " + stack_to_str(stack))
-                if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
             else: # try to unary reduce
                 child = stack[len(stack) - 1]
                 new_node = Node(unary_label_dfs(t, child))
                 if new_node.label: # found a unary reduce
                     final_label = new_node.label
                     final_action = "unary"
-                    if debug_on: debug.write("~~~unary reduce~~~\n\n")
                     new_node.l = stack.pop()
                     stack.append(new_node)
-                    if debug_on: debug.write("stack: " + stack_to_str(stack))
-                    if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
                 else: # shift
                     final_action = "shift"
-                    if debug_on: debug.write("~~~shift1~~~\n\n")
                     if "*" in buff[-1].label:
                         final_action += " star"
                     stack.append(buff.pop())
-                    if debug_on: debug.write("stack: " + stack_to_str(stack))
-                    if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         elif len(stack) == 1: # just try unary reduce
             child = stack[len(stack) - 1]
             new_node = Node(unary_label_dfs(t, child))
             if new_node.label: # found a unary reduce
                 final_label = new_node.label
                 final_action = "unary"
-                if debug_on: debug.write("~~~unary reduce~~~\n\n")
                 new_node.l = stack.pop()
                 stack.append(new_node)
-                if debug_on: debug.write("stack: " + stack_to_str(stack))
-                if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
             else: # shift
                 final_action = "shift"
-                if debug_on: debug.write("~~~shift2~~~\n\n")
                 if "*" in buff[-1].label:
                         final_action += " star"
                 stack.append(buff.pop())
-                if debug_on: debug.write("stack: " + stack_to_str(stack))
-                if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
         else: # shift
             final_action = "shift"
-            if debug_on: debug.write("~~~shift3~~~\n\n")
             if "*" in buff[-1].label:
                         final_action += " star"
             stack.append(buff.pop())
-            if debug_on: debug.write("stack: " + stack_to_str(stack))
-            if debug_on: debug.write("\nbuff: " + stack_to_str(buff))
+
         # append all changes
         act = final_action
         lab = final_label
         ret.append(datum(st, bu, act + " " + lab))
-        labels.write(act + " " + lab + "\n")
 
     return ret
 
@@ -273,8 +229,6 @@ if __name__ == '__main__':
             if idx == 10000: break # cut the test data short
         print()
         pickle.dump(output_list, f)
-
-    if debug_on: debug.close()
 
     t1 = time.time()
     total = t1-t0
