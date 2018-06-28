@@ -67,7 +67,7 @@ def unindex(a):
 
 
 if __name__ == '__main__':
-    datapath = "../data/all.data"
+    datapath = "../data/actions.data"
     outpath = "../data/"
     debug = open("feat_labels.log", "w")
 
@@ -129,7 +129,7 @@ if __name__ == '__main__':
 
     # write in readable form
     i = 1
-    with open(outpath + "features_read.data", "w") as f:
+    with open(outpath + "features_read.txt", "w") as f:
         for fl1, fl2 in zip(final_list, final_list_read):
             f.write(str(fl1[:12]) + "\n")
             f.write(str(fl1[12:]) + "\n\n")
