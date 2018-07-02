@@ -50,6 +50,10 @@ if __name__ == '__main__':
 
     print(sentences)
 
+    for s in sentences:
+        # construct tree
+        pass
+
     #pred = network.decode(feature_set[:-1])
 
 
