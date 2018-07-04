@@ -52,7 +52,8 @@ if __name__ == '__main__':
 
     for s in sentences:
         # construct tree
-        pass
+        buffer = s
+        stack = []
 
     #pred = network.decode(feature_set[:-1])
 

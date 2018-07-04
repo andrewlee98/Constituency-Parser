@@ -77,6 +77,7 @@ if __name__ == '__main__':
     final_list = [] # list of lists of features
     final_list_read = [] # list of lists of features for debugging
     for d in data_list:
+        # features  = extract_features(d)
         features = []
         if not d: continue# gets rid of weird empty string error
 
