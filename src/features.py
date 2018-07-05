@@ -64,6 +64,41 @@ def get_right(t):
 def unindex(a):
     return a.split("/")[0].rstrip().lstrip() # assume no words contain "/"
 
+def extract_features(d):
+    features = []
+    stack = d.stack[::-1]
+    buff = d.buff
+
+    # top four buffer words
+    for i in range(0,4):
+        if len(buff) > i:
+            features.append(unindex(buff[i]))
+        else:
+            features.append("<null>")
+
+        # stack items
+    for i in range(0,4):
+        if len(stack) > i:
+            tree = parse_tree(stack[i])
+            if tree.l or tree.r: # label
+                features.append(tree.label.split("-")[0]) # remove the trailing numbers***
+                features.append("<label>")
+            else: # word
+                features.append("<word>")
+                features.append(unindex(tree.label))
+
+
+            if tree.l and tree.r: # binary rule
+                # assume a depth of 3 at least
+                features.extend(get_left(tree.l))
+                features.extend(get_right(tree.r))
+            else:
+                features.extend(["<null>"] * 4)
+        else:
+            features.extend(["<null>"] * 6)
+
+    return features
+
 
 
 if __name__ == '__main__':
@@ -76,46 +111,15 @@ if __name__ == '__main__':
 
     final_list = [] # list of lists of features
     final_list_read = [] # list of lists of features for debugging
+    i = 0
     for d in data_list:
-        # features  = extract_features(d)
-        features = []
         if not d: continue# gets rid of weird empty string error
 
-        # features[0] is label, remove trailing numbers
-        features.append(((d.label.split("-")[0]).split('_')[0]).split('=')[0])
-        # debug.write(d.label + "; ")
-        stack = d.stack[::-1]
-        buff = d.buff
-
-        # top four buffer words
-        for i in range(0,4):
-            if len(buff) > i:
-                features.append(unindex(buff[i]))
-            else:
-                features.append("<null>")
-
-        # stack items
-        for i in range(0,4):
-            if len(stack) > i:
-                tree = parse_tree(stack[i])
-                if tree.l or tree.r: # label
-                    features.append(tree.label.split("-")[0]) # remove the trailing numbers***
-                    features.append("<label>")
-                else: # word
-                    features.append("<word>")
-                    features.append(unindex(tree.label))
-
-
-                if tree.l and tree.r: # binary rule
-                    # assume a depth of 3 at least
-                    features.extend(get_left(tree.l))
-                    features.extend(get_right(tree.r))
-                else:
-                    features.extend(["<null>"] * 4)
-            else:
-                features.extend(["<null>"] * 6)
+        features  = [((d.label.split("-")[0]).split('_')[0]).split('=')[0]] + extract_features(d)
         final_list.append(rearrange(features))
         final_list_read.append(features)
+        if i % 10000 == 0: print(str(i) + '...', end='', flush=True)
+        i += 1
 
     print("Feature vectors: " + str(len(final_list)))
 
