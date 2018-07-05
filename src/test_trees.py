@@ -3,6 +3,7 @@ from net_properties import *
 from utils import *
 from network import *
 import os
+from features import *
 
 def remove_star(s):
     s = s.split()
@@ -31,7 +32,7 @@ if __name__ == '__main__':
     start = 0
     for i in range(len(text)):
         if text[i] == "(":
-            s.append("()")
+            s.append("(")
         elif text[i] == ")":
             s.pop()
             if not s:
@@ -48,15 +49,13 @@ if __name__ == '__main__':
     for t in tree_list:
         sentences.append(remove_star(inorder_sentence(t).lstrip())) # extra space on left
 
-    print(sentences)
-
     for s in sentences:
         # construct tree
-        buffer = s
+        buff = s
         stack = []
-
-    #pred = network.decode(feature_set[:-1])
-
+        f = rearrange(extract_features(datum(stack, buff, None)))
+        pred = network.decode(f)
+        print(pred, end = '', flush = True)
 
 
 

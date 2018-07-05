@@ -146,7 +146,7 @@ if __name__ == '__main__':
     start = 0
     for i in range(len(text)):
         if text[i] == "(":
-            s.append("()")
+            s.append("(")
         elif text[i] == ")":
             s.pop()
             if not s:

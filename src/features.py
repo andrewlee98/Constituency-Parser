@@ -113,7 +113,7 @@ if __name__ == '__main__':
     final_list_read = [] # list of lists of features for debugging
     i = 0
     for d in data_list:
-        if not d: continue# gets rid of weird empty string error
+        # if not d: continue# gets rid of weird empty string error
 
         features  = [((d.label.split("-")[0]).split('_')[0]).split('=')[0]] + extract_features(d)
         final_list.append(rearrange(features))
