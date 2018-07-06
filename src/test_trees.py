@@ -10,6 +10,19 @@ def remove_star(s):
     s = list(filter(lambda x: '*' not in x, s))
     return ' '.join(s)
 
+def action(b, s, p):
+    if p.split()[0] == 'shift':
+        if len(p.split()) > 1 and p.split()[1] == 'star':
+            s.append(Node('*'))
+        else:
+            s.append(b[0])
+            b = b[1:]
+        return b, s
+    elif p.split()[0] == 'unary':
+        n = Node(p.split()[1])
+        
+
+
 if __name__ == '__main__':
     # load the network
     (vocab, net_properties) = pickle.load(open('../data/vocab_net.data', 'rb'))
@@ -51,11 +64,13 @@ if __name__ == '__main__':
 
     for s in sentences:
         # construct tree
-        buff = s
+        buff = map(Node, s)
         stack = []
-        f = rearrange(extract_features(datum(stack, buff, None)))
-        pred = network.decode(f)
-        print(pred, end = '', flush = True)
+        while buff or len(stack) > 1: # end when buffer consumed & stack has tree
+            f = rearrange(extract_features(datum(stack, buff, None)))
+            pred = network.decode(f)
+            # print(pred, end = '', flush = True)
+            buff, stack = action(buff, stack, pred)
 
 
 
