@@ -17,10 +17,21 @@ def action(b, s, p):
         else:
             s.append(b[0])
             b = b[1:]
-        return b, s
     elif p.split()[0] == 'unary':
         n = Node(p.split()[1])
-        
+        if len(s) > 1:
+            n.l = s[-1]
+            s.append(n)
+        else:
+            print('unary break')
+    else: # p.split()[0] == 'binary':
+        n = Node(p.split()[1])
+        if len(s) > 2:
+            n.l, n.r = s[-1], s[-2]
+            s.append(n)
+        else:
+            print('binary break')
+    return b, s
 
 
 if __name__ == '__main__':
@@ -64,14 +75,18 @@ if __name__ == '__main__':
 
     for s in sentences:
         # construct tree
-        buff = map(Node, s)
+        buff = list(map(Node, s))
         stack = []
         while buff or len(stack) > 1: # end when buffer consumed & stack has tree
+
+            # cast to string and predict
+            stack, buff = list(map(tree_to_str, stack)), list(map(tree_to_str, buff))
             f = rearrange(extract_features(datum(stack, buff, None)))
             pred = network.decode(f)
-            # print(pred, end = '', flush = True)
+
+            # cast back to Node and complete action
+            stack, buff = list(map(Node, stack)), list(map(Node, buff))
             buff, stack = action(buff, stack, pred)
 
-
-
+            print(pred, end = '', flush = True)
 
