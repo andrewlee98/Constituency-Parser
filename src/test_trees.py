@@ -18,19 +18,19 @@ def action(b, s, p):
             s.append(b[0])
             b = b[1:]
     elif p.split()[0] == 'unary':
-        n = Node(p.split()[1])
-        if len(s) > 1:
+        n = Node(clean(p.split()[1]))
+        if len(s) > 0:
             n.l = s[-1]
             s.append(n)
         else:
-            print('unary break')
+            raise ValueError('unary break')
     else: # p.split()[0] == 'binary':
-        n = Node(p.split()[1])
-        if len(s) > 2:
+        n = Node(clean(p.split()[1]))
+        if len(s) > 1:
             n.l, n.r = s[-1], s[-2]
             s.append(n)
         else:
-            print('binary break')
+            raise ValueError('binary break')
     return b, s
 
 
@@ -71,22 +71,28 @@ if __name__ == '__main__':
     # use inorder traveral to generate sentences from trees
     sentences = []
     for t in tree_list:
-        sentences.append(remove_star(inorder_sentence(t).lstrip())) # extra space on left
+        sentences.append(remove_star(inorder_sentence(t).lstrip()))
+
+    print(sentences[0])
+    print(tree_to_str(tree_list[0]))
 
     for s in sentences:
+        s = [clean(x) for x in s.split()]
+        print(s)
+
         # construct tree
         buff = list(map(Node, s))
         stack = []
-        while buff or len(stack) > 1: # end when buffer consumed & stack has tree
+        while buff or len(stack) > 1: # end when buff consumed & stack has tree
 
             # cast to string and predict
             stack, buff = list(map(tree_to_str, stack)), list(map(tree_to_str, buff))
-            f = rearrange(extract_features(datum(stack, buff, None)))
-            pred = network.decode(f)
+            f = extract_features(datum(stack, buff, None))
+            pred = network.decode(rearrange([0] + f)[:-1])
 
             # cast back to Node and complete action
             stack, buff = list(map(Node, stack)), list(map(Node, buff))
             buff, stack = action(buff, stack, pred)
 
-            print(pred, end = '', flush = True)
-
+            print(pred)
+            print(tree_to_str(stack[-1]))
