@@ -11,27 +11,32 @@ def remove_star(s):
     return ' '.join(s)
 
 def action(b, s, p):
+    error = None
+
     if p.split()[0] == 'shift':
         if len(p.split()) > 1 and p.split()[1] == 'star':
             s.append(Node('*'))
+        elif b:
+            s.append(b.pop(0))
         else:
-            s.append(b[0])
-            b = b[1:]
+            error = 'pop on empty buffer'
+
     elif p.split()[0] == 'unary':
         n = Node(clean(p.split()[1]))
-        if len(s) > 0:
-            n.l = s[-1]
+        if s:
+            n.l = s.pop()
             s.append(n)
         else:
-            raise ValueError('unary break')
+            error = 'unary on empty stack'
+
     else: # p.split()[0] == 'binary':
         n = Node(clean(p.split()[1]))
-        if len(s) > 1:
-            n.l, n.r = s[-1], s[-2]
+        if s:
+            n.l, n.r = s.pop(), s.pop()
             s.append(n)
-        else:
-            raise ValueError('binary break')
-    return b, s
+        else: error = 'binary on insufficient stack'
+
+    return b, s, error
 
 
 if __name__ == '__main__':
@@ -73,26 +78,28 @@ if __name__ == '__main__':
     for t in tree_list:
         sentences.append(remove_star(inorder_sentence(t).lstrip()))
 
-    print(sentences[0])
-    print(tree_to_str(tree_list[0]))
+    # testing
+    with open('../data/tree_pred.txt', 'w') as outfile:
+        for s in sentences:
+            s = [clean(x) for x in s.split()]
+            outfile.write(str(s) + '\n')
 
-    for s in sentences:
-        s = [clean(x) for x in s.split()]
-        print(s)
+            # construct tree
+            buff = list(map(Node, s))
+            stack = []
+            while buff or len(stack) > 1: # end when buff consumed & stack has tree
 
-        # construct tree
-        buff = list(map(Node, s))
-        stack = []
-        while buff or len(stack) > 1: # end when buff consumed & stack has tree
+                # cast to string and predict
+                stack, buff = list(map(tree_to_str, stack)), list(map(tree_to_str, buff))
+                f = extract_features(datum(stack, buff, None))
+                pred = network.decode(rearrange([0] + f)[:-1])
+                outfile.write(str(f) + ' ' +  pred + '\n')
 
-            # cast to string and predict
-            stack, buff = list(map(tree_to_str, stack)), list(map(tree_to_str, buff))
-            f = extract_features(datum(stack, buff, None))
-            pred = network.decode(rearrange([0] + f)[:-1])
+                # cast back to Node and complete action
+                stack, buff = list(map(Node, stack)), list(map(Node, buff))
+                buff, stack, error = action(buff, stack, pred)
+                if error:
+                    outfile.write(error + '\n')
+                    break
 
-            # cast back to Node and complete action
-            stack, buff = list(map(Node, stack)), list(map(Node, buff))
-            buff, stack = action(buff, stack, pred)
-
-            print(pred)
-            print(tree_to_str(stack[-1]))
+            outfile.write(tree_to_str(stack[-1]) +  '\n\n')

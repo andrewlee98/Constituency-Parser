@@ -119,7 +119,8 @@ def generate_actions(t, s):
         # append all changes
         act = final_action
         lab = final_label
-        ret.append(datum(st, bu, act + " " + lab))
+        if act == 'shift' or act == 'shift star': ret.append(datum(st, bu, act))
+        else: ret.append(datum(st, bu, act + " " + lab))
 
     return ret
 
