@@ -81,7 +81,7 @@ def extract_features(d):
         if len(stack) > i:
             tree = parse_tree(stack[i])
             if tree.l or tree.r: # label
-                features.append(tree.label.split("-")[0]) # remove the trailing numbers***
+                features.append(tree.label)
                 features.append("<label>")
             else: # word
                 features.append("<word>")

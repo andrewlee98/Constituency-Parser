@@ -80,6 +80,12 @@ def generate_actions(t, s):
             new_node = Node(binary_label_dfs(t, left, right))
             if new_node.label: # found a matching reduce
                 final_label = new_node.label
+
+                #TEMP
+                lab = final_label.replace('=', '-').split('-')
+                if lab[0]: final_label = lab[0]
+                else: final_label = lab[1]
+
                 final_action = "binary"
                 new_node.r = stack.pop()
                 new_node.l = stack.pop()
@@ -89,6 +95,12 @@ def generate_actions(t, s):
                 new_node = Node(unary_label_dfs(t, child))
                 if new_node.label: # found a unary reduce
                     final_label = new_node.label
+
+                    #TEMP
+                    lab = final_label.replace('=', '-').split('-')
+                    if lab[0]: final_label = lab[0]
+                    else: final_label = lab[1]
+
                     final_action = "unary"
                     new_node.l = stack.pop()
                     stack.append(new_node)
@@ -102,6 +114,12 @@ def generate_actions(t, s):
             new_node = Node(unary_label_dfs(t, child))
             if new_node.label: # found a unary reduce
                 final_label = new_node.label
+
+                #TEMP
+                lab = final_label.replace('=', '-').split('-')
+                if lab[0]: final_label = lab[0] # for cases like -PRT-
+                else: final_label = lab[1]
+
                 final_action = "unary"
                 new_node.l = stack.pop()
                 stack.append(new_node)
@@ -119,6 +137,7 @@ def generate_actions(t, s):
         # append all changes
         act = final_action
         lab = final_label
+
         if act == 'shift' or act == 'shift star': ret.append(datum(st, bu, act))
         else: ret.append(datum(st, bu, act + " " + lab))
 
@@ -180,5 +199,5 @@ if __name__ == '__main__':
         pickle.dump(output_list, f)
 
     t1 = time.time()
-    total = t1-t0
+    total = t1 - t0
     print("runtime: " + str(total))

@@ -19,24 +19,24 @@ if __name__ == '__main__':
             "\nground truth: " + feature_set[-1] + " \nprediction: " + pred + "\n\n")
 
         # count shift stars
-        if pred == "shift star ":
-            if feature_set[-1] == "shift star ":
+        if pred == "shift star":
+            if feature_set[-1] == "shift star":
                 shiftstars += 1
                 tpss += 1
             else:
                 fpss += 1
-        if feature_set[-1] == "shift star " and pred != "shift star ":
+        if feature_set[-1] == "shift star" and pred != "shift star":
             fnss += 1
             shiftstars += 1
 
         # count shifts
-        if pred == "shift ":
-            if feature_set[-1] == "shift ":
+        if pred == "shift":
+            if feature_set[-1] == "shift":
                 shifts += 1
                 tps += 1
             else:
                 fps += 1
-        if feature_set[-1] == "shift " and pred != "shift ":
+        if feature_set[-1] == "shift" and pred != "shift":
             fns += 1
             shifts += 1
 

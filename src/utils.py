@@ -33,9 +33,9 @@ def tree_to_str(root, s = ""):
     if root.r:
         sr = tree_to_str(root.r, s)
     if root and not root.r and not root.l:
-        s += " " + root.label
+        s += " " + clean(root.label)
     elif root.label:
-        s += " (" + root.label + sl + sr + ")"
+        s += " (" + clean(root.label) + sl + sr + ")"
     return s
 
 def stack_to_str(s):

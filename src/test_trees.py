@@ -32,7 +32,7 @@ def action(b, s, p):
     else: # p.split()[0] == 'binary':
         n = Node(clean(p.split()[1]))
         if s:
-            n.l, n.r = s.pop(), s.pop()
+            n.r, n.l = s.pop(), s.pop()
             s.append(n)
         else: error = 'binary on insufficient stack'
 
@@ -80,9 +80,10 @@ if __name__ == '__main__':
 
     # testing
     with open('../data/tree_pred.txt', 'w') as outfile:
-        for s in sentences:
+        for s, t in zip(sentences, tree_list):
             s = [clean(x) for x in s.split()]
-            outfile.write(str(s) + '\n')
+            outfile.write(' '.join(s) + '\n\n')
+            outfile.write(tree_to_str(t) + '\n\n')
 
             # construct tree
             buff = list(map(Node, s))
@@ -92,14 +93,17 @@ if __name__ == '__main__':
                 # cast to string and predict
                 stack, buff = list(map(tree_to_str, stack)), list(map(tree_to_str, buff))
                 f = extract_features(datum(stack, buff, None))
+
                 pred = network.decode(rearrange([0] + f)[:-1])
-                outfile.write(str(f) + ' ' +  pred + '\n')
+                # outfile.write(str(f) + ' ' +  pred + '\n')
 
                 # cast back to Node and complete action
                 stack, buff = list(map(Node, stack)), list(map(Node, buff))
                 buff, stack, error = action(buff, stack, pred)
                 if error:
-                    outfile.write(error + '\n')
+                    # outfile.write(error + '\n')
                     break
+                outfile.write(stack_to_str(stack) + '\n\n')
 
-            outfile.write(tree_to_str(stack[-1]) +  '\n\n')
+            # outfile.write(tree_to_str(stack[-1]) +  '\n\n')
+            outfile.write('--------------------------------------------\n\n')
