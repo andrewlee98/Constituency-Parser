@@ -1,0 +1,1048 @@
+The economy 's temperature will be taken from several vantage points this week , with readings on trade , output , housing and inflation .
+
+ (S (NP-SBJ-1 (NP (DT The) (NP_inner (NN economy) (POS 's))) (NN temperature)) (S_inner (VP (MD will) (VP (VB be) (VP (VBN taken) (VP_inner (NP (-NONE- *-1)) (VP_inner (PP-CLR (IN from) (NP (JJ several) (NP_inner (NN vantage) (NNS points)))) (VP_inner (NP-TMP (DT this) (NN week)) (VP_inner (, ,) (PP (IN with) (NP (NP (NNS readings)) (PP (IN on) (NP (NP (NN trade)) (NP_inner (, ,) (NP_inner (NP (NN output)) (NP_inner (, ,) (NP_inner (NP (NN housing)) (NP_inner (CC and) (NP (NN inflation)))))))))))))))))) (. .)))
+
+shift
+[ The]
+
+unary DT
+[ (DT The)]
+
+shift
+[ (DT The),  economy]
+
+unary NN
+[ (DT The),  (NN economy)]
+
+shift
+[ (DT The),  (NN economy),  's]
+
+unary POS
+[ (DT The),  (NN economy),  (POS 's)]
+
+binary NP
+[ (DT The),  (NP (NN economy) (POS 's))]
+
+shift
+[ (DT The),  (NP (NN economy) (POS 's)),  temperature]
+
+unary NN
+[ (DT The),  (NP (NN economy) (POS 's)),  (NN temperature)]
+
+binary NP
+[ (DT The),  (NP (NP (NN economy) (POS 's)) (NN temperature))]
+
+binary NP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature)))]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  will]
+
+unary MD
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will)]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  be]
+
+unary VB
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be)]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  taken]
+
+unary VBN
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken)]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  from]
+
+unary IN
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (IN from)]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (IN from),  several]
+
+unary JJ
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (IN from),  (JJ several)]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (IN from),  (JJ several),  vantage]
+
+unary NNS
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (IN from),  (JJ several),  (NNS vantage)]
+
+binary NP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (IN from),  (NP (JJ several) (NNS vantage))]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (IN from),  (NP (JJ several) (NNS vantage)),  points]
+
+unary NNS
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (IN from),  (NP (JJ several) (NNS vantage)),  (NNS points)]
+
+binary NP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (IN from),  (NP (NP (JJ several) (NNS vantage)) (NNS points))]
+
+binary PP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points)))]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))),  this]
+
+unary DT
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))),  (DT this)]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))),  (DT this),  week]
+
+unary NN
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))),  (DT this),  (NN week)]
+
+binary NP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))),  (NP (DT this) (NN week))]
+
+binary PP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week)))]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  ,]
+
+unary ,
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,)]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  with]
+
+unary IN
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (IN with)]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (IN with),  readings]
+
+unary NNS
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (IN with),  (NNS readings)]
+
+unary NP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (IN with),  (NP (NNS readings))]
+
+binary PP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (IN with) (NP (NNS readings)))]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (IN with) (NP (NNS readings))),  on]
+
+unary IN
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (IN with) (NP (NNS readings))),  (IN on)]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (IN with) (NP (NNS readings))),  (IN on),  trade]
+
+unary NN
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (IN with) (NP (NNS readings))),  (IN on),  (NN trade)]
+
+unary NP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (IN with) (NP (NNS readings))),  (IN on),  (NP (NN trade))]
+
+binary PP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (IN with) (NP (NNS readings))),  (PP (IN on) (NP (NN trade)))]
+
+binary PP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade))))]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  ,]
+
+unary ,
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,)]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  output]
+
+unary NN
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NN output)]
+
+unary NP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output))]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output)),  ,]
+
+unary ,
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output)),  (, ,)]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output)),  (, ,),  housing]
+
+unary NN
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output)),  (, ,),  (NN housing)]
+
+unary NP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output)),  (, ,),  (NP (NN housing))]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output)),  (, ,),  (NP (NN housing)),  and]
+
+unary CC
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output)),  (, ,),  (NP (NN housing)),  (CC and)]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output)),  (, ,),  (NP (NN housing)),  (CC and),  inflation]
+
+unary NN
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output)),  (, ,),  (NP (NN housing)),  (CC and),  (NN inflation)]
+
+unary NP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output)),  (, ,),  (NP (NN housing)),  (CC and),  (NP (NN inflation))]
+
+binary NP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output)),  (, ,),  (NP (NN housing)),  (NP (CC and) (NP (NN inflation)))]
+
+binary PP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output)),  (, ,),  (PP (NP (NN housing)) (NP (CC and) (NP (NN inflation))))]
+
+binary NP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NN output)),  (NP (, ,) (PP (NP (NN housing)) (NP (CC and) (NP (NN inflation)))))]
+
+binary NP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (, ,),  (NP (NP (NN output)) (NP (, ,) (PP (NP (NN housing)) (NP (CC and) (NP (NN inflation))))))]
+
+binary NP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))),  (NP (, ,) (NP (NP (NN output)) (NP (, ,) (PP (NP (NN housing)) (NP (CC and) (NP (NN inflation)))))))]
+
+binary PP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (, ,),  (PP (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))) (NP (, ,) (NP (NP (NN output)) (NP (, ,) (PP (NP (NN housing)) (NP (CC and) (NP (NN inflation))))))))]
+
+binary VP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))),  (VP (, ,) (PP (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))) (NP (, ,) (NP (NP (NN output)) (NP (, ,) (PP (NP (NN housing)) (NP (CC and) (NP (NN inflation)))))))))]
+
+binary VP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VBN taken),  (VP (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))) (VP (, ,) (PP (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))) (NP (, ,) (NP (NP (NN output)) (NP (, ,) (PP (NP (NN housing)) (NP (CC and) (NP (NN inflation))))))))))]
+
+binary VP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VB be),  (VP (VBN taken) (VP (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))) (VP (, ,) (PP (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))) (NP (, ,) (NP (NP (NN output)) (NP (, ,) (PP (NP (NN housing)) (NP (CC and) (NP (NN inflation)))))))))))]
+
+binary VP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (MD will),  (VP (VB be) (VP (VBN taken) (VP (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))) (VP (, ,) (PP (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))) (NP (, ,) (NP (NP (NN output)) (NP (, ,) (PP (NP (NN housing)) (NP (CC and) (NP (NN inflation))))))))))))]
+
+binary VP
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (VP (MD will) (VP (VB be) (VP (VBN taken) (VP (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))) (VP (, ,) (PP (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))) (NP (, ,) (NP (NP (NN output)) (NP (, ,) (PP (NP (NN housing)) (NP (CC and) (NP (NN inflation)))))))))))))]
+
+shift
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (VP (MD will) (VP (VB be) (VP (VBN taken) (VP (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))) (VP (, ,) (PP (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))) (NP (, ,) (NP (NP (NN output)) (NP (, ,) (PP (NP (NN housing)) (NP (CC and) (NP (NN inflation))))))))))))),  .]
+
+unary .
+[ (NP (DT The) (NP (NP (NN economy) (POS 's)) (NN temperature))),  (VP (MD will) (VP (VB be) (VP (VBN taken) (VP (PP (PP (IN from) (NP (NP (JJ several) (NNS vantage)) (NNS points))) (NP (DT this) (NN week))) (VP (, ,) (PP (PP (PP (IN with) (NP (NNS readings))) (PP (IN on) (NP (NN trade)))) (NP (, ,) (NP (NP (NN output)) (NP (, ,) (PP (NP (NN housing)) (NP (CC and) (NP (NN inflation))))))))))))),  (. .)]
+
+--------------------------------------------
+
+The most troublesome report may be the August merchandise trade deficit due out tomorrow .
+
+ (S (NP-SBJ (DT The) (NP-SBJ_inner (ADJP (RBS most) (JJ troublesome)) (NN report))) (S_inner (VP (MD may) (VP (VB be) (NP-PRD (NP (DT the) (NP_inner (NNP August) (NP_inner (NN merchandise) (NP_inner (NN trade) (NN deficit))))) (ADJP (JJ due) (ADJP_inner (ADVP (IN out)) (NP-TMP (NN tomorrow))))))) (. .)))
+
+shift
+[ The]
+
+unary DT
+[ (DT The)]
+
+shift
+[ (DT The),  most]
+
+unary RBS
+[ (DT The),  (RBS most)]
+
+shift
+[ (DT The),  (RBS most),  troublesome]
+
+unary JJ
+[ (DT The),  (RBS most),  (JJ troublesome)]
+
+binary ADJP
+[ (DT The),  (ADJP (RBS most) (JJ troublesome))]
+
+shift
+[ (DT The),  (ADJP (RBS most) (JJ troublesome)),  report]
+
+unary NN
+[ (DT The),  (ADJP (RBS most) (JJ troublesome)),  (NN report)]
+
+binary NP
+[ (DT The),  (NP (ADJP (RBS most) (JJ troublesome)) (NN report))]
+
+binary NP
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report)))]
+
+shift
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  may]
+
+unary MD
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may)]
+
+shift
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  be]
+
+unary VB
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be)]
+
+shift
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  the]
+
+unary DT
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the)]
+
+shift
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  August]
+
+unary NNP
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August)]
+
+shift
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  merchandise]
+
+unary NN
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise)]
+
+shift
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  trade]
+
+unary NN
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NN trade)]
+
+shift
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NN trade),  deficit]
+
+unary NN
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NN trade),  (NN deficit)]
+
+binary NP
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NP (NN trade) (NN deficit))]
+
+shift
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NP (NN trade) (NN deficit)),  due]
+
+unary JJ
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NP (NN trade) (NN deficit)),  (JJ due)]
+
+shift
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NP (NN trade) (NN deficit)),  (JJ due),  out]
+
+unary IN
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NP (NN trade) (NN deficit)),  (JJ due),  (IN out)]
+
+shift
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NP (NN trade) (NN deficit)),  (JJ due),  (IN out),  tomorrow]
+
+unary NN
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NP (NN trade) (NN deficit)),  (JJ due),  (IN out),  (NN tomorrow)]
+
+unary NP
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NP (NN trade) (NN deficit)),  (JJ due),  (IN out),  (NP (NN tomorrow))]
+
+binary PP
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NP (NN trade) (NN deficit)),  (JJ due),  (PP (IN out) (NP (NN tomorrow)))]
+
+binary ADJP
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NP (NN trade) (NN deficit)),  (ADJP (JJ due) (PP (IN out) (NP (NN tomorrow))))]
+
+binary NP
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NN merchandise),  (NP (NP (NN trade) (NN deficit)) (ADJP (JJ due) (PP (IN out) (NP (NN tomorrow)))))]
+
+binary NP
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NNP August),  (NP (NN merchandise) (NP (NP (NN trade) (NN deficit)) (ADJP (JJ due) (PP (IN out) (NP (NN tomorrow))))))]
+
+binary NP
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (DT the),  (NP (NNP August) (NP (NN merchandise) (NP (NP (NN trade) (NN deficit)) (ADJP (JJ due) (PP (IN out) (NP (NN tomorrow)))))))]
+
+binary PP
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VB be),  (PP (DT the) (NP (NNP August) (NP (NN merchandise) (NP (NP (NN trade) (NN deficit)) (ADJP (JJ due) (PP (IN out) (NP (NN tomorrow))))))))]
+
+binary VP
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (MD may),  (VP (VB be) (PP (DT the) (NP (NNP August) (NP (NN merchandise) (NP (NP (NN trade) (NN deficit)) (ADJP (JJ due) (PP (IN out) (NP (NN tomorrow)))))))))]
+
+binary VP
+[ (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))),  (VP (MD may) (VP (VB be) (PP (DT the) (NP (NNP August) (NP (NN merchandise) (NP (NP (NN trade) (NN deficit)) (ADJP (JJ due) (PP (IN out) (NP (NN tomorrow))))))))))]
+
+binary NP
+[ (NP (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))) (VP (MD may) (VP (VB be) (PP (DT the) (NP (NNP August) (NP (NN merchandise) (NP (NP (NN trade) (NN deficit)) (ADJP (JJ due) (PP (IN out) (NP (NN tomorrow)))))))))))]
+
+shift
+[ (NP (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))) (VP (MD may) (VP (VB be) (PP (DT the) (NP (NNP August) (NP (NN merchandise) (NP (NP (NN trade) (NN deficit)) (ADJP (JJ due) (PP (IN out) (NP (NN tomorrow))))))))))),  .]
+
+unary .
+[ (NP (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))) (VP (MD may) (VP (VB be) (PP (DT the) (NP (NNP August) (NP (NN merchandise) (NP (NP (NN trade) (NN deficit)) (ADJP (JJ due) (PP (IN out) (NP (NN tomorrow))))))))))),  (. .)]
+
+binary NP
+[ (NP (NP (NP (DT The) (NP (ADJP (RBS most) (JJ troublesome)) (NN report))) (VP (MD may) (VP (VB be) (PP (DT the) (NP (NNP August) (NP (NN merchandise) (NP (NP (NN trade) (NN deficit)) (ADJP (JJ due) (PP (IN out) (NP (NN tomorrow))))))))))) (. .))]
+
+--------------------------------------------
+
+The trade gap is expected to widen to about $ 9 billion from July 's $ 7.6 billion , according to a survey by MMS International , a unit of McGraw-Hill Inc. , New York .
+
+ (S (NP-SBJ-1 (DT The) (NP-SBJ-1_inner (NN trade) (NN gap))) (S_inner (VP (VBZ is) (VP (VBN expected) (VP_inner (S (NP-SBJ (-NONE- *-1)) (VP (TO to) (VP (VB widen) (VP_inner (PP-DIR (TO to) (NP (QP (IN about) (QP_inner ($ $) (QP_inner (CD 9) (CD billion)))) (-NONE- *U*))) (PP-DIR (IN from) (NP (NP (NNP July) (POS 's)) (NP_inner (QP ($ $) (QP_inner (CD 7.6) (CD billion))) (-NONE- *U*)))))))) (VP_inner (, ,) (PP (VBG according) (PP (TO to) (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (NP (NNP MMS) (NNP International)) (NP_inner (, ,) (NP (NP (DT a) (NN unit)) (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP_inner (, ,) (NP (NNP New) (NNP York)))))))))))))))) (. .)))
+
+shift
+[ The]
+
+unary DT
+[ (DT The)]
+
+shift
+[ (DT The),  trade]
+
+unary NN
+[ (DT The),  (NN trade)]
+
+shift
+[ (DT The),  (NN trade),  gap]
+
+unary NN
+[ (DT The),  (NN trade),  (NN gap)]
+
+binary NP
+[ (DT The),  (NP (NN trade) (NN gap))]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap)))]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  is]
+
+unary VBZ
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  expected]
+
+unary VBN
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  to]
+
+unary TO
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  widen]
+
+unary VB
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  to]
+
+unary TO
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  about]
+
+unary IN
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  $]
+
+unary $
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  9]
+
+unary CD
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (CD 9)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (CD 9),  billion]
+
+unary CD
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (CD 9),  (CD billion)]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (CD 9) (CD billion))]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (CD 9) (CD billion)),  from]
+
+unary IN
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (CD 9) (CD billion)),  (IN from)]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (CD 9) (CD billion)) (IN from))]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (CD 9) (CD billion)) (IN from)),  July]
+
+unary NNP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (CD 9) (CD billion)) (IN from)),  (NNP July)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (CD 9) (CD billion)) (IN from)),  (NNP July),  's]
+
+unary POS
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (CD 9) (CD billion)) (IN from)),  (NNP July),  (POS 's)]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (CD 9) (CD billion)) (IN from)),  (NP (NNP July) (POS 's))]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's)))]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))),  $]
+
+unary $
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))),  ($ $)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))),  ($ $),  7.6]
+
+unary CD
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))),  ($ $),  (CD 7.6)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))),  ($ $),  (CD 7.6),  billion]
+
+unary CD
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))),  ($ $),  (CD 7.6),  (CD billion)]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))),  ($ $),  (NP (CD 7.6) (CD billion))]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))),  (NP ($ $) (NP (CD 7.6) (CD billion)))]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  ($ $),  (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion))))]
+
+binary PP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (IN about),  (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))]
+
+binary ADVP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (TO to),  (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion))))))]
+
+binary PP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (VB widen),  (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))]
+
+binary ADVP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (TO to),  (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion))))))))]
+
+binary PP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (VBN expected),  (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))]
+
+binary ADVP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion))))))))))]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  ,]
+
+unary ,
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  according]
+
+unary VBG
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  to]
+
+unary TO
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  a]
+
+unary DT
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (DT a)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (DT a),  survey]
+
+unary NN
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (DT a),  (NN survey)]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (DT a) (NN survey))]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (DT a) (NN survey)),  by]
+
+unary IN
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (DT a) (NN survey)),  (IN by)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (DT a) (NN survey)),  (IN by),  MMS]
+
+unary JJ
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (DT a) (NN survey)),  (IN by),  (JJ MMS)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (DT a) (NN survey)),  (IN by),  (JJ MMS),  International]
+
+unary NNP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (DT a) (NN survey)),  (IN by),  (JJ MMS),  (NNP International)]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (DT a) (NN survey)),  (IN by),  (NP (JJ MMS) (NNP International))]
+
+binary PP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (DT a) (NN survey)),  (PP (IN by) (NP (JJ MMS) (NNP International)))]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International))))]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  ,]
+
+unary ,
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  a]
+
+unary DT
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (DT a)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (DT a),  unit]
+
+unary NN
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (DT a),  (NN unit)]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit))]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  of]
+
+unary IN
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  McGraw-Hill]
+
+unary NNP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  (NNP McGraw-Hill)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  (NNP McGraw-Hill),  Inc.]
+
+unary NNP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  (NNP McGraw-Hill),  (NNP Inc.)]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  (NP (NNP McGraw-Hill) (NNP Inc.))]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  (NP (NNP McGraw-Hill) (NNP Inc.)),  ,]
+
+unary ,
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  (NP (NNP McGraw-Hill) (NNP Inc.)),  (, ,)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  (NP (NNP McGraw-Hill) (NNP Inc.)),  (, ,),  New]
+
+unary NNP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  (NP (NNP McGraw-Hill) (NNP Inc.)),  (, ,),  (NNP New)]
+
+shift
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  (NP (NNP McGraw-Hill) (NNP Inc.)),  (, ,),  (NNP New),  York]
+
+unary NNP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  (NP (NNP McGraw-Hill) (NNP Inc.)),  (, ,),  (NNP New),  (NNP York)]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  (NP (NNP McGraw-Hill) (NNP Inc.)),  (, ,),  (NP (NNP New) (NNP York))]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  (NP (NNP McGraw-Hill) (NNP Inc.)),  (NP (, ,) (NP (NNP New) (NNP York)))]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (IN of),  (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York))))]
+
+binary PP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (DT a) (NN unit)),  (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York)))))]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (, ,),  (NP (NP (DT a) (NN unit)) (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York))))))]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))),  (NP (, ,) (NP (NP (DT a) (NN unit)) (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York)))))))]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (TO to),  (NP (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))) (NP (, ,) (NP (NP (DT a) (NN unit)) (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York))))))))]
+
+binary PP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (VBG according),  (PP (TO to) (NP (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))) (NP (, ,) (NP (NP (DT a) (NN unit)) (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York)))))))))]
+
+binary PP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (, ,),  (PP (VBG according) (PP (TO to) (NP (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))) (NP (, ,) (NP (NP (DT a) (NN unit)) (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York))))))))))]
+
+binary VP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))),  (VP (, ,) (PP (VBG according) (PP (TO to) (NP (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))) (NP (, ,) (NP (NP (DT a) (NN unit)) (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York)))))))))))]
+
+binary NP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VBZ is),  (NP (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))) (VP (, ,) (PP (VBG according) (PP (TO to) (NP (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))) (NP (, ,) (NP (NP (DT a) (NN unit)) (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York))))))))))))]
+
+binary VP
+[ (NP (DT The) (NP (NN trade) (NN gap))),  (VP (VBZ is) (NP (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))) (VP (, ,) (PP (VBG according) (PP (TO to) (NP (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))) (NP (, ,) (NP (NP (DT a) (NN unit)) (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York)))))))))))))]
+
+binary NP
+[ (NP (NP (DT The) (NP (NN trade) (NN gap))) (VP (VBZ is) (NP (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))) (VP (, ,) (PP (VBG according) (PP (TO to) (NP (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))) (NP (, ,) (NP (NP (DT a) (NN unit)) (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York))))))))))))))]
+
+shift
+[ (NP (NP (DT The) (NP (NN trade) (NN gap))) (VP (VBZ is) (NP (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))) (VP (, ,) (PP (VBG according) (PP (TO to) (NP (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))) (NP (, ,) (NP (NP (DT a) (NN unit)) (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York)))))))))))))),  .]
+
+unary .
+[ (NP (NP (DT The) (NP (NN trade) (NN gap))) (VP (VBZ is) (NP (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))) (VP (, ,) (PP (VBG according) (PP (TO to) (NP (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))) (NP (, ,) (NP (NP (DT a) (NN unit)) (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York)))))))))))))),  (. .)]
+
+binary NP
+[ (NP (NP (NP (DT The) (NP (NN trade) (NN gap))) (VP (VBZ is) (NP (ADVP (VBN expected) (PP (TO to) (ADVP (VB widen) (PP (TO to) (ADVP (IN about) (PP ($ $) (NP (NP (NP (NP (CD 9) (CD billion)) (IN from)) (NP (NNP July) (POS 's))) (NP ($ $) (NP (CD 7.6) (CD billion)))))))))) (VP (, ,) (PP (VBG according) (PP (TO to) (NP (NP (NP (DT a) (NN survey)) (PP (IN by) (NP (JJ MMS) (NNP International)))) (NP (, ,) (NP (NP (DT a) (NN unit)) (PP (IN of) (NP (NP (NNP McGraw-Hill) (NNP Inc.)) (NP (, ,) (NP (NNP New) (NNP York)))))))))))))) (. .))]
+
+--------------------------------------------
+
+Thursday 's report on the September consumer price index is expected to rise , although not as sharply as the 0.9 % gain reported Friday in the producer price index .
+
+ (S (NP-SBJ-1 (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (NP (DT the) (NP_inner (NNP September) (NP_inner (NN consumer) (NP_inner (NN price) (NN index))))))) (S_inner (VP (VBZ is) (VP (VBN expected) (S (NP-SBJ (-NONE- *-1)) (VP (TO to) (VP (VB rise) (VP_inner (, ,) (SBAR-ADV (IN although) (ADVP (ADVP (RB not) (ADVP_inner (RB as) (RB sharply))) (PP (IN as) (NP (NP (DT the) (NP_inner (ADJP (CD 0.9) (NN %)) (NN gain))) (VP (VBN reported) (VP_inner (NP (-NONE- *)) (VP_inner (NP-TMP (NNP Friday)) (PP-LOC (IN in) (NP (DT the) (NP_inner (NN producer) (NP_inner (NN price) (NN index)))))))))))))))))) (. .)))
+
+shift
+[ Thursday]
+
+unary NNP
+[ (NNP Thursday)]
+
+shift
+[ (NNP Thursday),  's]
+
+unary POS
+[ (NNP Thursday),  (POS 's)]
+
+binary NP
+[ (NP (NNP Thursday) (POS 's))]
+
+shift
+[ (NP (NNP Thursday) (POS 's)),  report]
+
+unary NN
+[ (NP (NNP Thursday) (POS 's)),  (NN report)]
+
+binary NP
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report))]
+
+shift
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  on]
+
+unary IN
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on)]
+
+shift
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  the]
+
+unary DT
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  (DT the)]
+
+shift
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  (DT the),  September]
+
+unary NNP
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  (DT the),  (NNP September)]
+
+shift
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  (DT the),  (NNP September),  consumer]
+
+unary NN
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  (DT the),  (NNP September),  (NN consumer)]
+
+shift
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  (DT the),  (NNP September),  (NN consumer),  price]
+
+unary NN
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  (DT the),  (NNP September),  (NN consumer),  (NN price)]
+
+shift
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  (DT the),  (NNP September),  (NN consumer),  (NN price),  index]
+
+unary NN
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  (DT the),  (NNP September),  (NN consumer),  (NN price),  (NN index)]
+
+binary NP
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  (DT the),  (NNP September),  (NN consumer),  (NP (NN price) (NN index))]
+
+binary NP
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  (DT the),  (NNP September),  (NP (NN consumer) (NP (NN price) (NN index)))]
+
+binary NP
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  (DT the),  (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))]
+
+binary PP
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (IN on),  (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index)))))]
+
+binary PP
+[ (NP (NP (NNP Thursday) (POS 's)) (NN report)),  (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))]
+
+binary NP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index)))))))]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  is]
+
+unary VBZ
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  expected]
+
+unary VBN
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  to]
+
+unary TO
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  rise]
+
+unary VB
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  ,]
+
+unary ,
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  although]
+
+unary IN
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (IN although)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (IN although),  not]
+
+unary RB
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (IN although),  (RB not)]
+
+unary NP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (IN although),  (NP (RB not))]
+
+binary PP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not)))]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  as]
+
+unary IN
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  sharply]
+
+unary RB
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  as]
+
+unary IN
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  the]
+
+unary DT
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  0.9]
+
+unary CD
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (CD 0.9)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (CD 0.9),  %]
+
+unary NN
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (CD 0.9),  (NN %)]
+
+binary ADJP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (ADJP (CD 0.9) (NN %))]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (ADJP (CD 0.9) (NN %)),  gain]
+
+unary NN
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (ADJP (CD 0.9) (NN %)),  (NN gain)]
+
+binary NP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain))]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  reported]
+
+unary VBN
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  Friday]
+
+unary NNP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NNP Friday)]
+
+unary NP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday))]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  in]
+
+unary IN
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  (IN in)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  (IN in),  the]
+
+unary DT
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  (IN in),  (DT the)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  (IN in),  (DT the),  producer]
+
+unary NN
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  (IN in),  (DT the),  (NN producer)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  (IN in),  (DT the),  (NN producer),  price]
+
+unary NN
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  (IN in),  (DT the),  (NN producer),  (NN price)]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  (IN in),  (DT the),  (NN producer),  (NN price),  index]
+
+unary NN
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  (IN in),  (DT the),  (NN producer),  (NN price),  (NN index)]
+
+binary NP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  (IN in),  (DT the),  (NN producer),  (NP (NN price) (NN index))]
+
+binary NP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  (IN in),  (DT the),  (NP (NN producer) (NP (NN price) (NN index)))]
+
+binary PP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  (IN in),  (PP (DT the) (NP (NN producer) (NP (NN price) (NN index))))]
+
+binary PP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NNP Friday)),  (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index)))))]
+
+binary NP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (VBN reported),  (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index))))))]
+
+binary PP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (ADJP (CD 0.9) (NN %)) (NN gain)),  (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index)))))))]
+
+binary NP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (DT the),  (NP (NP (ADJP (CD 0.9) (NN %)) (NN gain)) (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index))))))))]
+
+binary PP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (IN as),  (PP (DT the) (NP (NP (ADJP (CD 0.9) (NN %)) (NN gain)) (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index)))))))))]
+
+binary PP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (RB sharply),  (PP (IN as) (PP (DT the) (NP (NP (ADJP (CD 0.9) (NN %)) (NN gain)) (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index))))))))))]
+
+binary PP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (IN as),  (PP (RB sharply) (PP (IN as) (PP (DT the) (NP (NP (ADJP (CD 0.9) (NN %)) (NN gain)) (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index)))))))))))]
+
+binary PP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (IN although) (NP (RB not))),  (PP (IN as) (PP (RB sharply) (PP (IN as) (PP (DT the) (NP (NP (ADJP (CD 0.9) (NN %)) (NN gain)) (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index))))))))))))]
+
+binary PP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (, ,),  (PP (PP (IN although) (NP (RB not))) (PP (IN as) (PP (RB sharply) (PP (IN as) (PP (DT the) (NP (NP (ADJP (CD 0.9) (NN %)) (NN gain)) (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index)))))))))))))]
+
+binary VP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VB rise),  (VP (, ,) (PP (PP (IN although) (NP (RB not))) (PP (IN as) (PP (RB sharply) (PP (IN as) (PP (DT the) (NP (NP (ADJP (CD 0.9) (NN %)) (NN gain)) (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index))))))))))))))]
+
+binary VP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (TO to),  (VP (VB rise) (VP (, ,) (PP (PP (IN although) (NP (RB not))) (PP (IN as) (PP (RB sharply) (PP (IN as) (PP (DT the) (NP (NP (ADJP (CD 0.9) (NN %)) (NN gain)) (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index)))))))))))))))]
+
+binary VP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VBN expected),  (VP (TO to) (VP (VB rise) (VP (, ,) (PP (PP (IN although) (NP (RB not))) (PP (IN as) (PP (RB sharply) (PP (IN as) (PP (DT the) (NP (NP (ADJP (CD 0.9) (NN %)) (NN gain)) (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index))))))))))))))))]
+
+binary VP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VBZ is),  (VP (VBN expected) (VP (TO to) (VP (VB rise) (VP (, ,) (PP (PP (IN although) (NP (RB not))) (PP (IN as) (PP (RB sharply) (PP (IN as) (PP (DT the) (NP (NP (ADJP (CD 0.9) (NN %)) (NN gain)) (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index)))))))))))))))))]
+
+binary VP
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VP (VBZ is) (VP (VBN expected) (VP (TO to) (VP (VB rise) (VP (, ,) (PP (PP (IN although) (NP (RB not))) (PP (IN as) (PP (RB sharply) (PP (IN as) (PP (DT the) (NP (NP (ADJP (CD 0.9) (NN %)) (NN gain)) (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index))))))))))))))))))]
+
+shift
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VP (VBZ is) (VP (VBN expected) (VP (TO to) (VP (VB rise) (VP (, ,) (PP (PP (IN although) (NP (RB not))) (PP (IN as) (PP (RB sharply) (PP (IN as) (PP (DT the) (NP (NP (ADJP (CD 0.9) (NN %)) (NN gain)) (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index)))))))))))))))))),  .]
+
+unary .
+[ (NP (NP (NP (NNP Thursday) (POS 's)) (NN report)) (PP (IN on) (PP (DT the) (NP (NNP September) (NP (NN consumer) (NP (NN price) (NN index))))))),  (VP (VBZ is) (VP (VBN expected) (VP (TO to) (VP (VB rise) (VP (, ,) (PP (PP (IN although) (NP (RB not))) (PP (IN as) (PP (RB sharply) (PP (IN as) (PP (DT the) (NP (NP (ADJP (CD 0.9) (NN %)) (NN gain)) (PP (VBN reported) (NP (NP (NNP Friday)) (PP (IN in) (PP (DT the) (NP (NN producer) (NP (NN price) (NN index)))))))))))))))))),  (. .)]
+
+--------------------------------------------
+
+That gain was being cited as a reason 0 the stock market was down early in Friday 's session , before it got started on its reckless 190-point plunge .
+
+ (S (NP-SBJ-1 (DT That) (NN gain)) (S_inner (VP (VBD was) (VP (VBG being) (VP (VBD cited) (VP_inner (NP (-NONE- *-1)) (PP-CLR (IN as) (NP (NP (DT a) (NN reason)) (SBAR (WHADVP-3 (-NONE- 0)) (S (NP-SBJ (DT the) (NP-SBJ_inner (NN stock) (NN market))) (VP (VBD was) (VP_inner (ADVP-PRD (IN down)) (VP_inner (ADVP-TMP (RB early) (PP (IN in) (NP (NP (NNP Friday) (POS 's)) (NN session)))) (VP_inner (, ,) (VP_inner (SBAR-TMP (IN before) (S (NP-SBJ-2 (PRP it)) (VP (VBD got) (S (NP-SBJ (-NONE- *-2)) (VP (VBN started) (VP_inner (NP (-NONE- *-2)) (PP-CLR (IN on) (NP (PRP$ its) (NP_inner (JJ reckless) (NP_inner (JJ 190-point) (NN plunge))))))))))) (ADVP-PRP (-NONE- *T*-3))))))))))))))) (. .)))
+
+shift
+[ That]
+
+unary DT
+[ (DT That)]
+
+shift
+[ (DT That),  gain]
+
+unary NN
+[ (DT That),  (NN gain)]
+
+binary NP
+[ (NP (DT That) (NN gain))]
+
+shift
+[ (NP (DT That) (NN gain)),  was]
+
+unary VBD
+[ (NP (DT That) (NN gain)),  (VBD was)]
+
+shift
+[ (NP (DT That) (NN gain)),  (VBD was),  being]
+
+unary VBG
+[ (NP (DT That) (NN gain)),  (VBD was),  (VBG being)]
+
+shift
+[ (NP (DT That) (NN gain)),  (VBD was),  (VBG being),  cited]
+
+unary VBN
+[ (NP (DT That) (NN gain)),  (VBD was),  (VBG being),  (VBN cited)]
+
+shift
+[ (NP (DT That) (NN gain)),  (VBD was),  (VBG being),  (VBN cited),  as]
+
+unary IN
+[ (NP (DT That) (NN gain)),  (VBD was),  (VBG being),  (VBN cited),  (IN as)]
+
+shift
+[ (NP (DT That) (NN gain)),  (VBD was),  (VBG being),  (VBN cited),  (IN as),  a]
+
+unary DT
+[ (NP (DT That) (NN gain)),  (VBD was),  (VBG being),  (VBN cited),  (IN as),  (DT a)]
+
+shift
+[ (NP (DT That) (NN gain)),  (VBD was),  (VBG being),  (VBN cited),  (IN as),  (DT a),  reason]
+
+unary NN
+[ (NP (DT That) (NN gain)),  (VBD was),  (VBG being),  (VBN cited),  (IN as),  (DT a),  (NN reason)]
+
+binary NP
+[ (NP (DT That) (NN gain)),  (VBD was),  (VBG being),  (VBN cited),  (IN as),  (NP (DT a) (NN reason))]
+
+shift
+[ (NP (DT That) (NN gain)),  (VBD was),  (VBG being),  (VBN cited),  (IN as),  (NP (DT a) (NN reason)),  0]
+
