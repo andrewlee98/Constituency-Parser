@@ -20,7 +20,7 @@ def idx_tree(root, i = 0, star = 0):
     if root.r:
         (root.r, i, star) = idx_tree(root.r, i, star)
     return (root, i, star)
-    
+
 # create stack/buffer actions from sentence and tree
 def generate_actions(t, s):
 
@@ -147,8 +147,8 @@ def generate_actions(t, s):
 
         # if act + " " + lab == 'unary ': print('what the fuck')
     return ret
-    
-    
+
+
 def treebank_to_actions():
     t0 = time.time()
     treepath = "../treebank/treebank_3/parsed/mrg/wsj/"
@@ -159,17 +159,16 @@ def treebank_to_actions():
         if folder.startswith('.'): continue
         print(folder)
         if folder != "00": continue # only do for 1 folder
-        
+
         text = "" # keep one giant text string per folder
         for filename in os.listdir(treepath + folder):
             if filename.startswith('.'): continue
-                
             tree_list = []
-            
+
             # append all the trees into one string
             with open(treepath + folder + "/" + filename, 'r') as f:
                 text += f.read().replace('\n', '')
-                
+
         # use a stack to parse each tree and append to string list
         s = [] # stack for reading parens
         start = 0
@@ -190,7 +189,7 @@ def treebank_to_actions():
 
         # get sentences
         sentences = [inorder_sentence(x).lstrip() for x in tree_list]
-        
+
         output_list = []
         with open(outpath + folder + '_actions.data', 'wb') as f:
             for t, s in zip(tree_list, sentences):
@@ -198,8 +197,8 @@ def treebank_to_actions():
                 output_list.extend(dat)
             pickle.dump(output_list, f)
         print(folder + "... ")
-             
+
     print("runtime: " + str(time.time() - t0))
-    
+
 if __name__ == "__main__":
     treebank_to_actions()

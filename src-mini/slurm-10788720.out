@@ -1,0 +1,4 @@
+[dynet] random seed: 2122837082
+[dynet] allocating memory: 512MB
+[dynet] memory allocation done.
+slurmstepd: error: *** JOB 10788720 ON node212 CANCELLED AT 2019-01-30T14:46:38 DUE TO TIME LIMIT ***

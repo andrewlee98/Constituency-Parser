@@ -1,3 +1,5 @@
+import dynet_config
+dynet_config.set_gpu()
 import dynet as dynet
 import random
 import matplotlib
@@ -19,7 +21,7 @@ def train_network():
 
     net_properties = NetProperties(we, pe, hidden, minibatch)
     vocab = Vocab("../data/mini/features/train.data")
-    
+
     pickle.dump((vocab, net_properties), open("../data/mini/vocab_net.data", 'wb'))
     network = Network(vocab, net_properties)
     (loss_values, validation_accs, train_accs) = network.train("../data/mini/features/train.data", epochs, "../data/mini/features/validation.data")
@@ -39,7 +41,7 @@ if __name__ == "__main__":
     plt.plot(*zip(*loss_values))
     plt.savefig('loss.png')
 
-
+    plt.figure()
     plt.title("Training/Validation Accuracy")
     plt.xlabel("Minibatch")
     plt.ylabel("Loss")
