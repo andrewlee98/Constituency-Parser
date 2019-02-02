@@ -5,9 +5,9 @@ import time
 
 def actions_to_features():
     t0 = time.time()
-    datapath = "../data/mini/actions/"
-    outpath = "../data/mini/features/"
-    
+    datapath = "../data/actions/"
+    outpath = "../data/features/"
+
     train_list = []
     test_list = []
 
@@ -17,7 +17,7 @@ def actions_to_features():
         # open file and save as one large string
         data_list = pickle.load(open(datapath + file, 'rb'))
 
-         # list of lists of features
+        # list of lists of features
         # final_list_read = [] # list of lists of features for debugging
 
         final_list = []
@@ -26,14 +26,14 @@ def actions_to_features():
             final_list.append(rearrange(features))
 #             final_list_read.append(features)
 
+        if file == '23_actions.data':
+            test_list.extend(final_list)
+        else:
+            train_list.extend(final_list)
 
-#         if file[:2] == test: test_list.extend(final_list)
-        train_list.extend(final_list)
-    
-    train_val_cut = int(9/10 * len(train_list))
-    with open(outpath + "train.data", "wb") as f: pickle.dump(train_list[:train_val_cut], f)
-    with open(outpath + "test.data", "wb") as f: pickle.dump(train_list[:train_val_cut], f)
-    with open(outpath + "validation.data", "wb") as f: pickle.dump(train_list[train_val_cut:], f)
+    with open(outpath + "train.data", "wb") as f: pickle.dump(train_list, f)
+    with open(outpath + "test.data", "wb") as f: pickle.dump(test_list, f)
+    # with open(outpath + "validation.data", "wb") as f: pickle.dump(train_list[train_val_cut:], f)
     # with open(outpath + "validation.data")
 
 

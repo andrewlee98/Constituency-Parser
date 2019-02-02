@@ -59,28 +59,24 @@ class Network:
 
         # return the output as a dynet vector (expression)
         return output
-    
-    
-    
-    
+
+
     def calc_acc(self, s):
         tot, corr = 0, 0
         for v in s:
             if self.decode(v[:-1]) == v[-1]: corr += 1
             tot += 1
         return corr/tot
-    
+
     def train(self, train_file, epochs, validation_file):
         plot_on = True
         # matplotlib config
         loss_values = []
         validation_data = pickle.load(open(validation_file, 'rb'))
         validation_accs, train_accs = [], []
-        
 
-        
         train_data_original = pickle.load(open(train_file, "rb" ))
-        
+
         for i in range(epochs):
             print('started epoch', (i+1))
             losses = []
@@ -115,10 +111,8 @@ class Network:
                     # printing info and plotting
                     loss_values.append((len(loss_values), minibatch_loss_value))
                     if len(loss_values)%10==0:
-                        
 
 
-                            
                         progress = round(100 * float(step) / len(train_data), 2)
                         print('current minibatch loss', minibatch_loss_value, 'progress:', progress, '%')
 
@@ -133,18 +127,17 @@ class Network:
 
                     # refresh the memory of dynet
                     dynet.renew_cg()
-                    
+
                     # get validation set accuracy
-                    if len(loss_values)%100==0: 
+                    if len(loss_values)%100==0:
                         validation_accs.append((len(loss_values), self.calc_acc(validation_data)))
-                        train_accs.append((len(loss_values), self.calc_acc(train_data_original)))
 
             # there are still some minibatch items in the memory but they are smaller than the minibatch size
             # so we ask dynet to forget them
             dynet.renew_cg()
-            
+
         # return these values just for plotting
-        return loss_values, validation_accs, train_accs
+        return loss_values, validation_accs
 
     def decode(self, features):
 

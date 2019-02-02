@@ -20,12 +20,12 @@ def train_network():
     epochs = 20
 
     net_properties = NetProperties(we, pe, hidden, minibatch)
-    vocab = Vocab("../data/mini/features/train.data")
+    vocab = Vocab("../data/features/train.data")
 
-    pickle.dump((vocab, net_properties), open("../data/mini/vocab_net.data", 'wb'))
+    pickle.dump((vocab, net_properties), open("../data/vocab_net.data", 'wb'))
     network = Network(vocab, net_properties)
-    (loss_values, validation_accs, train_accs) = network.train("../data/mini/features/train.data", epochs, "../data/mini/features/validation.data")
-    network.save("../data/mini/net.model")
+    (loss_values, validation_accs, train_accs) = network.train("../data/features/train.data", epochs, "../data/features/test.data")
+    network.save("../data/net.model")
 
     t1 = time.time()
     total = t1 - t0
@@ -33,7 +33,7 @@ def train_network():
     return (loss_values, validation_accs, train_accs)
 
 if __name__ == "__main__":
-    (loss_values, validation_accs, train_accs) = train_network()
+    (loss_values, validation_accs) = train_network()
 
     plt.title("Loss over time")
     plt.xlabel("Minibatch")
@@ -44,10 +44,7 @@ if __name__ == "__main__":
     plt.figure()
     plt.title("Training/Validation Accuracy")
     plt.xlabel("Minibatch")
-    plt.ylabel("Loss")
-    x, y = zip(*train_accs)
-    plt.plot(x, y, 'g')
-
+    plt.ylabel("Accuracy")
     x1, y1 = zip(*validation_accs)
     plt.plot(x1, y1, 'r')
     plt.savefig('accuracy.png')
