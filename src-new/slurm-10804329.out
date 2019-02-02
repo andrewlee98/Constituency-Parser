@@ -1,0 +1,82 @@
+
+The following have been reloaded with a version change:
+  1) anaconda/3-4.2.0 => anaconda/3-4.4.0
+
+[dynet] random seed: 2139144839
+[dynet] allocating memory: 512MB
+[dynet] memory allocation done.
+started epoch 1
+current minibatch loss 4.197917461395264 progress: 7.18 %
+current minibatch loss 3.9282538890838623 progress: 14.35 %
+current minibatch loss 3.712233543395996 progress: 21.53 %
+current minibatch loss 3.5311574935913086 progress: 28.7 %
+current minibatch loss 3.417332172393799 progress: 35.88 %
+current minibatch loss 3.250916004180908 progress: 43.05 %
+current minibatch loss 3.1432342529296875 progress: 50.23 %
+current minibatch loss 3.072880983352661 progress: 57.4 %
+current minibatch loss 2.962963342666626 progress: 64.58 %
+current minibatch loss 2.9526078701019287 progress: 71.76 %
+current minibatch loss 2.819679021835327 progress: 78.93 %
+current minibatch loss 2.7777113914489746 progress: 86.11 %
+current minibatch loss 2.6914780139923096 progress: 93.28 %
+started epoch 2
+current minibatch loss 2.6527295112609863 progress: 0.72 %
+current minibatch loss 2.4930331707000732 progress: 7.89 %
+current minibatch loss 2.4907803535461426 progress: 15.07 %
+current minibatch loss 2.3912181854248047 progress: 22.24 %
+current minibatch loss 2.38577938079834 progress: 29.42 %
+current minibatch loss 2.3409066200256348 progress: 36.6 %
+current minibatch loss 2.3337769508361816 progress: 43.77 %
+current minibatch loss 2.283231258392334 progress: 50.95 %
+current minibatch loss 2.2612855434417725 progress: 58.12 %
+current minibatch loss 2.2281856536865234 progress: 65.3 %
+current minibatch loss 2.2399044036865234 progress: 72.47 %
+current minibatch loss 2.157374143600464 progress: 79.65 %
+current minibatch loss 2.1384212970733643 progress: 86.82 %
+current minibatch loss 2.1729276180267334 progress: 94.0 %
+started epoch 3
+current minibatch loss 2.093708038330078 progress: 1.44 %
+current minibatch loss 1.957594633102417 progress: 8.61 %
+current minibatch loss 1.9757863283157349 progress: 15.79 %
+current minibatch loss 1.9871149063110352 progress: 22.96 %
+current minibatch loss 1.944485068321228 progress: 30.14 %
+current minibatch loss 1.8792681694030762 progress: 37.31 %
+current minibatch loss 1.9279118776321411 progress: 44.49 %
+current minibatch loss 1.8976393938064575 progress: 51.66 %
+current minibatch loss 1.9041202068328857 progress: 58.84 %
+current minibatch loss 1.8526688814163208 progress: 66.02 %
+current minibatch loss 1.844740867614746 progress: 73.19 %
+current minibatch loss 1.7268388271331787 progress: 80.37 %
+current minibatch loss 1.8264789581298828 progress: 87.54 %
+current minibatch loss 1.7775875329971313 progress: 94.72 %
+started epoch 4
+current minibatch loss 1.7398327589035034 progress: 2.15 %
+current minibatch loss 1.7236452102661133 progress: 9.33 %
+current minibatch loss 1.6409679651260376 progress: 16.5 %
+current minibatch loss 1.6598554849624634 progress: 23.68 %
+current minibatch loss 1.60040283203125 progress: 30.86 %
+current minibatch loss 1.5891180038452148 progress: 38.03 %
+current minibatch loss 1.5173605680465698 progress: 45.21 %
+current minibatch loss 1.662282109260559 progress: 52.38 %
+current minibatch loss 1.6213672161102295 progress: 59.56 %
+current minibatch loss 1.5836255550384521 progress: 66.73 %
+current minibatch loss 1.572079062461853 progress: 73.91 %
+current minibatch loss 1.599423885345459 progress: 81.08 %
+current minibatch loss 1.5495765209197998 progress: 88.26 %
+current minibatch loss 1.5147761106491089 progress: 95.44 %
+started epoch 5
+current minibatch loss 1.4174376726150513 progress: 2.87 %
+current minibatch loss 1.4470765590667725 progress: 10.05 %
+current minibatch loss 1.518725037574768 progress: 17.22 %
+current minibatch loss 1.5078457593917847 progress: 24.4 %
+current minibatch loss 1.4010387659072876 progress: 31.57 %
+current minibatch loss 1.3961795568466187 progress: 38.75 %
+current minibatch loss 1.3785312175750732 progress: 45.92 %
+current minibatch loss 1.3321892023086548 progress: 53.1 %
+current minibatch loss 1.3350569009780884 progress: 60.28 %
+current minibatch loss 1.3296985626220703 progress: 67.45 %
+current minibatch loss 1.3694446086883545 progress: 74.63 %
+current minibatch loss 1.3262394666671753 progress: 81.8 %
+current minibatch loss 1.406522274017334 progress: 88.98 %
+current minibatch loss 1.3480249643325806 progress: 96.15 %
+runtime: 925.7800827026367
