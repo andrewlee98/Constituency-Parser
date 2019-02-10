@@ -9,6 +9,7 @@ from torch import nn
 from torch.optim import Adam
 from torch.autograd import Variable
 
+# class for loading training/testing datasets
 class CPDataset(Dataset):
     def __init__(self, datapath):
         # load training, validation data, and vocab
@@ -37,13 +38,13 @@ class CPDataset(Dataset):
     def __len__(self):
         return self.length
 
-
+# neural network class
 class Net(nn.Module):
     def __init__(self, input_size, hidden_size, num_classes):
         super(Net, self).__init__()# Inherited from the parent class nn.Module
-        self.fc1 = nn.Linear(input_size, hidden_size)  # 1st Full-Connected Layer: 784 (input data) -> 500 (hidden node)
+        self.fc1 = nn.Linear(input_size, hidden_size)  # 1st Full-Connected Layer: 27 (input data) -> 500 (hidden node)
         self.relu = nn.ReLU()  # Non-Linear ReLU Layer: max(0,x)
-        self.fc2 = nn.Linear(hidden_size, num_classes) # 2nd Full-Connected Layer: 500 (hidden node) -> 10 (output class)
+        self.fc2 = nn.Linear(hidden_size, num_classes) # 2nd Full-Connected Layer: 500 (hidden node) -> 89 (output class)
 
     def forward(self, x):  # Forward pass: stacking each layer together
         out = self.fc1(x)
@@ -51,13 +52,14 @@ class Net(nn.Module):
         out = self.fc2(out)
         return out
 
+
 if __name__ == '__main__':
-    input_size = 27        # The image size = 28 x 28 = 784
+    input_size = 27        # 27 features
     hidden_size = 500      # The number of nodes at the hidden layer
-    num_classes = 89       # The number of output classes. In this case, from 0 to 9
-    num_epochs = 5         # The number of times entire dataset is trained
-    batch_size = 100       # The size of input data took for one iteration
-    learning_rate = 0.001  # The speed of convergence
+    num_classes = 89       # The number of output classes.
+    num_epochs = 5
+    batch_size = 100
+    learning_rate = 0.001
 
 
     # load data into dataset objects
@@ -80,25 +82,24 @@ if __name__ == '__main__':
             fvs = Variable(fvs)
             labels = Variable(labels)
 
-            optimizer.zero_grad() # Intialize the hidden weight to all zeros
-            outputs = net(fvs.float()) # Forward pass: compute the output class given a image
-            loss = criterion(outputs, labels) # Compute the loss: difference between the output class and the pre-given label
-            loss.backward()   # Backward pass: compute the weight
-            optimizer.step()  # Optimizer: update the weights of hidden nodes
+            optimizer.zero_grad()               # Initialize the hidden weight to all zeros
+            outputs = net(fvs.float())          # Forward pass: compute the output class given a image
+            loss = criterion(outputs, labels)   # Compute the loss: difference between the output class and the pre-given label
+            loss.backward()                     # Backward pass: compute the weight
+            optimizer.step()                    # Optimizer: update the weights of hidden nodes
 
             if (i+1) % 100 == 0:  # Logging
                 print('Epoch [%d/%d], Step [%d/%d], Loss: %.4f'
                          %(epoch+1, num_epochs, i+1, len(train_data)//batch_size, loss.data))
 
     # testing
-    correct = 0
-    total = 0
+    total,correct = 0, 0
     for fvs, labels in test_loader:
         fvs = Variable(fvs)
         outputs = net(fvs.float())
         _, predicted = torch.max(outputs.data, 1)  # Choose the best class from the output: The class with the best score
-        total += labels.size(0)# Increment the total count
-        correct += (predicted == labels).sum() # Increment the correct count
+        total += labels.size(0)                    # Increment the total count
+        correct += (predicted == labels).sum()     # Increment the correct count
 
     print('Accuracy: %f %%' % (100 * correct / total))
 
