@@ -8,6 +8,11 @@ from torch.utils.data import Dataset, DataLoader
 from torch import nn
 from torch.optim import Adam
 from torch.autograd import Variable
+from datetime import datetime
+startTime = datetime.now()
+
+device = torch.device("cuda:0")
+
 
 # class for loading training/testing datasets
 class CPDataset(Dataset):
@@ -49,8 +54,10 @@ class Net(nn.Module):
 
     def forward(self, x):  # Forward pass: stacking each layer together
 
-        embeds = [self.embeddings(row.long()).view(-1) for row in x] # creates a list of concatenated embeddings
-        embeds = torch.stack(embeds) # converts list of embeddings to 2d tensor
+        # embeds = [self.embeddings(row.long()).view(-1) for row in x] # creates a list of concatenated embeddings
+        # embeds = torch.stack(embeds) # converts list of embeddings to 2d tensor
+        # embeds = embeds.to(device)
+        embeds = self.embeddings(x).view(x.shape[0],-1)
         out = self.fc1(embeds)
         out = self.relu(out)
         out = self.fc2(out)
@@ -65,7 +72,7 @@ if __name__ == '__main__':
     batch_size = 100
     learning_rate = 0.001
     vocab_size = 100000    # keep track of some word's embeddings
-    embedding_dim = 10   # word embedding size
+    embedding_dim = 5   # word embedding size
 
 
     # load data into dataset objects
@@ -89,7 +96,7 @@ if __name__ == '__main__':
             labels = Variable(labels)
 
             optimizer.zero_grad()               # Initialize the hidden weight to all zeros
-            outputs = net(fvs.float())          # Forward pass: compute the output class given a image
+            outputs = net(fvs)          # Forward pass: compute the output class given a image
             loss = criterion(outputs, labels)   # Compute the loss: difference between the output class and the pre-given label
             loss.backward()                     # Backward pass: compute the weight
             optimizer.step()                    # Optimizer: update the weights of hidden nodes
@@ -111,3 +118,4 @@ if __name__ == '__main__':
 
     # save the net
     # torch.save(net.state_dict(), ‘fnn_model.pkl’)
+    print(datetime.now() - startTime)
