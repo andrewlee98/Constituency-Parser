@@ -77,7 +77,7 @@ if __name__ == '__main__':
     batch_size = 100
     learning_rate = 0.001
     vocab_size = 100000    # keep track of some word's embeddings
-    embedding_dim = 5   # word embedding size
+    embedding_dim = 100   # word embedding size
 
 
     # load data into dataset objects
@@ -117,8 +117,7 @@ if __name__ == '__main__':
         outputs = net(fvs.cuda())
         _, predicted = torch.max(outputs.data, 1)  # Choose the best class from the output: The class with the best score
         total += labels.size(0)                    # Increment the total count
-        print(type(predicted), type(labels))
-        correct += (predicted == labels).sum()     # Increment the correct count
+        correct += (predicted.cuda() == labels.cuda()).sum()     # Increment the correct count
 
     print('Accuracy: %f %%' % (100 * correct / total))
 
