@@ -45,8 +45,14 @@ class CPDataset(Dataset):
 
 # neural network class
 class Net(nn.Module):
-    def __init__(self, input_size, hidden_size, num_classes, vocab_size, embedding_dim):
+    def __init__(self, input_size, hidden_size, num_classes, vocab_size, embedding_dim, device=None):
         super(Net, self).__init__()# Inherited from the parent class nn.Module
+
+        # handle gpu
+        self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+        self.to(self.device)
+
+        # layers
         self.embeddings = nn.Embedding(vocab_size, embedding_dim)
         self.fc1 = nn.Linear(input_size * embedding_dim, hidden_size)  # 1st Full-Connected Layer: 27 (input data) -> 500 (hidden node)
         self.relu = nn.ReLU()  # Non-Linear ReLU Layer: max(0,x)
@@ -54,9 +60,8 @@ class Net(nn.Module):
 
     def forward(self, x):  # Forward pass: stacking each layer together
 
-        # embeds = [self.embeddings(row.long()).view(-1) for row in x] # creates a list of concatenated embeddings
-        # embeds = torch.stack(embeds) # converts list of embeddings to 2d tensor
-        # embeds = embeds.to(device)
+        x = x.to(self.device)
+        x = x.cuda()
         embeds = self.embeddings(x).view(x.shape[0],-1)
         out = self.fc1(embeds)
         out = self.relu(out)
@@ -84,8 +89,8 @@ if __name__ == '__main__':
     test_loader = torch.utils.data.DataLoader(dataset=test_data, batch_size=batch_size, shuffle=False)
 
     # instantiate nn
-    net = Net(input_size, hidden_size, num_classes, vocab_size, embedding_dim)
-    # net.cuda()    # You can comment out this line to disable GPU
+    net = Net(input_size, hidden_size, num_classes, vocab_size, embedding_dim) #, torch.device(0))
+    net.cuda()    # You can comment out this line to disable GPU
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
 
@@ -96,8 +101,8 @@ if __name__ == '__main__':
             labels = Variable(labels)
 
             optimizer.zero_grad()               # Initialize the hidden weight to all zeros
-            outputs = net(fvs)          # Forward pass: compute the output class given a image
-            loss = criterion(outputs, labels)   # Compute the loss: difference between the output class and the pre-given label
+            outputs = net(fvs.cuda())          # Forward pass: compute the output class given a image
+            loss = criterion(outputs.cuda(), labels.cuda())   # Compute the loss: difference between the output class and the pre-given label
             loss.backward()                     # Backward pass: compute the weight
             optimizer.step()                    # Optimizer: update the weights of hidden nodes
 
@@ -109,9 +114,10 @@ if __name__ == '__main__':
     total,correct = 0, 0
     for fvs, labels in test_loader:
         fvs = Variable(fvs)
-        outputs = net(fvs.float())
+        outputs = net(fvs.cuda())
         _, predicted = torch.max(outputs.data, 1)  # Choose the best class from the output: The class with the best score
         total += labels.size(0)                    # Increment the total count
+        print(type(predicted), type(labels))
         correct += (predicted == labels).sum()     # Increment the correct count
 
     print('Accuracy: %f %%' % (100 * correct / total))
