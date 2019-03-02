@@ -86,25 +86,30 @@ if __name__ == '__main__':
     num_classes = 89       # The number of output classes.
     num_epochs = 5
     batch_size = 100
-    learning_rate = 0.0001
+    learning_rate = 0.00001
     vocab_size = 100000    # keep track of some word's embeddings
     embedding_dim = 100   # word embedding size
 
 
     # load data into dataset objects
-    all_data = []
+    train_data = []
+    val_data = []
+    test_data = []
     for file in os.listdir('../data/allen/features/'):
-        if file[0:2] not in {'00','01','02','03','04'}: continue
-        all_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb')))
-    print('Total # feature vectors: ', len(all_data))
+        if file[0:2] in {'22'}: val_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb')))
+        if file[0:2] in {'23'}: test_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb')))
+        elif file[0:2] in {'01','02','03','04','05','06','07','08','09','10'}: train_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb')))
+    print('Training feature vectors: ', len(train_data))
 
-    vocab = Vocab(all_data)
-    train_test_split = len(all_data)*9//10
-    train_data = CPDataset(all_data[train_test_split:], vocab)
-    test_data = CPDataset(all_data[:train_test_split], vocab)
+    # create datasets
+    vocab = Vocab(train_data + val_data + test_data)
+    train_data = CPDataset(train_data, vocab)
+    val_data = CPDataset(val_data, vocab)
+    test_data = CPDataset(test_data, vocab)
 
     # convert to dataloaders
     train_loader = torch.utils.data.DataLoader(dataset=train_data, batch_size=batch_size, shuffle=True)
+    val_loader = torch.utils.data.DataLoader(dataset=val_data, batch_size=batch_size, shuffle=False)
     test_loader = torch.utils.data.DataLoader(dataset=test_data, batch_size=batch_size, shuffle=False)
 
     # instantiate nn
@@ -126,17 +131,20 @@ if __name__ == '__main__':
             loss.backward()                     # Backward pass: compute the weight
             optimizer.step()                    # Optimizer: update the weights of hidden nodes
 
-            if (i+1) % 100 == 0:  # Logging
+            if (i+1) % 1000 == 0:  # Logging
                 print('Epoch [%d/%d], Step [%d/%d], Loss: %.4f'
                          %(epoch+1, num_epochs, i+1, len(train_data)//batch_size, loss.data))
                 losses.append((epoch, loss.data.item())) # plot loss over time
 
         # test validation accuracy at the end of every epoch
-        val_error = test(net, test_loader)
+        val_error = test(net, val_loader)
         validations.append((epoch, val_error))
         train_error = test(net, train_loader)
         trains.append((epoch, train_error))
-        print(val_error, train_error)
+        print('Train error: ', train_error)
+        print('Validation error: ', val_error)
+
+    print('--------------training complete-----------------')
 
     print('Test Accuracy: %f' % (test(net, test_loader)))
     print('Train Accuracy: %f' % (test(net, train_loader)))
@@ -163,6 +171,5 @@ if __name__ == '__main__':
     plt.plot(x1, y1, 'r')
 
     x2, y2 = zip(*trains)
-    plt.ylim((0, 1))
     plt.plot(x2, y2, 'g')
     plt.savefig('accuracy.png')
