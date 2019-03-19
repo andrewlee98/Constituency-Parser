@@ -1,4 +1,4 @@
-import numpy as np
+import numpy as np #hello!
 import torch
 import pickle
 from utils import *
@@ -70,57 +70,7 @@ class Net(nn.Module):
         out = self.fc2(out)
         return out
 
-def test(net, data_loader):
-    total,correct = 0, 0
-    for fvs, labels in data_loader:
-        fvs = Variable(fvs.cuda())
-        outputs = net(fvs.cuda())
-        _, predicted = torch.max(outputs.data, 1)  # Choose the best class from the output: The class with the best score
-        total += labels.size(0)                    # Increment the total count
-        correct += (predicted.cuda() == labels.cuda()).sum()     # Increment the correct count
-    return (float(correct) / float(total))
-
-
-if __name__ == '__main__':
-    input_size = 27        # 27 features
-    hidden_size = 200      # The number of nodes at the hidden layer
-    num_classes = 89       # The number of output classes.
-    num_epochs = 15
-    batch_size = 100
-    learning_rate = 0.00001
-    vocab_size = 100000    # keep track of some word's embeddings
-    embedding_dim = 100   # word embedding size
-
-
-    # load data into dataset objects
-    train_data = []
-    val_data = []
-    test_data = []
-    for file in os.listdir('../data/allen/features/'):
-        if file[0:2] in {'22'}: val_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb')))
-        if file[0:2] in {'23'}: test_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb')))
-        elif file[0:2] in {'01','02','03'}: #,'04','05'}: #,'06','07','08','09','10'}: 
-            train_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb')))
-    print('Training feature vectors: ', len(train_data))
-
-    # create datasets
-    vocab = Vocab(train_data + val_data + test_data)
-    train_data = CPDataset(train_data, vocab)
-    val_data = CPDataset(val_data, vocab)
-    test_data = CPDataset(test_data, vocab)
-
-    # convert to dataloaders
-    train_loader = torch.utils.data.DataLoader(dataset=train_data, batch_size=batch_size, shuffle=True)
-    val_loader = torch.utils.data.DataLoader(dataset=val_data, batch_size=batch_size, shuffle=False)
-    test_loader = torch.utils.data.DataLoader(dataset=test_data, batch_size=batch_size, shuffle=False)
-
-    # instantiate nn
-    net = Net(input_size, hidden_size, num_classes, vocab_size, embedding_dim) #, torch.device(0))
-    net.cuda()    # You can comment out this line to disable GPU
-    criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
-
-    # training
+def train(net, num_epochs, train_loader, val_loader):
     losses, validations, trains = [], [], []
     for epoch in range(num_epochs):
         for i, (fvs, labels) in enumerate(train_loader):   # Load a batch of images with its (index, data, class)
@@ -145,6 +95,62 @@ if __name__ == '__main__':
         trains.append((epoch, train_error))
         print('Train error: ', train_error)
         print('Validation error: ', val_error)
+        print('--------epoch end-----------')
+
+    return train_error, val_error, trains, validations, net, losses
+
+
+def test(net, data_loader):
+    total,correct = 0, 0
+    for fvs, labels in data_loader:
+        fvs = Variable(fvs.cuda())
+        outputs = net(fvs.cuda())
+        _, predicted = torch.max(outputs.data, 1)  # Choose the best class from the output: The class with the best score
+        total += labels.size(0)                    # Increment the total count
+        correct += (predicted.cuda() == labels.cuda()).sum()     # Increment the correct count
+    return (float(correct) / float(total))
+
+
+if __name__ == '__main__':
+    input_size = 27        # 27 features
+    hidden_size = 200      # The number of nodes at the hidden layer
+    num_classes = 89       # The number of output classes.
+    num_epochs = 5
+    batch_size = 100
+    learning_rate = 0.00001
+    vocab_size = 100000    # keep track of some word's embeddings
+    embedding_dim = 100   # word embedding size
+
+
+    # load data into dataset objects
+    train_data = []
+    val_data = []
+    test_data = []
+    for file in os.listdir('../data/allen/features/'):
+        if file[0:2] in {'22'}: val_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb')))
+        if file[0:2] in {'23'}: test_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb')))
+        elif file[0:2] in {'01','02','03'}: #,'04','05'}: #,'06','07','08','09','10'}:
+            train_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb')))
+    print('Training feature vectors: ', len(train_data))
+
+    # create datasets
+    vocab = Vocab(train_data + val_data + test_data)
+    train_data = CPDataset(train_data, vocab)
+    val_data = CPDataset(val_data, vocab)
+    test_data = CPDataset(test_data, vocab)
+
+    # convert to dataloaders
+    train_loader = torch.utils.data.DataLoader(dataset=train_data, batch_size=batch_size, shuffle=True)
+    val_loader = torch.utils.data.DataLoader(dataset=val_data, batch_size=batch_size, shuffle=False)
+    test_loader = torch.utils.data.DataLoader(dataset=test_data, batch_size=batch_size, shuffle=False)
+
+    # instantiate nn
+    net = Net(input_size, hidden_size, num_classes, vocab_size, embedding_dim) #, torch.device(0))
+    net.cuda()    # You can comment out this line to disable GPU
+    criterion = nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
+
+    train_error, val_error, trains, validations, net, losses = train(net, num_epochs, train_loader, val_loader)
 
     print('--------------training complete-----------------')
 
