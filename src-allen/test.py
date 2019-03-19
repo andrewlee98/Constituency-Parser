@@ -1,74 +1,43 @@
-import pickle
-import dynet
-import os
 import numpy as np
 from utils import *
+import torch
+import pickle
+import torch.nn.functional as F
+import math
+from torch.utils.data import Dataset, DataLoader
+from torch import nn
+from torch.optim import Adam
+from torch.autograd import Variable
+from datetime import datetime
+from matplotlib import pyplot as plt
+import os
+
+# neural network class
+class Net(nn.Module):
+    def __init__(self, input_size, hidden_size, num_classes, vocab_size, embedding_dim, device=None):
+        super(Net, self).__init__()# Inherited from the parent class nn.Module
+
+        # handle gpu
+        self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+        self.to(self.device)
+
+        # layers
+        self.embeddings = nn.Embedding(vocab_size, embedding_dim)
+        self.fc1 = nn.Linear(input_size * embedding_dim, hidden_size)  # 1st Full-Connected Layer: 27 (input data) -> 500 (hidden node)
+        self.relu = nn.ReLU()  # Non-Linear ReLU Layer: max(0,x)
+        self.fc2 = nn.Linear(hidden_size, num_classes) # 2nd Full-Connected Layer: 500 (hidden node) -> 89 (output class)
+
+    def forward(self, x):  # Forward pass: stacking each layer together
+        x = x.to(self.device)
+        x = x.cuda()
+        embeds = self.embeddings(x).view(x.shape[0],-1)
+        out = self.fc1(embeds)
+        out = self.relu(out)
+        out = self.fc2(out)
+        return out
 
 
-if __name__ == '__main__':
-    (vocab, net_properties) = pickle.load(open('../data/mini/vocab_net.data', 'rb'))
-    network = Network(vocab, net_properties)
-    network.load('../data/mini/net.model')
 
-    writer = open('../data/mini/predictions.data', 'w')
-    feature_list = pickle.load(open( "../data/mini/features/test.data", "rb" ))
-
-    correct = 0
-    shiftstars, tps, fps, fns, shifts, tpss, fpss, fnss = 0, 0, 0, 0, 0, 0, 0, 0
-    for feature_set in feature_list:
-        pred = network.decode(feature_set[:-1])
-        writer.write("ground truth: " + feature_set[-1] + ", prediction: " + pred + "\n\n")
-
-        # count shift stars
-        if pred == "shift star":
-            if feature_set[-1] == "shift star":
-                shiftstars += 1
-                tpss += 1
-            else:
-                fpss += 1
-        if feature_set[-1] == "shift star" and pred != "shift star":
-            fnss += 1
-            shiftstars += 1
-
-        # count shifts
-        if pred == "shift":
-            if feature_set[-1] == "shift":
-                shifts += 1
-                tps += 1
-            else:
-                fps += 1
-        if feature_set[-1] == "shift" and pred != "shift":
-            fns += 1
-            shifts += 1
-
-        # total accuracy
-        if pred == feature_set[-1]:
-            correct += 1
-
-
-    print("accuracy: " + str(float(correct)/len(feature_list)))
-
-#     print("----------------------------------------")
-
-#     precision_ss = tpss / (tpss + fpss)
-#     recall_ss = tpss / (tpss + fnss)
-#     print("star precision: " + str(precision_ss))
-#     print("star recall: " + str(recall_ss))
-#     print("total stars: " + str(shiftstars))
-#     print("star F1: " + str( 2*(precision_ss * recall_ss) / (precision_ss + recall_ss) ))
-
-#     print("----------------------------------------")
-
-#     precision_s = tps / (tps + fps)
-#     recall_s = tps / (tps + fns)
-#     print("shift precision: " + str(precision_s))
-#     print("shift recall: " + str(recall_s))
-#     print("total shifts: " + str(shifts))
-#     print("shift F1: " + str( 2*(precision_s * recall_s) / (precision_s + recall_s) ))
-
-    writer.close()
-    
-    
 def remove_star(s):
     s = s.split()
     s = list(filter(lambda x: '*' not in x, s))
@@ -80,7 +49,7 @@ def action(b, s, p):
     if p.split()[0] == 'shift':
         if len(p.split()) > 1 and p.split()[1] == 'star':
             s.append(Node('*'))
-            
+
         # normal shift
         try: s.append(b.pop(0))
         except: error = 'pop on empty buffer'
@@ -103,13 +72,13 @@ def action(b, s, p):
 
 
 if __name__ == '__main__':
+    vocab = pickle.load(open('vocab.data', 'rb'))
     # load the network
-    (vocab, net_properties) = pickle.load(open('../data/mini/vocab_net.data', 'rb'))
-    network = Network(vocab, net_properties)
-    network.load('../data/mini/net.model')
+    net = torch.load('net.pkl')
+    net.eval()
 
     # open treebank for testing
-    treepath = "../treebank/treebank_3/parsed/mrg/wsj/00"
+    treepath = "../treebank/treebank_3/parsed/mrg/wsj/23"
 
     # open file and save as one large string
     text = ""
@@ -143,7 +112,7 @@ if __name__ == '__main__':
 
     # testing
 
-    with open('../data/mini/tree_pred.txt', 'w') as outfile, open('../data/mini/evalb.txt', 'w') as evalb:
+    with open('../data/src-allen/tree_pred.txt', 'w') as outfile, open('../data/src-allen/evalb.txt', 'w') as evalb:
         for s, t in zip(sentences, tree_list):
             s = [clean(x) for x in s.split()]
             
@@ -167,8 +136,11 @@ if __name__ == '__main__':
                     printed_from_error = True
                     break
                     
-
-                pred = network.decode(rearrange([0] + f)[:-1])
+                print(f)
+                word_ids = [vocab.word2id(word_feat) for word_feat in f[12:-1]]
+                tag_ids = [vocab.feat_tag2id(tag_feat) for tag_feat in f[0:12]]
+                f = word_ids + tag_ids
+                pred = vocab.tagid2tag_str(net(torch.LongTensor(rearrange([0] + f)[:-1])))
                 # outfile.write(str(f) + ' ' +  pred + '\n')
 
                 # cast back to Node and complete action

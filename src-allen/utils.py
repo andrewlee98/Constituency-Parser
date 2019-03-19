@@ -290,8 +290,7 @@ def parse_tree(tree_str):
 
 
 class Vocab:
-    def __init__(self, data_path):
-        feature_list = pickle.load(open(data_path, "rb" ))
+    def __init__(self, feature_list):
         word_count, actions, labels = defaultdict(int), set(), set()
 
         for feats in feature_list:

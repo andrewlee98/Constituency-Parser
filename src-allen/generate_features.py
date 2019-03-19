@@ -5,16 +5,17 @@ import time
 
 def actions_to_features():
     t0 = time.time()
-    datapath = "../data/mini/actions/"
-    outpath = "../data/mini/features/"
-    
+    datapath = "../data/allen/actions/"
+    outpath = "../data/allen/features/"
+
     train_list = []
     test_list = []
 
     for file in os.listdir(datapath):
         print(file)
         if file.startswith('.'): continue
-        # open file and save as one large string
+        # if file != '00_actions.data': continue
+        curr_file = file[0:2]
         data_list = pickle.load(open(datapath + file, 'rb'))
 
          # list of lists of features
@@ -24,16 +25,14 @@ def actions_to_features():
         for d in data_list:
             features  = [remove_trailing(d.label)] + extract_features(d)
             final_list.append(rearrange(features))
-#             final_list_read.append(features)
+
+        with open(outpath + curr_file + '_features.data', "wb") as f: pickle.dump(final_list, f)
 
 
-#         if file[:2] == test: test_list.extend(final_list)
-        train_list.extend(final_list)
-    
-    train_val_cut = int(9/10 * len(train_list))
-    with open(outpath + "train.data", "wb") as f: pickle.dump(train_list[:train_val_cut], f)
-    with open(outpath + "test.data", "wb") as f: pickle.dump(train_list[:train_val_cut], f)
-    with open(outpath + "validation.data", "wb") as f: pickle.dump(train_list[train_val_cut:], f)
+    # train_val_cut = int(8/10 * len(train_list))
+    # val_test_cut =  int(9/10 * len(train_list))
+    # with open(outpath + "test.data", "wb") as f: pickle.dump(train_list[train_val_cut:val_test_cut], f)
+    # with open(outpath + "validation.data", "wb") as f: pickle.dump(train_list[val_test_cut:], f)
     # with open(outpath + "validation.data")
 
 

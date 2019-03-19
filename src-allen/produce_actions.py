@@ -152,13 +152,13 @@ def generate_actions(t, s):
 def treebank_to_actions():
     t0 = time.time()
     treepath = "../treebank/treebank_3/parsed/mrg/wsj/"
-    outpath = "../data/mini/actions/"
+    outpath = "../data/allen/actions/"
 
     # open file and save as one large string
     for folder in os.listdir(treepath):
         if folder.startswith('.'): continue
         print(folder)
-        if folder != "00": continue # only do for 1 folder
+        # if folder not in ('00'): continue # only do for 1 folder
 
         text = "" # keep one giant text string per folder
         for filename in os.listdir(treepath + folder):
