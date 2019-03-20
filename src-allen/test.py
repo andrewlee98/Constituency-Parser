@@ -116,7 +116,7 @@ if __name__ == '__main__':
                 word_ids = [vocab.word2id(word_feat) for word_feat in f[12:-1]]
                 tag_ids = [vocab.feat_tag2id(tag_feat) for tag_feat in f[0:12]]
                 f = word_ids + tag_ids
-                pred = vocab.tagid2tag_str(net(torch.LongTensor(rearrange([0] + f)[:-1])))
+                pred = vocab.tagid2tag_str(net(torch.LongTensor(rearrange([0] + f)[:-1]).unsqueeze(0)))
                 # outfile.write(str(f) + ' ' +  pred + '\n')
 
                 # cast back to Node and complete action
