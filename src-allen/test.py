@@ -11,31 +11,7 @@ from torch.autograd import Variable
 from datetime import datetime
 from matplotlib import pyplot as plt
 import os
-
-# neural network class
-class Net(nn.Module):
-    def __init__(self, input_size, hidden_size, num_classes, vocab_size, embedding_dim, device=None):
-        super(Net, self).__init__()# Inherited from the parent class nn.Module
-
-        # handle gpu
-        self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-        self.to(self.device)
-
-        # layers
-        self.embeddings = nn.Embedding(vocab_size, embedding_dim)
-        self.fc1 = nn.Linear(input_size * embedding_dim, hidden_size)  # 1st Full-Connected Layer: 27 (input data) -> 500 (hidden node)
-        self.relu = nn.ReLU()  # Non-Linear ReLU Layer: max(0,x)
-        self.fc2 = nn.Linear(hidden_size, num_classes) # 2nd Full-Connected Layer: 500 (hidden node) -> 89 (output class)
-
-    def forward(self, x):  # Forward pass: stacking each layer together
-        x = x.to(self.device)
-        x = x.cuda()
-        embeds = self.embeddings(x).view(x.shape[0],-1)
-        out = self.fc1(embeds)
-        out = self.relu(out)
-        out = self.fc2(out)
-        return out
-
+from low_memory_net import *
 
 
 def remove_star(s):
@@ -115,7 +91,7 @@ if __name__ == '__main__':
     with open('../data/src-allen/tree_pred.txt', 'w') as outfile, open('../data/src-allen/evalb.txt', 'w') as evalb:
         for s, t in zip(sentences, tree_list):
             s = [clean(x) for x in s.split()]
-            
+
             #debug
 #             print(' '.join(s) + '\n') # print sentence
             outfile.write(' '.join(s) + '\n\n')
@@ -126,16 +102,16 @@ if __name__ == '__main__':
             infinite_loop_count = 0 # terminate after 100 moves
             printed_from_error = False
             while buff or len(stack) > 1: # end when buff consumed & stack has tree
-                
-                
+
+
                 # cast to string and predict
                 stack, buff = list(map(tree_to_str, stack)), list(map(tree_to_str, buff))
                 try: f = extract_features(datum(stack, buff, None))
-                except: 
+                except:
 #                     print('feature extraction error')
                     printed_from_error = True
                     break
-                    
+
                 print(f)
                 word_ids = [vocab.word2id(word_feat) for word_feat in f[12:-1]]
                 tag_ids = [vocab.feat_tag2id(tag_feat) for tag_feat in f[0:12]]
@@ -157,9 +133,9 @@ if __name__ == '__main__':
                     break
 #                 print(pred + '\n' + stack_to_str(stack) + '\n')
                 outfile.write(pred + '\n' + stack_to_str(stack) + '\n\n')
-                
+
                 infinite_loop_count += 1
-                if infinite_loop_count >= 150: 
+                if infinite_loop_count >= 150:
 #                     print('infinite loop error')
 #                     print(stack_to_str(stack) + '\n')
                     outfile.write('infinite loop error' + '\n')
@@ -167,15 +143,12 @@ if __name__ == '__main__':
                     evalb.write(stack_to_str(stack) + '\n\n')
                     printed_from_error = True
                     break
-                
+
 #             if not printed_from_error: print(stack_to_str(stack) + '\n')
-            if not printed_from_error: 
+            if not printed_from_error:
                 outfile.write(stack_to_str(stack) + '\n\n')
                 evalb.write(stack_to_str(stack) + '\n\n')
 #             print('GROUND TRUTH:\n' + tree_to_str(t) + '\n')
 #             print('-------------------end of sentence-----------------\n')
             outfile.write('GROUND TRUTH:\n' + tree_to_str(t) + '\n\n')
             outfile.write('-------------------end of sentence-----------------\n\n')
-
-
-
