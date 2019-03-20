@@ -1,4 +1,4 @@
-import numpy as np #hello!
+import numpy as np
 import torch
 import pickle
 from utils import *
@@ -70,6 +70,18 @@ class Net(nn.Module):
         out = self.fc2(out)
         return out
 
+def create_vocab(datapath):
+    val_data, test_data, train_data = [], [], []
+    for file in os.listdir(datapath):
+        if file[0] == '.': continue
+        elif file[0:2] in {'22'}: val_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb'))) # use folder 22 as validation set
+        elif file[0:2] in {'23'}: test_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb'))) # use folder 23 for test
+        else: train_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb'))) # training data
+
+    vocab = Vocab(train_data + val_data + test_data)
+    return Vocab
+
+
 def train(net, num_epochs, train_loader, val_loader):
     losses, validations, trains = [], [], []
     for epoch in range(num_epochs):
@@ -115,52 +127,61 @@ if __name__ == '__main__':
     input_size = 27        # 27 features
     hidden_size = 200      # The number of nodes at the hidden layer
     num_classes = 89       # The number of output classes.
-    num_epochs = 5
+    num_epochs = 1
     batch_size = 100
     learning_rate = 0.00001
     vocab_size = 100000    # keep track of some word's embeddings
     embedding_dim = 100   # word embedding size
 
 
-    # load data into dataset objects
-    train_data = []
-    val_data = []
-    test_data = []
+    # load data into dataset objects (for loading )
+    val_data, test_data = [], []
     for file in os.listdir('../data/allen/features/'):
-        if file[0:2] in {'22'}: val_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb')))
-        if file[0:2] in {'23'}: test_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb')))
-        elif file[0:2] in {'01','02','03'}: #,'04','05'}: #,'06','07','08','09','10'}:
-            train_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb')))
-    print('Training feature vectors: ', len(train_data))
+        if file[0:2] in {'22'}: val_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb'))) # use folder 22 as validation set
+        elif file[0:2] in {'23'}: test_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb'))) # use folder 23 for test
 
-    # create datasets
-    vocab = Vocab(train_data + val_data + test_data)
-    train_data = CPDataset(train_data, vocab)
+    # create train/val datasets and vocab
+    print('Loading DataSets...')
+    vocab = pickle.load(open('vocab.data', 'rb'))
     val_data = CPDataset(val_data, vocab)
     test_data = CPDataset(test_data, vocab)
 
     # convert to dataloaders
-    train_loader = torch.utils.data.DataLoader(dataset=train_data, batch_size=batch_size, shuffle=True)
+    print('Creating DataLoaders...')
     val_loader = torch.utils.data.DataLoader(dataset=val_data, batch_size=batch_size, shuffle=False)
     test_loader = torch.utils.data.DataLoader(dataset=test_data, batch_size=batch_size, shuffle=False)
 
     # instantiate nn
+    print('Instantiating NN...')
     net = Net(input_size, hidden_size, num_classes, vocab_size, embedding_dim) #, torch.device(0))
     net.cuda()    # You can comment out this line to disable GPU
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
 
-    train_error, val_error, trains, validations, net, losses = train(net, num_epochs, train_loader, val_loader)
+    # run the training method
+    trains, validations, losses = [], [] ,[]
+    print('reached training')
+    for file in os.listdir('../data/allen/features/'):
+        if file[0:2] not in {'22','23'} and file[0] != '.':
+            print('Training on folder:', file[0:2])
+            train_list = pickle.load(open('../data/allen/features/' + file, 'rb'))
+            train_data = CPDataset(train_list, vocab)
+            train_loader = torch.utils.data.DataLoader(dataset=train_data, batch_size=batch_size, shuffle=True)
+            train_error, val_error, new_trains, new_validations, net, new_losses = train(net, num_epochs, train_loader, val_loader)
+
+            # append training accuracies/losses for graphs
+            trains += new_trains
+            validations += new_validations
+            losses += new_losses
 
     print('--------------training complete-----------------')
 
-    print('Test Accuracy: %f' % (test(net, test_loader)))
     print('Train Accuracy: %f' % (test(net, train_loader)))
+    print('Test Accuracy: %f' % (test(net, test_loader)))
 
     # save the net
     torch.save(net, 'net.pkl')
-    print(datetime.now() - startTime)
-
+    print('Training time:', datetime.now() - startTime)
 
     # plot stuff
     plt.title("Loss over time")
@@ -168,8 +189,6 @@ if __name__ == '__main__':
     plt.ylabel("Loss")
     plt.plot(*zip(*losses))
     plt.savefig('loss.png')
-
-
 
     plt.figure()
     plt.title("Training/Validation Accuracy")
