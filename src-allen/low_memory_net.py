@@ -1,3 +1,4 @@
+
 import numpy as np
 import torch
 import pickle
@@ -70,17 +71,6 @@ class Net(nn.Module):
         out = self.fc2(out)
         return out
 
-def create_vocab(datapath):
-    val_data, test_data, train_data = [], [], []
-    for file in os.listdir(datapath):
-        if file[0] == '.': continue
-        elif file[0:2] in {'22'}: val_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb'))) # use folder 22 as validation set
-        elif file[0:2] in {'23'}: test_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb'))) # use folder 23 for test
-        else: train_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb'))) # training data
-
-    vocab = Vocab(train_data + val_data + test_data)
-    return Vocab
-
 
 def train(net, num_epochs, train_loader, val_loader):
     losses, validations, trains = [], [], []
@@ -101,9 +91,9 @@ def train(net, num_epochs, train_loader, val_loader):
                 losses.append((epoch, loss.data.item())) # plot loss over time
 
         # test validation accuracy at the end of every epoch
-        val_error = test(net, val_loader)
+        val_error = test(net, val_loader, vocab)
         validations.append((epoch, val_error))
-        train_error = test(net, train_loader)
+        train_error = test(net, train_loader, vocab)
         trains.append((epoch, train_error))
         print('Train error: ', train_error)
         print('Validation error: ', val_error)
@@ -112,7 +102,7 @@ def train(net, num_epochs, train_loader, val_loader):
     return train_error, val_error, trains, validations, net, losses
 
 
-def test(net, data_loader):
+def test(net, data_loader, vocab):
     total,correct = 0, 0
     for fvs, labels in data_loader:
         fvs = Variable(fvs.cuda())
@@ -120,6 +110,7 @@ def test(net, data_loader):
         _, predicted = torch.max(outputs.data, 1)  # Choose the best class from the output: The class with the best score
         total += labels.size(0)                    # Increment the total count
         correct += (predicted.cuda() == labels.cuda()).sum()     # Increment the correct count
+        for pred, lab in zip(predicted, labels): print(vocab.tagid2tag_str(pred), vocab.tagid2tag_str(lab))
     return (float(correct) / float(total))
 
 
@@ -176,8 +167,9 @@ if __name__ == '__main__':
 
     print('--------------training complete-----------------')
 
-    print('Train Accuracy: %f' % (test(net, train_loader)))
-    print('Test Accuracy: %f' % (test(net, test_loader)))
+    # test
+    print('Train Accuracy: %f' % (test(net, train_loader, vocab)))
+    print('Test Accuracy: %f' % (test(net, test_loader, vocab)))
 
     # save the net
     torch.save(net, 'net.pkl')
