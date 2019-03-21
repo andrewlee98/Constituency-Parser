@@ -14,4 +14,4 @@ for file in os.listdir('../data/allen/features/'):
     else: train_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb'))) # training data
 
 vocab = Vocab(train_data + val_data + test_data)
-pickle.dump(vocab, open('vocab.data', 'wb'))
+pickle.dump(vocab, open('net_data/vocab.data', 'wb'))

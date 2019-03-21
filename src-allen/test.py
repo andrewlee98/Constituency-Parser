@@ -49,7 +49,7 @@ def action(b, s, p):
 
 
 if __name__ == '__main__':
-    vocab = pickle.load(open('vocab.data', 'rb'))
+    vocab = pickle.load(open('net_data/vocab.data', 'rb'))
     # load the network
     net = torch.load('net.pkl')
     net.eval()

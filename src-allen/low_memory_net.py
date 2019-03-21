@@ -1,4 +1,3 @@
-
 import numpy as np
 import torch
 import pickle
@@ -23,7 +22,6 @@ class CPDataset(Dataset):
         # load training, validation data, and vocab
         self.data = np.array(fv_list)
         self.vocab = vocab
-        pickle.dump(vocab, open('vocab.data', 'wb')) # save vocab
         self.length = self.data.shape[0]
 
         # turn feature vectors from words/labels into numbers
@@ -133,7 +131,7 @@ if __name__ == '__main__':
 
     # create train/val datasets and vocab
     print('Loading DataSets...')
-    vocab = pickle.load(open('vocab.data', 'rb'))
+    vocab = pickle.load(open('net_data/vocab.data', 'rb'))
     val_data = CPDataset(val_data, vocab)
     test_data = CPDataset(test_data, vocab)
 
@@ -180,7 +178,7 @@ if __name__ == '__main__':
     plt.xlabel("Minibatch")
     plt.ylabel("Loss")
     plt.plot(*zip(*losses))
-    plt.savefig('loss.png')
+    plt.savefig('debug/loss.png')
 
     plt.figure()
     plt.title("Training/Validation Accuracy")
@@ -191,4 +189,4 @@ if __name__ == '__main__':
 
     x2, y2 = zip(*trains)
     plt.plot(x2, y2, 'g')
-    plt.savefig('accuracy.png')
+    plt.savefig('debug/accuracy.png')
