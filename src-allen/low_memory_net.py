@@ -30,6 +30,7 @@ class CPDataset(Dataset):
         # create x_train, y_train, x_valid, y_valid
         self.X = [fv[:-1] for fv in self.data]
         self.y = [fv[-1] for fv in self.data]
+        print(self.y[0:10])
 
         # cast to torch tensors
         self.X, self.y= map(torch.tensor, (self.X, self.y))
@@ -37,7 +38,10 @@ class CPDataset(Dataset):
     def fv_to_ids(self, fv):
         word_ids = [self.vocab.word2id(word_feat) for word_feat in fv[12:-1]]
         tag_ids = [self.vocab.feat_tag2id(tag_feat) for tag_feat in fv[0:12]]
-        return word_ids + tag_ids
+        label_id = self.vocab.tag2id(fv[-1])
+        num_fv = word_ids + tag_ids + [label_id]
+        # print(num_fv)
+        return num_fv
 
     def __getitem__(self, index):
         return self.X[index], self.y[index]
@@ -107,15 +111,14 @@ def test(net, data_loader, vocab):
         outputs = net(fvs.cuda())
         _, predicted = torch.max(outputs.data, 1)  # Choose the best class from the output: The class with the best score
         total += labels.size(0)                    # Increment the total count
-        correct += (predicted.cuda() == labels.cuda()).sum()     # Increment the correct count
-        for pred, lab in zip(predicted, labels): print(vocab.tagid2tag_str(pred), vocab.tagid2tag_str(lab))
+        correct += (predicted.cuda() == labels.cuda()).sum()     # Increment the correct counts
     return (float(correct) / float(total))
 
 
 if __name__ == '__main__':
-    input_size = 27        # 27 features
+    input_size = 28       # 27 features
     hidden_size = 200      # The number of nodes at the hidden layer
-    num_classes = 89       # The number of output classes.
+    num_classes = 101       # The number of output classes.
     num_epochs = 1
     batch_size = 100
     learning_rate = 0.00001
@@ -135,6 +138,8 @@ if __name__ == '__main__':
     val_data = CPDataset(val_data, vocab)
     test_data = CPDataset(test_data, vocab)
 
+
+
     # convert to dataloaders
     print('Creating DataLoaders...')
     val_loader = torch.utils.data.DataLoader(dataset=val_data, batch_size=batch_size, shuffle=False)
@@ -149,7 +154,7 @@ if __name__ == '__main__':
 
     # run the training method
     trains, validations, losses = [], [] ,[]
-    print('reached training')
+    print('Training:')
     for file in os.listdir('../data/allen/features/'):
         if file[0:2] not in {'22','23'} and file[0] != '.':
             print('Training on folder:', file[0:2])

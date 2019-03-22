@@ -1,3 +1,4 @@
+
 import numpy as np #hello!
 import pickle
 from utils import *
@@ -15,3 +16,8 @@ for file in os.listdir('../data/allen/features/'):
 
 vocab = Vocab(train_data + val_data + test_data)
 pickle.dump(vocab, open('net_data/vocab.data', 'wb'))
+
+with open('debug/vocab.txt', 'w') as f:
+    # f.write("words: " + str(list(map(lambda x: (x, vocab.word2id(x)), vocab.words))) + "\n\n")
+    f.write("actions: " + str(vocab.output_act_dict) + "\n\n")
+    f.write("labels: " + str(vocab.feat_acts_dict) + "\n\n")

@@ -1,3 +1,4 @@
+
 from utils import *
 import os
 import pickle
@@ -56,7 +57,3 @@ def actions_to_features():
 if __name__ == "__main__":
     actions_to_features()
     vocab = Vocab("../data/mini/features/validation.data")
-    with open('vocab.txt', 'w') as f:
-        f.write("words: " + str(vocab.words) + "\n\n")
-        f.write("actions: " + str(vocab.output_acts) + "\n\n")
-        f.write("labels: " + str(vocab.feat_acts) + "\n\n")
