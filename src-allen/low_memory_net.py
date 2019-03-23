@@ -30,7 +30,6 @@ class CPDataset(Dataset):
         # create x_train, y_train, x_valid, y_valid
         self.X = [fv[:-1] for fv in self.data]
         self.y = [fv[-1] for fv in self.data]
-        print(self.y[0:10])
 
         # cast to torch tensors
         self.X, self.y= map(torch.tensor, (self.X, self.y))
@@ -104,14 +103,28 @@ def train(net, num_epochs, train_loader, val_loader):
     return train_error, val_error, trains, validations, net, losses
 
 
-def test(net, data_loader, vocab):
+def test(net, data_loader, vocab, output_file = None):
     total,correct = 0, 0
+
+    write_count = 0
+    if output_file: out_stream = open(output_file, 'w')
+
     for fvs, labels in data_loader:
         fvs = Variable(fvs.cuda())
         outputs = net(fvs.cuda())
         _, predicted = torch.max(outputs.data, 1)  # Choose the best class from the output: The class with the best score
         total += labels.size(0)                    # Increment the total count
         correct += (predicted.cuda() == labels.cuda()).sum()     # Increment the correct counts
+
+        if output_file and write_count < 10:
+            labels = list(map(lambda x: x.item(), labels))
+            preds = list(map(lambda x: x.item(), predicted))
+            labels_word = list(map(lambda x: vocab.tagid2tag_str(x), labels))
+            preds_word = list(map(lambda x: vocab.tagid2tag_str(x), preds))
+
+            out_stream.write(str(list(map(str, zip(labels, labels_word, preds, preds_word)))))
+        write_count += 1
+
     return (float(correct) / float(total))
 
 
@@ -121,7 +134,7 @@ if __name__ == '__main__':
     num_classes = 101       # The number of output classes.
     num_epochs = 1
     batch_size = 100
-    learning_rate = 0.00001
+    learning_rate = 0.0001
     vocab_size = 100000    # keep track of some word's embeddings
     embedding_dim = 100   # word embedding size
 
@@ -172,10 +185,10 @@ if __name__ == '__main__':
 
     # test
     print('Train Accuracy: %f' % (test(net, train_loader, vocab)))
-    print('Test Accuracy: %f' % (test(net, test_loader, vocab)))
+    print('Test Accuracy: %f' % (test(net, test_loader, vocab, 'debug/preds')))
 
     # save the net
-    torch.save(net, 'net.pkl')
+    torch.save(net, 'net_data/net.pkl')
     print('Training time:', datetime.now() - startTime)
 
     # plot stuff

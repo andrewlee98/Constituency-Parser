@@ -114,11 +114,17 @@ if __name__ == '__main__':
                     break
 
                 print(f)
-                word_ids = [vocab.word2id(word_feat) for word_feat in f[12:-1]]
+                word_ids = [vocab.word2id(word_feat) for word_feat in f[12:]]
                 tag_ids = [vocab.feat_tag2id(tag_feat) for tag_feat in f[0:12]]
                 f = word_ids + tag_ids
                 prediction_vector = net(torch.LongTensor(rearrange([0] + f)[:-1]).unsqueeze(0))
-                pred_idx = max(enumerate(list(prediction_vector)), key = lambda x: x[1])[0]
+                print(prediction_vector)
+                # pred_idx = max(enumerate(list(prediction_vector)), key = lambda x: x[1])[0]
+                # print(list(prediction_vector))
+                _, pred_idx = torch.max(prediction_vector.data, 1)
+                print(pred_idx)
+
+
                 pred = vocab.tagid2tag_str(pred_idx)
                 print(pred)
                 # outfile.write(str(f) + ' ' +  pred + '\n')
