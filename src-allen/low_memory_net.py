@@ -116,7 +116,7 @@ def test(net, data_loader, vocab, output_file = None):
         total += labels.size(0)                    # Increment the total count
         correct += (predicted.cuda() == labels.cuda()).sum()     # Increment the correct counts
 
-        if output_file and write_count < 10:
+        if output_file and write_count < 30:
             labels = list(map(lambda x: x.item(), labels))
             preds = list(map(lambda x: x.item(), predicted))
             labels_word = list(map(lambda x: vocab.tagid2tag_str(x), labels))
@@ -132,7 +132,7 @@ if __name__ == '__main__':
     input_size = 28       # 27 features
     hidden_size = 200      # The number of nodes at the hidden layer
     num_classes = 101       # The number of output classes.
-    num_epochs = 1
+    num_epochs = 5
     batch_size = 100
     learning_rate = 0.0001
     vocab_size = 100000    # keep track of some word's embeddings
@@ -185,7 +185,7 @@ if __name__ == '__main__':
 
     # test
     print('Train Accuracy: %f' % (test(net, train_loader, vocab)))
-    print('Test Accuracy: %f' % (test(net, test_loader, vocab, 'debug/preds')))
+    print('Test Accuracy: %f' % (test(net, test_loader, vocab, 'debug/preds.txt')))
 
     # save the net
     torch.save(net, 'net_data/net.pkl')
