@@ -158,9 +158,10 @@ if __name__ == '__main__':
             if not printed_from_error:
                 outfile.write(stack_to_str(stack) + '\n\n')
                 evalb.write(stack_to_str(stack) + '\n\n')
-                comp_trees.write(stack_to_str(stack) + '\n\n')
+                comp_trees.write('Prediction:\n' + stack_to_str(stack) + '\n\n')
 #             print('GROUND TRUTH:\n' + tree_to_str(t) + '\n')
 #             print('-------------------end of sentence-----------------\n')
             outfile.write('GROUND TRUTH:\n' + tree_to_str(t) + '\n\n')
             comp_trees.write('GROUND TRUTH:\n' + tree_to_str(t) + '\n\n')
             outfile.write('-------------------end of sentence-----------------\n\n')
+            comp_trees.write('-------------------end of sentence-----------------\n\n')
