@@ -1,178 +1,5 @@
 import random
 import numpy as np
-
-class Network:
-    def __init__(self, vocab, properties):
-        self.properties = properties
-        self.vocab = vocab
-
-        # first initialize a computation graph container (or model)
-        self.model = dynet.Model()
-
-        # assign the algorithm for backpropagation updates
-        self.updater = dynet.AdamTrainer(self.model)
-        self.updater.learning_rate = 0.005
-
-        # create embeddings for words and tag features.
-        self.word_embedding = self.model.add_lookup_parameters((vocab.num_words(), properties.word_embed_dim))
-        self.tag_embedding = self.model.add_lookup_parameters((vocab.num_tag_feats(), properties.pos_embed_dim))
-
-        # assign transfer function
-        self.transfer = dynet.rectify  # can be dynet.logistic or dynet.tanh as well
-
-        # define the input dimension for the embedding layer
-        # here we assume to see two words after and before and current word (meaning 5 word embeddings)
-        # and to see the last two predicted tags (meaning two tag embeddings)
-        self.input_dim = 15 * properties.word_embed_dim + 12 * properties.pos_embed_dim
-
-        # define the hidden layer
-        self.hidden_layer = self.model.add_parameters((properties.hidden_dim, self.input_dim))
-
-        # define the hidden layer bias term and initialize it as constant 0.2
-        self.hidden_layer_bias = self.model.add_parameters(properties.hidden_dim, init=dynet.ConstInitializer(0.2))
-
-        # define the output weight
-        self.output_layer = self.model.add_parameters((vocab.num_tags(), properties.hidden_dim))
-
-        # define the bias vector and initialize it as zero
-        self.output_bias = self.model.add_parameters(vocab.num_tags(), init=dynet.ConstInitializer(0))
-
-    def build_graph(self, features):
-        # extract word and tags ids
-        word_ids = [self.vocab.word2id(word_feat) for word_feat in features[12:-1]]
-        tag_ids = [self.vocab.feat_tag2id(tag_feat) for tag_feat in features[0:12]]
-
-        # extract word embeddings and tag embeddings from features
-        word_embeds = [self.word_embedding[wid] for wid in word_ids]
-        tag_embeds = [self.tag_embedding[tid] for tid in tag_ids]
-
-        # concatenating all features (recall that '+' for lists is equivalent to appending two lists)
-        embedding_layer = dynet.concatenate(word_embeds + tag_embeds)
-
-        # calculating the hidden layer
-        # .expr() converts a parameter to a matrix expression in dynet (its a dynet-specific syntax)
-        hidden = self.transfer(self.hidden_layer.expr() * embedding_layer + self.hidden_layer_bias.expr())
-
-        # calculating the output layer
-        output = self.output_layer.expr() * hidden + self.output_bias.expr()
-
-        # return the output as a dynet vector (expression)
-        return output
-    
-    
-    
-    
-    def calc_acc(self, s):
-        tot, corr = 0, 0
-        for v in s:
-            if self.decode(v[:-1]) == v[-1]: corr += 1
-            tot += 1
-        return corr/tot
-    
-    def train(self, train_file, epochs, validation_file):
-        plot_on = True
-        # matplotlib config
-        loss_values = []
-        validation_data = pickle.load(open(validation_file, 'rb'))
-        validation_accs, train_accs = [], []
-        
-
-        
-        train_data_original = pickle.load(open(train_file, "rb" ))
-        
-        for i in range(epochs):
-            print('started epoch', (i+1))
-            losses = []
-            train_data = pickle.load(open(train_file, "rb" ))
-
-            # shuffle the training data.
-            random.shuffle(train_data)
-
-            step = 0
-            for fl in train_data:
-                features, label = fl[:-1], fl[-1]
-                gold_label = self.vocab.tag2id(label)
-                result = self.build_graph(features)
-
-                # getting loss with respect to negative log softmax function and the gold label
-                loss = dynet.pickneglogsoftmax(result, gold_label)
-
-                # appending to the minibatch losses
-                losses.append(loss)
-                step += 1
-
-                if len(losses) >= self.properties.minibatch_size:
-                    # now we have enough loss values to get loss for minibatch
-                    minibatch_loss = dynet.esum(losses) / len(losses)
-
-                    # calling dynet to run forward computation for all minibatch items
-                    minibatch_loss.forward()
-
-                    # getting float value of the loss for current minibatch
-                    minibatch_loss_value = minibatch_loss.value()
-
-                    # printing info and plotting
-                    loss_values.append((len(loss_values), minibatch_loss_value))
-                    if len(loss_values)%10==0:
-                        
-
-
-                            
-                        progress = round(100 * float(step) / len(train_data), 2)
-                        print('current minibatch loss', minibatch_loss_value, 'progress:', progress, '%')
-
-                    # calling dynet to run backpropagation
-                    minibatch_loss.backward()
-
-                    # calling dynet to change parameter values with respect to current backpropagation
-                    self.updater.update()
-
-                    # empty the loss vector
-                    losses = []
-
-                    # refresh the memory of dynet
-                    dynet.renew_cg()
-                    
-                    # get validation set accuracy
-                    if len(loss_values)%100==0: 
-                        validation_accs.append((len(loss_values), self.calc_acc(validation_data)))
-                        train_accs.append((len(loss_values), self.calc_acc(train_data_original)))
-
-            # there are still some minibatch items in the memory but they are smaller than the minibatch size
-            # so we ask dynet to forget them
-            dynet.renew_cg()
-            
-        # return these values just for plotting
-        return loss_values, validation_accs, train_accs
-
-    def decode(self, features):
-
-        # running forward
-        output = self.build_graph(features)
-
-        # getting list value of the output
-        scores = output.npvalue()
-
-        # getting best tag
-        best_tag_id = np.argmax(scores)
-
-        # assigning the best tag
-        pred = self.vocab.tagid2tag_str(best_tag_id)
-
-        # refresh dynet memory (computation graph)
-        dynet.renew_cg()
-
-        return pred
-
-    def load(self, filename):
-        self.model.populate(filename)
-
-    def save(self, filename):
-        self.model.save(filename)
-        
-        
-###############################
-
 from collections import defaultdict
 import pickle
 
@@ -301,7 +128,7 @@ class Vocab:
                 labels.add(t)
         actions = list(actions)
         labels = list(labels)
-        words = [word for word in word_count.keys() if word_count[word] > 1]
+        words = [word for word in word_count.keys() if word_count[word] > 50]
 
         self.words = ['<UNK>'] + words
         self.word_dict = {word: i for i, word in enumerate(self.words)}
@@ -333,17 +160,8 @@ class Vocab:
     def num_tags(self):
         return len(self.output_acts)
 
-###########################################
 
 
-class NetProperties:
-    def __init__(self, word_embed_dim, pos_embed_dim, hidden_dim, minibatch_size):
-        self.word_embed_dim = word_embed_dim
-        self.pos_embed_dim = pos_embed_dim
-        self.hidden_dim = hidden_dim
-        self.minibatch_size = minibatch_size
-        
-        
 #####################################
 
 def rearrange(f):
