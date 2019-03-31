@@ -106,18 +106,20 @@ if __name__ == '__main__':
 
                 # cast to string and predict
                 stack, buff = list(map(tree_to_str, stack)), list(map(tree_to_str, buff))
-                print(stack)
-                f = extract_features(datum(stack, buff, None))
-#                 except:
-# #                     print('feature extraction error')
-#                     printed_from_error = True
-#                     print('nani')
-#                     break
+                # print(stack)
+                try: f = extract_features(datum(stack, buff, None))
+                except:
+#                     print('feature extraction error')
+                    printed_from_error = True
+                    print('failure: ', stack)
+                    print(5/0)
+                    break
 
                 # print(f)
                 f = rearrange([0] + f)[:-1]
-                word_ids = [vocab.word2id(word_feat) for word_feat in f[12:]]
+                word_ids = [vocab.word2id(clean(word_feat)) for word_feat in f[12:]]
                 tag_ids = [vocab.feat_tag2id(tag_feat) for tag_feat in f[0:12]]
+                print(f[12:], word_ids)
                 f = word_ids + tag_ids
                 prediction_vector = net(torch.LongTensor(f).unsqueeze(0))
                 # print(prediction_vector)

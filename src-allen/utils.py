@@ -191,20 +191,21 @@ def rearrange(f):
 
 #########################################
 
-def replace_if_num(s):
+def replace_if_num_star(s):
     def is_num(s1):
         return s1.replace(',','').replace('.','',1).isdigit()
+    if '*' in s: return '*'
     return "<num>" if is_num(s) else s
 
 def get_left(t):
     if not t.l.r and not t.l.l: # if l child is unary
-        return [t.label, replace_if_num(unindex(t.l.label))]
+        return [t.label, replace_if_num_star(unindex(t.l.label))]
     else:
         return get_left(t.l)
 
 def get_right(t):
     if not t.l.r and not t.l.l: # if l child is unary
-        return [t.label, replace_if_num(unindex(t.l.label))]
+        return [t.label, replace_if_num_star(unindex(t.l.label))]
     else:
         if t.r: # handle strange case of "(NP (NNP Moscow) ))"
             return get_right(t.r)
@@ -219,12 +220,12 @@ def unindex(a):
 def extract_features(d):
     features = []
     stack = d.stack[::-1]
-    buff = d.buff
+    buff = list(map(replace_if_num_star, d.buff))
 
     # top four buffer words
     for i in range(0,4):
         if len(buff) > i:
-            features.append(replace_if_num(unindex(buff[i])))
+            features.append(replace_if_num_star(unindex(buff[i])))
         else:
             features.append("<null>")
 
@@ -237,7 +238,7 @@ def extract_features(d):
                 features.append("<label>")
             else: # word
                 features.append("<word>")
-                features.append(replace_if_num(unindex(tree.label)))
+                features.append(replace_if_num_star(tree.label))
 
 
             if tree.l and tree.r: # binary rule
@@ -252,5 +253,7 @@ def extract_features(d):
     return features
 
 def remove_trailing(label):
-    if label[-1] == label[0] and label[0] == '-': return label[1:-1]
-    return ((label.split("-")[0]).split('_')[0]).split('=')[0]
+    if label[-1] == label[0] and label[0] == '-': return label[1:-1] # cases like -NONE- and -PRP-
+    new_label = (label.split("-")[0]).split('_')[0].split('=')[0]
+    if label[-5:] == 'inner': new_label += '_inner'
+    return new_label

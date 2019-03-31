@@ -131,7 +131,7 @@ def test(net, data_loader, vocab, output_file = None):
 if __name__ == '__main__':
     input_size = 28       # 27 features
     hidden_size = 200      # The number of nodes at the hidden layer
-    num_classes = 101       # The number of output classes.
+    num_classes = 126      # The number of output classes.
     num_epochs = 5
     batch_size = 100
     learning_rate = 0.0001

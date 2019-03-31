@@ -6,8 +6,10 @@ import time
 
 def actions_to_features():
     t0 = time.time()
-    datapath = "../data/allen/actions/"
-    outpath = "../data/allen/features/"
+    datapath = "data/actions/"
+    outpath = "data/features/"
+    examplepath = 'debug/sample_features'
+    example_count= 0
 
     train_list = []
     test_list = []
@@ -24,8 +26,15 @@ def actions_to_features():
 
         final_list = []
         for d in data_list:
-            features  = [remove_trailing(d.label)] + extract_features(d)
+            # keep the action dictionary consistent with the constituent label dictionary
+            label =  d.label if 'shift' in d.label else d.label.split()[0] + ' '+ remove_trailing(d.label.split()[1])
+            features  = [label] + extract_features(d)
             final_list.append(rearrange(features))
+
+            # save some examples to debug file
+            if example_count < 1000:
+                open(examplepath, 'w').write(str(final_list))
+                example_count += 1
 
         with open(outpath + curr_file + '_features.data', "wb") as f: pickle.dump(final_list, f)
 
@@ -56,4 +65,3 @@ def actions_to_features():
 
 if __name__ == "__main__":
     actions_to_features()
-    vocab = Vocab("../data/mini/features/validation.data")
