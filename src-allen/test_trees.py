@@ -25,7 +25,9 @@ def action(b, s, p):
     if p.split()[0] == 'shift':
         if len(p.split()) > 1 and p.split()[1] == 'star':
             print('shifted star')
-            s.append(Node('*'))
+            new_node = Node('NONE')
+            new_node.l = Node('*')
+            s.append(new_node)
 
         # normal shift
         try: s.append(b.pop(0))
@@ -112,14 +114,13 @@ if __name__ == '__main__':
 #                     print('feature extraction error')
                     printed_from_error = True
                     print('failure: ', stack)
-                    print(5/0)
                     break
 
                 # print(f)
                 f = rearrange([0] + f)[:-1]
                 word_ids = [vocab.word2id(clean(word_feat)) for word_feat in f[12:]]
                 tag_ids = [vocab.feat_tag2id(tag_feat) for tag_feat in f[0:12]]
-                print(f[12:], word_ids)
+                # print(f[12:], word_ids)
                 f = word_ids + tag_ids
                 prediction_vector = net(torch.LongTensor(f).unsqueeze(0))
                 # print(prediction_vector)
