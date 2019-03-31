@@ -1,4 +1,3 @@
-
 import numpy as np
 from utils import *
 import torch
@@ -25,6 +24,7 @@ def action(b, s, p):
 
     if p.split()[0] == 'shift':
         if len(p.split()) > 1 and p.split()[1] == 'star':
+            print('shifted star')
             s.append(Node('*'))
 
         # normal shift
@@ -93,8 +93,7 @@ if __name__ == '__main__':
         for s, t in zip(sentences, tree_list):
             s = [clean(x) for x in s.split()]
 
-            #debug
-#             print(' '.join(s) + '\n') # print sentence
+
             outfile.write(' '.join(s) + '\n\n')
 
             # construct tree
@@ -107,11 +106,13 @@ if __name__ == '__main__':
 
                 # cast to string and predict
                 stack, buff = list(map(tree_to_str, stack)), list(map(tree_to_str, buff))
-                try: f = extract_features(datum(stack, buff, None))
-                except:
-#                     print('feature extraction error')
-                    printed_from_error = True
-                    break
+                print(stack)
+                f = extract_features(datum(stack, buff, None))
+#                 except:
+# #                     print('feature extraction error')
+#                     printed_from_error = True
+#                     print('nani')
+#                     break
 
                 # print(f)
                 f = rearrange([0] + f)[:-1]

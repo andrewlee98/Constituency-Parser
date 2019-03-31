@@ -110,7 +110,8 @@ def generate_actions(t, s):
                     final_action = "shift"
                     if "*" in buff[-1].label:
                         final_action += " star"
-                    stack.append(buff.pop())
+                        stack.append('*')
+                    else: stack.append(buff.pop())
         elif len(stack) == 1: # just try unary reduce
             child = stack[len(stack) - 1]
             new_node = Node(unary_label_dfs(t, child))
