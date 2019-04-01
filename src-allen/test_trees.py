@@ -143,6 +143,7 @@ if __name__ == '__main__':
                     outfile.write('Error: ' + error + '\n')
                     outfile.write(stack_to_str(stack) + '\n\n')
                     evalb.write(stack_to_str(stack) + '\n\n')
+                    print(error)
                     printed_from_error = True
                     break
 #                 print(pred + '\n' + stack_to_str(stack) + '\n')
