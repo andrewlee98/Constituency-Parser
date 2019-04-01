@@ -1,3 +1,4 @@
+
 import numpy as np
 from utils import *
 import torch
@@ -24,8 +25,7 @@ def action(b, s, p):
 
     if p.split()[0] == 'shift':
         if len(p.split()) > 1 and p.split()[1] == 'star':
-            print('shifted star')
-            new_node = Node('NONE')
+            new_node = Node('NONE') # assume that * will always have NONE as parent
             new_node.l = Node('*')
             s.append(new_node)
 
@@ -111,61 +111,42 @@ if __name__ == '__main__':
                 # print(stack)
                 try: f = extract_features(datum(stack, buff, None))
                 except:
-#                     print('feature extraction error')
                     printed_from_error = True
-                    print('failure: ', stack)
+                    print('feature extraction error on: ', stack)
                     break
 
-                # print(f)
                 f = rearrange([0] + f)[:-1]
                 word_ids = [vocab.word2id(clean(word_feat)) for word_feat in f[12:]]
                 tag_ids = [vocab.feat_tag2id(tag_feat) for tag_feat in f[0:12]]
-                # print(f[12:], word_ids)
                 f = word_ids + tag_ids
                 prediction_vector = net(torch.LongTensor(f).unsqueeze(0))
-                # print(prediction_vector)
-                # pred_idx = max(enumerate(list(prediction_vector)), key = lambda x: x[1])[0]
-                # print(list(prediction_vector))
-                _, pred_idx = torch.max(prediction_vector.data, 1)
-                # print(pred_idx)
 
-                pred = vocab.tagid2tag_str(pred_idx)
-                # print(pred)
-                # outfile.write(str(f) + ' ' +  pred + '\n')
 
                 # cast back to Node and complete action
                 stack, buff = list(map(Node, stack)), list(map(Node, buff))
-                buff, stack, error = action(buff, stack, pred)
-                if error:
-                    # outfile.write(error + '\n')
-#                     print('Error: ' + error)
-#                     print(stack_to_str(stack) + '\n')
-                    outfile.write('Error: ' + error + '\n')
-                    outfile.write(stack_to_str(stack) + '\n\n')
-                    evalb.write(stack_to_str(stack) + '\n\n')
-                    print(error)
-                    printed_from_error = True
-                    break
-#                 print(pred + '\n' + stack_to_str(stack) + '\n')
+
+                # iterate through actions and try until a legal one occurs
+                for pred_idx in torch.topk(prediction_vector.data, 10)[1][0]:
+                    pred = vocab.tagid2tag_str(pred_idx)
+                    buff, stack, error = action(buff, stack, pred) # leaves buff and stack unchanged if error
+                    if not error: break
+                if error: print('Cycled through and still has errors')
+
                 outfile.write(pred + '\n' + stack_to_str(stack) + '\n\n')
 
                 infinite_loop_count += 1
                 if infinite_loop_count >= 150:
-#                     print('infinite loop error')
+                    print('infinite loop error')
 #                     print(stack_to_str(stack) + '\n')
                     outfile.write('infinite loop error' + '\n')
                     outfile.write(stack_to_str(stack) + '\n\n')
-                    evalb.write(stack_to_str(stack) + '\n\n')
                     printed_from_error = True
                     break
 
-#             if not printed_from_error: print(stack_to_str(stack) + '\n')
             if not printed_from_error:
                 outfile.write(stack_to_str(stack) + '\n\n')
                 evalb.write(stack_to_str(stack) + '\n\n')
-                comp_trees.write('Prediction:\n' + stack_to_str(stack) + '\n\n')
-#             print('GROUND TRUTH:\n' + tree_to_str(t) + '\n')
-#             print('-------------------end of sentence-----------------\n')
+                comp_trees.write('Prediction:\n' + stack_to_str([stack[0]])[1:-1] + '\n\n')
             outfile.write('GROUND TRUTH:\n' + tree_to_str(t) + '\n\n')
             comp_trees.write('GROUND TRUTH:\n' + tree_to_str(t) + '\n\n')
             outfile.write('-------------------end of sentence-----------------\n\n')
