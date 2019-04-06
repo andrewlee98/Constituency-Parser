@@ -52,6 +52,14 @@ def action(b, s, p):
 
 if __name__ == '__main__':
     vocab = pickle.load(open('net_data/vocab.data', 'rb'))
+
+    inner_set = set()
+    for action, i in vocab.output_act_dict.items():
+        if '_inner' in action: 
+            inner_set.add(i)
+            print(action)
+    print(inner_set)
+
     # load the network
     net = torch.load('net_data/net.pkl')
     net.eval()

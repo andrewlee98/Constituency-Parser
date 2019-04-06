@@ -130,7 +130,7 @@ if __name__ == '__main__':
     input_size = 28       # 27 features
     hidden_size = 250      # The number of nodes at the hidden layer
     num_classes = 126      # The number of output classes.
-    num_epochs = 10
+    num_epochs = 5
     batch_size = 100
     learning_rate = 0.0001
     vocab_size = 100000    # keep track of some word's embeddings
@@ -198,7 +198,7 @@ if __name__ == '__main__':
     plt.xlabel("Minibatch")
     plt.ylabel("Loss")
     plt.plot(*zip(*losses))
-    for xc in folder_loss: plt.axvline(x=xc, color='k', linestyle='--')
+    for xc in folder_loss: plt.axvline(x=xc, color='y', linestyle='--')
     plt.savefig('debug/loss.png')
 
     plt.figure()
@@ -210,5 +210,5 @@ if __name__ == '__main__':
 
     x2, y2 = zip(*trains)
     plt.plot(x2, y2, 'g')
-    for xc in folder_acc: plt.axvline(x=xc, color='k', linestyle='--')
+    for xc in folder_acc: plt.axvline(x=xc, color='y', linestyle='--')
     plt.savefig('debug/accuracy.png')
