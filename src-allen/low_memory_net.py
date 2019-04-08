@@ -1,3 +1,4 @@
+
 import numpy as np
 import torch
 import pickle
@@ -130,7 +131,7 @@ if __name__ == '__main__':
     input_size = 28       # 27 features
     hidden_size = 250      # The number of nodes at the hidden layer
     num_classes = 126      # The number of output classes.
-    num_epochs = 5
+    num_epochs = 10
     batch_size = 100
     learning_rate = 0.0001
     vocab_size = 100000    # keep track of some word's embeddings
@@ -139,17 +140,15 @@ if __name__ == '__main__':
 
     # load data into dataset objects (for loading )
     val_data, test_data = [], []
-    for file in os.listdir('../data/allen/features/'):
-        if file[0:2] in {'22'}: val_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb'))) # use folder 22 as validation set
-        elif file[0:2] in {'23'}: test_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb'))) # use folder 23 for test
+    for file in os.listdir('data/features/'):
+        if file[0:2] in {'22'}: val_data.extend(pickle.load(open('data/features/' + file, 'rb'))) # use folder 22 as validation set
+        elif file[0:2] in {'23'}: test_data.extend(pickle.load(open('data/features/' + file, 'rb'))) # use folder 23 for test
 
     # create train/val datasets and vocab
     print('Loading DataSets...')
     vocab = pickle.load(open('net_data/vocab.data', 'rb'))
     val_data = CPDataset(val_data, vocab)
     test_data = CPDataset(test_data, vocab)
-
-
 
     # convert to dataloaders
     print('Creating DataLoaders...')
@@ -166,10 +165,10 @@ if __name__ == '__main__':
     # run the training method
     trains, validations, losses, folder_loss, folder_acc = [], [] ,[], [], []
     print('Training:')
-    for file in os.listdir('../data/allen/features/'):
+    for file in os.listdir('data/features/'):
         if file[0:2] not in {'22','23','00','01'} and file[0] != '.':
             print('Training on folder:', file[0:2])
-            train_list = pickle.load(open('../data/allen/features/' + file, 'rb'))
+            train_list = pickle.load(open('data/features/' + file, 'rb'))
             train_data = CPDataset(train_list, vocab)
             train_loader = torch.utils.data.DataLoader(dataset=train_data, batch_size=batch_size, shuffle=True)
             train_error, val_error, new_trains, new_validations, net, new_losses = train(net, num_epochs, train_loader, val_loader)
