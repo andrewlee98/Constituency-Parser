@@ -56,4 +56,3 @@ def actions_to_features():
 
 if __name__ == "__main__":
     actions_to_features()
-    vocab = Vocab("../data/mini/features/validation.data")

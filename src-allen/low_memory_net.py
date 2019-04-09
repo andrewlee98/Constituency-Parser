@@ -1,3 +1,4 @@
+
 import numpy as np
 import torch
 import pickle
@@ -87,18 +88,16 @@ def train(net, num_epochs, train_loader, val_loader):
             optimizer.step()                    # Optimizer: update the weights of hidden nodes
 
             if (i+1) % 1000 == 0:  # Logging
-                print('Epoch [%d/%d], Step [%d/%d], Loss: %.4f'
+                print('    Epoch [%d/%d], Step [%d/%d], Loss: %.4f'
                          %(epoch+1, num_epochs, i+1, len(train_data)//batch_size, loss.data))
-                losses.append((epoch, loss.data.item())) # plot loss over time
+                losses.append(loss.data.item()) # plot loss over time
 
         # test validation accuracy at the end of every epoch
         val_error = test(net, val_loader, vocab)
-        validations.append((epoch, val_error))
+        validations.append(val_error)
         train_error = test(net, train_loader, vocab)
-        trains.append((epoch, train_error))
-        print('Train error: ', train_error)
-        print('Validation error: ', val_error)
-        print('--------epoch end-----------')
+        trains.append(train_error)
+        print('    Train error: ', train_error, '    Validation error: ', val_error)
 
     return train_error, val_error, trains, validations, net, losses
 
@@ -130,8 +129,8 @@ def test(net, data_loader, vocab, output_file = None):
 
 if __name__ == '__main__':
     input_size = 28       # 27 features
-    hidden_size = 200      # The number of nodes at the hidden layer
-    num_classes = 101       # The number of output classes.
+    hidden_size = 250      # The number of nodes at the hidden layer
+    num_classes = 126      # The number of output classes.
     num_epochs = 5
     batch_size = 100
     learning_rate = 0.0001
@@ -151,8 +150,6 @@ if __name__ == '__main__':
     val_data = CPDataset(val_data, vocab)
     test_data = CPDataset(test_data, vocab)
 
-
-
     # convert to dataloaders
     print('Creating DataLoaders...')
     val_loader = torch.utils.data.DataLoader(dataset=val_data, batch_size=batch_size, shuffle=False)
@@ -166,10 +163,10 @@ if __name__ == '__main__':
     optimizer = torch.optim.Adam(net.parameters(), lr=learning_rate)
 
     # run the training method
-    trains, validations, losses = [], [] ,[]
+    trains, validations, losses, folder_loss, folder_acc = [], [] ,[], [], []
     print('Training:')
     for file in os.listdir('../data/allen/features/'):
-        if file[0:2] not in {'22','23'} and file[0] != '.':
+        if file[0:2] not in {'22','23','00','01'} and file[0] != '.':
             print('Training on folder:', file[0:2])
             train_list = pickle.load(open('../data/allen/features/' + file, 'rb'))
             train_data = CPDataset(train_list, vocab)
@@ -180,6 +177,8 @@ if __name__ == '__main__':
             trains += new_trains
             validations += new_validations
             losses += new_losses
+            folder_loss.append(len(new_losses) if len(folder_loss) == 0 else len(new_losses) + folder_loss[-1])
+            folder_acc.append(len(new_validations) if len(folder_acc) == 0 else len(new_validations) + folder_acc[-1])
 
     print('--------------training complete-----------------')
 
@@ -191,11 +190,14 @@ if __name__ == '__main__':
     torch.save(net, 'net_data/net.pkl')
     print('Training time:', datetime.now() - startTime)
 
+    losses, trains, validations = enumerate(losses), enumerate(trains), enumerate(validations)
+
     # plot stuff
     plt.title("Loss over time")
     plt.xlabel("Minibatch")
     plt.ylabel("Loss")
     plt.plot(*zip(*losses))
+    for xc in folder_loss: plt.axvline(x=xc, color='y', linestyle='--')
     plt.savefig('debug/loss.png')
 
     plt.figure()
@@ -207,4 +209,5 @@ if __name__ == '__main__':
 
     x2, y2 = zip(*trains)
     plt.plot(x2, y2, 'g')
+    for xc in folder_acc: plt.axvline(x=xc, color='y', linestyle='--')
     plt.savefig('debug/accuracy.png')

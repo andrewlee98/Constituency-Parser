@@ -32,6 +32,7 @@ def action(b, s, p):
         except: error = 'pop on empty buffer'
 
     elif p.split()[0] == 'unary':
+        if p == 'unary ': p = 'unary ???'
         n = Node(clean(p.split()[1]))
         try:
             n.l = s.pop()
@@ -90,7 +91,11 @@ if __name__ == '__main__':
     # testing
 
     with open('final_outputs/tree_pred.txt', 'w') as outfile, open('final_outputs/evalb.txt', 'w') as evalb, open('final_outputs/comp_trees.txt','w') as comp_trees:
+        count = 0
         for s, t in zip(sentences, tree_list):
+            print(count)
+            count += 1
+
             s = [clean(x) for x in s.split()]
 
 
@@ -106,13 +111,12 @@ if __name__ == '__main__':
 
                 # cast to string and predict
                 stack, buff = list(map(tree_to_str, stack)), list(map(tree_to_str, buff))
-                print(stack)
-                f = extract_features(datum(stack, buff, None))
-#                 except:
-# #                     print('feature extraction error')
-#                     printed_from_error = True
-#                     print('nani')
-#                     break
+                try: f = extract_features(datum(stack, buff, None))
+                except:
+#                     print('feature extraction error')
+                    printed_from_error = True
+                    print('nani')
+                    break
 
                 # print(f)
                 f = rearrange([0] + f)[:-1]

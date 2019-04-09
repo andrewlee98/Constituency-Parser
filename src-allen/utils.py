@@ -252,5 +252,10 @@ def extract_features(d):
     return features
 
 def remove_trailing(label):
-    if label[-1] == label[0] and label[0] == '-': return label[1:-1]
-    return ((label.split("-")[0]).split('_')[0]).split('=')[0]
+    inner = False
+    if label[-1] == label[0] and label[0] == '-': return label[1:-1] #-NONE- case
+    if '_inner' in label: inner = True
+    s = ((label.split("-")[0]).split('_')[0]).split('=')[0]
+    if not s: print(label)
+    if inner: s += '_inner'
+    return s
