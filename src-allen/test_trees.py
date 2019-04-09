@@ -135,7 +135,7 @@ if __name__ == '__main__':
                 # outfile.write(str(f) + ' ' +  pred + '\n')
 
                 # cast back to Node and complete action
-                stack, buff = list(map(Node, stack)), list(map(Node, buff))
+                stack, buff = list(map(parse_tree, stack)), list(map(parse_tree, buff))
                 buff, stack, error = action(buff, stack, pred)
                 if error:
                     # outfile.write(error + '\n')
