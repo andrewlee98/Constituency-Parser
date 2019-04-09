@@ -70,22 +70,15 @@ def generate_actions(t, s):
         # write the stack and buffer before action is performed
         st = list(map(lambda x: tree_to_str(x), stack))
         bu = list(map(lambda x: tree_to_str(x), buff[::-1]))
-        final_label = ""
+        lab = ''
         final_action = ""
-        templab = 'NOTHING'
         # try to reduce top two items
         if len(stack) > 1: # reduce
             left = stack[len(stack) - 2]
             right = stack[len(stack) - 1]
             new_node = Node(binary_label_dfs(t, left, right))
             if new_node.label: # found a matching reduce
-                final_label = new_node.label
-
-                #TEMP
-                lab = final_label.replace('=', '-').split('-')
-                templab = lab
-                if lab[0]: final_label = lab[0]
-                else: final_label = lab[1]
+                lab = new_node.label
 
                 final_action = "binary"
                 new_node.r = stack.pop()
@@ -95,13 +88,8 @@ def generate_actions(t, s):
                 child = stack[len(stack) - 1]
                 new_node = Node(unary_label_dfs(t, child))
                 if new_node.label: # found a unary reduce
-                    final_label = new_node.label
+                    lab = new_node.label
 
-                    #TEMP
-                    lab = final_label.replace('=', '-').split('-')
-                    templab = lab
-                    if lab[0]: final_label = lab[0]
-                    else: final_label = lab[1]
 
                     final_action = "unary"
                     new_node.l = stack.pop()
@@ -110,19 +98,13 @@ def generate_actions(t, s):
                     final_action = "shift"
                     if "*" in buff[-1].label:
                         final_action += " star"
-                        stack.append('*')
-                    else: stack.append(buff.pop())
+                        # stack.append(Node('*'))
+                    stack.append(buff.pop())
         elif len(stack) == 1: # just try unary reduce
             child = stack[len(stack) - 1]
             new_node = Node(unary_label_dfs(t, child))
             if new_node.label: # found a unary reduce
-                final_label = new_node.label
-
-                #TEMP
-                lab = final_label.replace('=', '-').split('-')
-                templab = lab
-                if lab[0]: final_label = lab[0] # for cases like -PRT-
-                else: final_label = lab[1]
+                lab = new_node.label
 
                 final_action = "unary"
                 new_node.l = stack.pop()
@@ -138,15 +120,9 @@ def generate_actions(t, s):
                         final_action += " star"
             stack.append(buff.pop())
 
-        # append all changes
-        act = final_action
-        lab = final_label
-        if lab == '' and templab != 'NOTHING': print(templab)
+        if final_action == 'shift' or final_action == 'shift star': ret.append(datum(st, bu, final_action))
+        else: ret.append(datum(st, bu, final_action + " " + lab))
 
-        if act == 'shift' or act == 'shift star': ret.append(datum(st, bu, act))
-        else: ret.append(datum(st, bu, act + " " + lab))
-
-        # if act + " " + lab == 'unary ': print('what the fuck')
     return ret
 
 
@@ -158,8 +134,6 @@ def treebank_to_actions():
     # open file and save as one large string
     for folder in os.listdir(treepath):
         if folder.startswith('.'): continue
-        print(folder)
-        # if folder not in ('00'): continue # only do for 1 folder
 
         text = "" # keep one giant text string per folder
         for filename in os.listdir(treepath + folder):
