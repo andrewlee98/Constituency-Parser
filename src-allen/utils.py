@@ -224,14 +224,14 @@ def extract_features(d):
     # top four buffer words
     for i in range(0,4):
         if len(buff) > i:
-            features.append(replace_if_num(unindex(buff[i])))
+            features.append(replace_if_num(unindex(buff[i].label)))
         else:
             features.append("<null>")
 
         # stack items
     for i in range(0,4):
         if len(stack) > i:
-            tree = parse_tree(stack[i])
+            tree = stack[i]
             if tree.l or tree.r: # label
                 features.append(remove_trailing(tree.label))
                 features.append("<label>")
