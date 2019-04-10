@@ -6,8 +6,12 @@ import time
 
 def actions_to_features():
     t0 = time.time()
-    datapath = "../data/allen/actions/"
-    outpath = "../data/allen/features/"
+    # datapath = "../data/allen/actions/"
+    # outpath = "../data/allen/features/"
+    datapath = "data/actions/"
+    outpath = "data/features/"
+    examplepath = 'debug/sample_features.txt'
+    example_count= 0
 
     train_list = []
     test_list = []
@@ -26,6 +30,12 @@ def actions_to_features():
         for d in data_list:
             features  = [remove_trailing(d.label)] + extract_features(d)
             final_list.append(rearrange(features))
+
+        # save some examples to debug file
+        if example_count == 0:
+            with open(examplepath, 'w') as f:
+                for l in final_list: f.write(str(l) + '\n')
+            example_count += 1
 
         with open(outpath + curr_file + '_features.data', "wb") as f: pickle.dump(final_list, f)
 

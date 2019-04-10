@@ -128,6 +128,7 @@ def test(net, data_loader, vocab, output_file = None):
 
 
 if __name__ == '__main__':
+    datapath = 'data/features/'
     input_size = 28       # 27 features
     hidden_size = 250      # The number of nodes at the hidden layer
     num_classes = 126      # The number of output classes.
@@ -140,9 +141,9 @@ if __name__ == '__main__':
 
     # load data into dataset objects (for loading )
     val_data, test_data = [], []
-    for file in os.listdir('../data/allen/features/'):
-        if file[0:2] in {'22'}: val_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb'))) # use folder 22 as validation set
-        elif file[0:2] in {'23'}: test_data.extend(pickle.load(open('../data/allen/features/' + file, 'rb'))) # use folder 23 for test
+    for file in os.listdir(datapath):
+        if file[0:2] in {'22'}: val_data.extend(pickle.load(open(datapath + file, 'rb'))) # use folder 22 as validation set
+        elif file[0:2] in {'23'}: test_data.extend(pickle.load(open(datapath + file, 'rb'))) # use folder 23 for test
 
     # create train/val datasets and vocab
     print('Loading DataSets...')
@@ -165,10 +166,10 @@ if __name__ == '__main__':
     # run the training method
     trains, validations, losses, folder_loss, folder_acc = [], [] ,[], [], []
     print('Training:')
-    for file in os.listdir('../data/allen/features/'):
+    for file in os.listdir(datapath):
         if file[0:2] not in {'22','23','00','01'} and file[0] != '.':
             print('Training on folder:', file[0:2])
-            train_list = pickle.load(open('../data/allen/features/' + file, 'rb'))
+            train_list = pickle.load(open(datapath + file, 'rb'))
             train_data = CPDataset(train_list, vocab)
             train_loader = torch.utils.data.DataLoader(dataset=train_data, batch_size=batch_size, shuffle=True)
             train_error, val_error, new_trains, new_validations, net, new_losses = train(net, num_epochs, train_loader, val_loader)

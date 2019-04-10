@@ -129,7 +129,8 @@ def generate_actions(t, s):
 def treebank_to_actions():
     t0 = time.time()
     treepath = "../treebank/treebank_3/parsed/mrg/wsj/"
-    outpath = "../data/allen/actions/"
+    # outpath = "../data/allen/actions/"
+    outpath = "data/actions/"
 
     # open file and save as one large string
     for folder in os.listdir(treepath):
