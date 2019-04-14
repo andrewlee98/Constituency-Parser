@@ -194,6 +194,7 @@ def rearrange(f):
 def replace_if_num(s):
     def is_num(s1):
         return s1.replace(',','').replace('.','',1).isdigit()
+    if '*' in s: return '*'
     return "<num>" if is_num(s) else s
 
 def get_left(t):
