@@ -23,6 +23,7 @@ def action(b, s, p):
     error = None
 
     if p.split()[0] == 'shift':
+        if s and (not s[-1].l) and (not s[-1].r): return b, s, 'shift on word at end of stack'
         if len(p.split()) > 1 and p.split()[1] == 'star':
             s.append(Node('*'))
 
@@ -39,6 +40,8 @@ def action(b, s, p):
         except: error = 'unary on empty stack'
 
     else: # p.split()[0] == 'binary':
+        if s and (not s[-1].l) and (not s[-1].r): return b, s, 'binary on word at end of stack'
+        # if len(s) >= 2 and (not s[-2].l) and (not s[-2].r): return b, s, 'binary on word at end of stack'
         n = Node(clean(p.split()[1]))
         try:
             n.r, n.l = s.pop(), s.pop()
@@ -92,7 +95,7 @@ if __name__ == '__main__':
     with open('final_outputs/tree_pred.txt', 'w') as outfile, open('final_outputs/evalb.txt', 'w') as evalb, open('final_outputs/comp_trees.txt','w') as comp_trees:
         count = 0
         for s, t in zip(sentences, tree_list):
-            print(count, '...', end = '')
+            if count % 100 == 0: print(count, ' ', end = '')
             count += 1
 
             s = [clean(x) for x in s.split()]
@@ -109,10 +112,10 @@ if __name__ == '__main__':
 
 
                 try: f = extract_features(datum(stack, buff, None))
-                except:
+                except Exception as e:
+                    print(e, stack_to_str(stack))
 #                     print('feature extraction error')
                     printed_from_error = True
-                    print('nani')
                     break
 
                 # print(f)
@@ -121,27 +124,13 @@ if __name__ == '__main__':
                 tag_ids = [vocab.feat_tag2id(tag_feat) for tag_feat in f[0:12]]
                 f = word_ids + tag_ids
                 prediction_vector = net(torch.LongTensor(f).unsqueeze(0))
-                # print(prediction_vector)
-                # pred_idx = max(enumerate(list(prediction_vector)), key = lambda x: x[1])[0]
-                # print(list(prediction_vector))
-                _, pred_idx = torch.max(prediction_vector.data, 1)
-                # print(pred_idx)
 
-                pred = vocab.tagid2tag_str(pred_idx)
-                # print(pred)
-                # outfile.write(str(f) + ' ' +  pred + '\n')
+                for pred_idx in torch.topk(prediction_vector.data, 10)[1][0]:
+                    pred = vocab.tagid2tag_str(pred_idx)
+                    buff, stack, error = action(buff, stack, pred) # leaves buff and stack unchanged if error
+                    if not error: break
+                if error: print('Cycled through and still has errors')
 
-                buff, stack, error = action(buff, stack, pred)
-                if error:
-                    # outfile.write(error + '\n')
-#                     print('Error: ' + error)
-#                     print(stack_to_str(stack) + '\n')
-                    outfile.write('Error: ' + error + '\n')
-                    outfile.write(stack_to_str(stack) + '\n\n')
-                    evalb.write(stack_to_str(stack) + '\n\n')
-                    printed_from_error = True
-                    break
-#                 print(pred + '\n' + stack_to_str(stack) + '\n')
                 outfile.write(pred + '\n' + stack_to_str(stack) + '\n\n')
 
                 infinite_loop_count += 1
