@@ -24,7 +24,6 @@ def action(b, s, p):
 
     if p.split()[0] == 'shift':
         if len(p.split()) > 1 and p.split()[1] == 'star':
-            print('shifted star')
             s.append(Node('*'))
 
         # normal shift
@@ -93,7 +92,7 @@ if __name__ == '__main__':
     with open('final_outputs/tree_pred.txt', 'w') as outfile, open('final_outputs/evalb.txt', 'w') as evalb, open('final_outputs/comp_trees.txt','w') as comp_trees:
         count = 0
         for s, t in zip(sentences, tree_list):
-            print(count)
+            print(count, '...', end = '')
             count += 1
 
             s = [clean(x) for x in s.split()]
@@ -109,8 +108,6 @@ if __name__ == '__main__':
             while buff or len(stack) > 1: # end when buff consumed & stack has tree
 
 
-                # cast to string and predict
-                stack, buff = list(map(tree_to_str, stack)), list(map(tree_to_str, buff))
                 try: f = extract_features(datum(stack, buff, None))
                 except:
 #                     print('feature extraction error')
@@ -134,8 +131,6 @@ if __name__ == '__main__':
                 # print(pred)
                 # outfile.write(str(f) + ' ' +  pred + '\n')
 
-                # cast back to Node and complete action
-                stack, buff = list(map(parse_tree, stack)), list(map(parse_tree, buff))
                 buff, stack, error = action(buff, stack, pred)
                 if error:
                     # outfile.write(error + '\n')
