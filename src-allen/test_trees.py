@@ -14,6 +14,7 @@ import os
 from low_memory_net import *
 
 
+
 def remove_star(s):
     s = s.split()
     s = list(filter(lambda x: '*' not in x, s))
@@ -41,7 +42,9 @@ def action(b, s, p):
 
     else: # p.split()[0] == 'binary':
         if s and (not s[-1].l) and (not s[-1].r): return b, s, 'binary on word at end of stack'
-        # if len(s) >= 2 and (not s[-2].l) and (not s[-2].r): return b, s, 'binary on word at end of stack'
+        # if len(s) >= 2 and (not s[-2].l) and (not s[-2].r):
+        #     print(s[-2].label)
+        #     return b, s, 'binary on word at end of stack'
         n = Node(clean(p.split()[1]))
         try:
             n.r, n.l = s.pop(), s.pop()
@@ -118,7 +121,7 @@ if __name__ == '__main__':
                     printed_from_error = True
                     break
 
-                # print(f)
+
                 f = rearrange([0] + f)[:-1]
                 word_ids = [vocab.word2id(word_feat) for word_feat in f[12:]]
                 tag_ids = [vocab.feat_tag2id(tag_feat) for tag_feat in f[0:12]]
@@ -137,6 +140,7 @@ if __name__ == '__main__':
                 if infinite_loop_count >= 150:
 #                     print('infinite loop error')
 #                     print(stack_to_str(stack) + '\n')
+                    print('infinite')
                     outfile.write('infinite loop error' + '\n')
                     outfile.write(stack_to_str(stack) + '\n\n')
                     evalb.write(stack_to_str(stack) + '\n\n')
