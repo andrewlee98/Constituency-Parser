@@ -5,20 +5,6 @@ import pickle
 from utils import *
 import sys
 
-debugbad = open('yoyo.txt', 'w')
-
-def deep_copy_stack(st):
-    ret = []
-    for t in st: ret.append(deep_copy_tree(t))
-    return ret
-
-def deep_copy_tree(root):
-    if not root: return None
-    new_root = Node(root.label)
-    new_root.l = deep_copy_tree(root.l)
-    new_root.r = deep_copy_tree(root.r)
-    return new_root
-
 # indexes words in sentence to prevent duplicates
 def idx_tree(root, i = 0, star = 0):
     if not root.l and not root.r:
@@ -140,7 +126,6 @@ def generate_actions(t, s):
 
         f = rearrange([remove_trailing(d.label)] + extract_features(d))
         ret.append(f)
-        debugbad.write(str(f) + '\n\n')
 
     return ret
 

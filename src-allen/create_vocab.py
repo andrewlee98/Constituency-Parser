@@ -8,7 +8,8 @@ from matplotlib import pyplot as plt
 import os
 
 val_data, test_data, train_data = [], [], []
-datapath = 'data/features/'
+datapath = 'data/af/'
+
 for file in os.listdir(datapath):
     if file[0] == '.': continue
     elif file[0:2] in {'22'}: val_data.extend(pickle.load(open(datapath + file, 'rb'))) # use folder 22 as validation set
