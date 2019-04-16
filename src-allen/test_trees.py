@@ -85,17 +85,14 @@ if __name__ == '__main__':
 
     # turn tree strings into tree_list
     tree_list = []
-    for t in tree_string_list:
-        tree_list.append((parse_tree(t[1:-1])))
+    for t in tree_string_list: tree_list.append((parse_tree(t[1:-1])))
 
     # use inorder traveral to generate sentences from trees
     sentences = []
-    for t in tree_list:
-        sentences.append(remove_star(inorder_sentence(t).lstrip()))
+    for t in tree_list: sentences.append(remove_star(inorder_sentence(t).lstrip()))
 
     # testing
-
-    with open('final_outputs/tree_pred.txt', 'w') as outfile, open('final_outputs/evalb.txt', 'w') as evalb, open('final_outputs/comp_trees.txt','w') as comp_trees:
+    with open('final_outputs/comp_trees.txt','w') as comp_trees:
         count = 0
         for s, t in zip(sentences, tree_list):
             if count % 100 == 0: print(count)
@@ -104,22 +101,14 @@ if __name__ == '__main__':
             s = [clean(x) for x in s.split()]
             max_depth_stack = [] # keeps track of how many consecutive unary's were done
 
-            outfile.write(' '.join(s) + '\n\n')
-
             # construct tree
             buff = list(map(Node, s))
             stack = []
             infinite_loop_count = 0 # terminate after 100 moves
-            printed_from_error = False
             while buff or len(stack) > 1: # end when buff consumed & stack has tree
 
-
                 try: f = extract_features(datum(stack, buff, None))
-                except Exception as e:
-                    print(e, stack_to_str(stack))
-#                     print('feature extraction error')
-                    printed_from_error = True
-                    break
+                except Exception as e: print('feature extraction error: ', e, stack_to_str(stack))
 
 
                 f = rearrange([0] + f)[:-1]
@@ -136,28 +125,7 @@ if __name__ == '__main__':
                 if error: print('Cycled through and still has errors')
                 max_depth_stack.append(pred)
 
-                outfile.write(pred + '\n' + stack_to_str(stack) + '\n\n')
-
                 infinite_loop_count += 1
-                if infinite_loop_count >= 300:
-#                     print('infinite loop error')
-#                     print(stack_to_str(stack) + '\n')
-                    print('infinite')
-                    outfile.write('infinite loop error' + '\n')
-                    outfile.write(stack_to_str(stack) + '\n\n')
-                    evalb.write(stack_to_str(stack) + '\n\n')
-                    print(stack_to_str(stack))
-                    printed_from_error = True
-                    break
+                if infinite_loop_count >= 300: print('infinite?')
 
-#             if not printed_from_error: print(stack_to_str(stack) + '\n')
-            if not printed_from_error:
-                outfile.write(stack_to_str(stack) + '\n\n')
-                evalb.write(stack_to_str(stack) + '\n\n')
-                comp_trees.write('Prediction:\n' + stack_to_str(stack) + '\n\n')
-#             print('GROUND TRUTH:\n' + tree_to_str(t) + '\n')
-#             print('-------------------end of sentence-----------------\n')
-            outfile.write('GROUND TRUTH:\n' + tree_to_str(t) + '\n\n')
-            comp_trees.write('GROUND TRUTH:\n' + tree_to_str(t) + '\n\n')
-            outfile.write('-------------------end of sentence-----------------\n\n')
-            comp_trees.write('-------------------end of sentence-----------------\n\n')
+            comp_trees.write('Prediction:\n' + stack_to_str(stack)[1:-1] + '\n\n' + 'GROUND TRUTH:\n' + tree_to_str(t) + '\n\n' + '-------------------end of sentence-----------------\n\n')
