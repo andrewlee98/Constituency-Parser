@@ -15,10 +15,35 @@ from low_memory_net import *
 
 
 
-def remove_star(s):
+class n_Node:
+    def __init__(self, label):
+        self.label = label
+        self.children = []
+
+
+def debinarize_tree(b_t):
+    n_t = n_Node(b_t.label)
+    if b_t.l: n_t.children.append(b_t.l)
+
+    if b_t.r:
+        right = b_t.r
+        while right.label[-5:] == 'inner':
+            n_t.children.append(right.l)
+            right = right.r
+        n_t.children.append(right)
+
+    n_t.children = [debinarize_tree(child) for child in n_t.children]
+
+    return n_t
+
+
+
+
+def remove_sentecce_star(s):
     s = s.split()
     s = list(filter(lambda x: '*' not in x, s))
     return ' '.join(s)
+
 
 def action(b, s, p):
     error = None
@@ -52,6 +77,8 @@ def action(b, s, p):
         except: error = 'binary on insufficient stack'
 
     return b, s, error
+
+
 
 
 if __name__ == '__main__':
@@ -89,7 +116,7 @@ if __name__ == '__main__':
 
     # use inorder traveral to generate sentences from trees
     sentences = []
-    for t in tree_list: sentences.append(remove_star(inorder_sentence(t).lstrip()))
+    for t in tree_list: sentences.append(remove_sentecce_star(inorder_sentence(t).lstrip()))
 
     # testing
     with open('final_outputs/comp_trees.txt','w') as comp_trees:
