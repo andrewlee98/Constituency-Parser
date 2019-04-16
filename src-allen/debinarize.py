@@ -26,7 +26,7 @@ def n_tree_to_str(root, s = ""):
     # base case
     if not root.children: s += " " + clean(root.label)
     elif root.label:
-        s += " (" + clean(root.label) + str([n_tree_to_str(c) for c in root.children]) + ")"
+        s += " (" + clean(root.label) + ' '.join([n_tree_to_str(c) for c in root.children]) + ")"
     return s
 
 t = "( (S     (NP-SBJ-1       (NP         (NP (DT The) (NN group) (POS 's) )        (NN president) )      (, ,)       (NP (NNP Peter) (NNP Chrisanthopoulos) )      (, ,) )    (VP (VBD was) (RB n't)       (PP-LOC-PRD (IN in)         (NP (PRP$ his) (NN office) ))      (NP-TMP (NNP Friday) (NN afternoon) )      (S-PRP         (NP-SBJ (-NONE- *-1) )        (VP (TO to)           (VP (VB comment) ))))    (. .) ))"

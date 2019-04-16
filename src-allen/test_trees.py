@@ -39,7 +39,7 @@ def debinarize_tree(b_t):
 
 
 
-def remove_sentecce_star(s):
+def remove_sentence_star(s):
     s = s.split()
     s = list(filter(lambda x: '*' not in x, s))
     return ' '.join(s)
@@ -116,7 +116,7 @@ if __name__ == '__main__':
 
     # use inorder traveral to generate sentences from trees
     sentences = []
-    for t in tree_list: sentences.append(remove_sentecce_star(inorder_sentence(t).lstrip()))
+    for t in tree_list: sentences.append(remove_sentence_star(inorder_sentence(t).lstrip()))
 
     # testing
     with open('final_outputs/comp_trees.txt','w') as comp_trees:
