@@ -51,7 +51,7 @@ if __name__ == '__main__':
     batch_size = 100
 
     test_data = []
-    for file in os.listdir('data/features/'):
+    for file in os.listdir('data/af/'):
         if file[0:2] in {'23'}: test_data.extend(pickle.load(open('data/features/' + file, 'rb'))) # use folder 23 for test
 
 

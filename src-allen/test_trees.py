@@ -98,11 +98,11 @@ if __name__ == '__main__':
     with open('final_outputs/tree_pred.txt', 'w') as outfile, open('final_outputs/evalb.txt', 'w') as evalb, open('final_outputs/comp_trees.txt','w') as comp_trees:
         count = 0
         for s, t in zip(sentences, tree_list):
-            if count % 100 == 0: print(count, ' ', end = '')
+            if count % 100 == 0: print(count)
             count += 1
 
             s = [clean(x) for x in s.split()]
-
+            max_depth_stack = [] # keeps track of how many consecutive unary's were done
 
             outfile.write(' '.join(s) + '\n\n')
 
@@ -130,20 +130,23 @@ if __name__ == '__main__':
 
                 for pred_idx in torch.topk(prediction_vector.data, 10)[1][0]:
                     pred = vocab.tagid2tag_str(pred_idx)
+                    if len(max_depth_stack) > 2 and max_depth_stack[-1].split()[0] == max_depth_stack[-2].split()[0] == pred.split()[0] == 'unary': continue
                     buff, stack, error = action(buff, stack, pred) # leaves buff and stack unchanged if error
                     if not error: break
                 if error: print('Cycled through and still has errors')
+                max_depth_stack.append(pred)
 
                 outfile.write(pred + '\n' + stack_to_str(stack) + '\n\n')
 
                 infinite_loop_count += 1
-                if infinite_loop_count >= 150:
+                if infinite_loop_count >= 300:
 #                     print('infinite loop error')
 #                     print(stack_to_str(stack) + '\n')
                     print('infinite')
                     outfile.write('infinite loop error' + '\n')
                     outfile.write(stack_to_str(stack) + '\n\n')
                     evalb.write(stack_to_str(stack) + '\n\n')
+                    print(stack_to_str(stack))
                     printed_from_error = True
                     break
 
