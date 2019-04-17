@@ -125,8 +125,9 @@ def generate_actions(t, s):
             f = rearrange([remove_trailing(d.label)] + extract_features(d))
         else: # unary or binary action
             d = datum(st, bu, final_action + " " + lab)
-            f = rearrange([d.label.split()[0] + remove_trailing(d.label.split()[1])] + extract_features(d))
+            f = rearrange([d.label.split()[0] + " " + remove_trailing(d.label.split()[1])] + extract_features(d))
 
+        if f[-1] == 'unary ': print(lab)
         ret.append(f)
 
     return ret
@@ -179,6 +180,7 @@ def treebank_to_actions():
                 output_list.extend(dat)
             pickle.dump(output_list, f)
         print(folder + "... ")
+        # break
 
     print("runtime: " + str(time.time() - t0))
 
