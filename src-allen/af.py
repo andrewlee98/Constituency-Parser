@@ -120,11 +120,13 @@ def generate_actions(t, s):
                         final_action += " star"
             stack.append(buff.pop())
 
-        d = None
-        if final_action == 'shift' or final_action == 'shift star': d = datum(st, bu, final_action)
-        else: d = datum(st, bu, final_action + " " + lab)
+        if final_action == 'shift' or final_action == 'shift star':
+            d = datum(st, bu, final_action)
+            f = rearrange([remove_trailing(d.label)] + extract_features(d))
+        else: # unary or binary action
+            d = datum(st, bu, final_action + " " + lab)
+            f = rearrange([d.label.split()[0] + remove_trailing(d.label.split()[1])] + extract_features(d))
 
-        f = rearrange([remove_trailing(d.label)] + extract_features(d))
         ret.append(f)
 
     return ret
@@ -138,7 +140,7 @@ def treebank_to_actions():
 
     # open file and save as one large string
     for folder in sorted(os.listdir(treepath)):
-        if folder.startswith('.'): continue
+        if folder.startswith('.') or folder[0:2] in {'00', '01', '24'}: continue
 
         text = "" # keep one giant text string per folder
         for filename in os.listdir(treepath + folder):
