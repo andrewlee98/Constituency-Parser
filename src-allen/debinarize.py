@@ -1,6 +1,5 @@
 from utils import *
 
-
 class n_Node:
     def __init__(self, label):
         self.label = label
@@ -13,7 +12,7 @@ def debinarize_tree(b_t):
 
     if b_t.r:
         right = b_t.r
-        while right.label[-5:] == 'inner':
+        while right.label[-5:] == 'inner' and right.label.split('_')[0] == n_t.label.split('_')[0]:
             n_t.children.append(right.l)
             right = right.r
         n_t.children.append(right)
@@ -30,9 +29,13 @@ def n_tree_to_str(root, s = ""):
     return s
 
 t = "( (S     (NP-SBJ-1       (NP         (NP (DT The) (NN group) (POS 's) )        (NN president) )      (, ,)       (NP (NNP Peter) (NNP Chrisanthopoulos) )      (, ,) )    (VP (VBD was) (RB n't)       (PP-LOC-PRD (IN in)         (NP (PRP$ his) (NN office) ))      (NP-TMP (NNP Friday) (NN afternoon) )      (S-PRP         (NP-SBJ (-NONE- *-1) )        (VP (TO to)           (VP (VB comment) ))))    (. .) ))"
+# t = "(S (S-TPC-1 (NP-SBJ (NP (NNP Japan) (POS 's)) (NP-SBJ_inner (JJ wholesale) (NNS prices))) (S-TPC-1_inner (PP-TMP (IN in) (NP (NNP September))) (VP (VP (VBD rose) (VP_inner (NP-EXT (CD 3.3) (NN %)) (PP-DIR (IN from) (ADVP-TMP (NP (DT a) (NN year)) (RBR earlier))))) (VP_inner (CC and) (VP (VBD were) (ADVP-PRD (RB up) (ADVP-PRD_inner (NP (CD 0.4) (NN %)) (PP (IN from) (NP (DT the) (NP_inner (JJ previous) (NN month))))))))))) (S_inner (, ,) (S_inner (NP-SBJ (NP (DT the) (NNP Bank)) (PP (IN of) (NP (NNP Japan)))) (S_inner (VP (VBD announced) (VP_inner (SBAR (-NONE- 0) (S (-NONE- *T*-1))) (NP-TMP (NNP Friday)))) (. .)))))"
+t = parse_tree(t[1:-1])
 
-t = parse_tree(t)
+dt = debinarize_tree(t)
 
-t = debinarize_tree(t)
-
-print(n_tree_to_str(t))
+print(tree_to_str(t))
+print()
+print(n_tree_to_str(dt))
+print()
+print(tree_to_str(parse_tree(n_tree_to_str(dt))))
