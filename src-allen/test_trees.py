@@ -20,14 +20,13 @@ class n_Node:
         self.label = label
         self.children = []
 
-
 def debinarize_tree(b_t):
     n_t = n_Node(b_t.label)
     if b_t.l: n_t.children.append(b_t.l)
 
     if b_t.r:
         right = b_t.r
-        while right.label[-5:] == 'inner':
+        while right.label[-5:] == 'inner' and right.label.split('_')[0] == n_t.label.split('_')[0]:
             n_t.children.append(right.l)
             right = right.r
         n_t.children.append(right)
@@ -36,6 +35,12 @@ def debinarize_tree(b_t):
 
     return n_t
 
+def n_tree_to_str(root, s = ""):
+    # base case
+    if not root.children: s += " " + clean(root.label)
+    elif root.label:
+        s += " (" + clean(root.label) + ' '.join([n_tree_to_str(c) for c in root.children]) + ")"
+    return s
 
 
 
@@ -102,8 +107,7 @@ if __name__ == '__main__':
     s = []
     start = 0
     for i in range(len(text)):
-        if text[i] == "(":
-            s.append("(")
+        if text[i] == "(": s.append("(")
         elif text[i] == ")":
             s.pop()
             if not s:
@@ -121,7 +125,7 @@ if __name__ == '__main__':
     # testing
     with open('final_outputs/comp_trees.txt','w') as comp_trees:
         count = 0
-        for s, t in zip(sentences, tree_list):
+        for s, t, tree_string in zip(sentences, tree_list, tree_string_list):
             if count % 100 == 0: print(count)
             count += 1
 
@@ -155,4 +159,8 @@ if __name__ == '__main__':
                 infinite_loop_count += 1
                 if infinite_loop_count >= 300: print('infinite?')
 
-            comp_trees.write('Prediction:\n' + stack_to_str(stack)[1:-1] + '\n\n' + 'GROUND TRUTH:\n' + tree_to_str(t) + '\n\n' + '-------------------end of sentence-----------------\n\n')
+            comp_trees.write('Prediction:\n' + stack_to_str(stack)[1:-1] + '\n\n' +
+                'GROUND TRUTH:\n' + tree_to_str(t) + '\n\n' +
+                'Debinarized:\n(' +  n_tree_to_str(debinarize_tree(stack[0])) + ')\n\n' +
+                'Plaintext Ground Truth:\n' + '  '.join(tree_string.split()) + '\n\n' +
+                '-------------------end of sentence-----------------\n\n')
