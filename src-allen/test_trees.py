@@ -21,7 +21,7 @@ class n_Node:
         self.children = []
 
 def debinarize_tree(b_t):
-    n_t = n_Node(b_t.label)
+    n_t = n_Node(b_t.label.split('_')[0]) # remove _inner
     if b_t.l: n_t.children.append(b_t.l)
 
     if b_t.r:
@@ -73,7 +73,6 @@ def action(b, s, p):
     else: # p.split()[0] == 'binary':
         if s and (not s[-1].l) and (not s[-1].r): return b, s, 'binary on word at end of stack'
         # if len(s) >= 2 and (not s[-2].l) and (not s[-2].r):
-        #     print(s[-2].label)
         #     return b, s, 'binary on word at end of stack'
         n = Node(clean(p.split()[1]))
         try:
@@ -123,7 +122,7 @@ if __name__ == '__main__':
     for t in tree_list: sentences.append(remove_sentence_star(inorder_sentence(t).lstrip()))
 
     # testing
-    with open('final_outputs/comp_trees.txt','w') as comp_trees:
+    with open('final_outputs/comp_trees.txt','w') as comp_trees, open('EVALB/my.tst','w') as tst, open('EVALB/my.gld','w') as gld:
         count = 0
         for s, t, tree_string in zip(sentences, tree_list, tree_string_list):
             if count % 100 == 0: print(count)
@@ -157,10 +156,15 @@ if __name__ == '__main__':
                 max_depth_stack.append(pred)
 
                 infinite_loop_count += 1
-                if infinite_loop_count >= 300: print('infinite?')
+                if infinite_loop_count >= 500: print('infinite?')
 
             comp_trees.write('Prediction:\n' + stack_to_str(stack)[1:-1] + '\n\n' +
                 'GROUND TRUTH:\n' + tree_to_str(t) + '\n\n' +
                 'Debinarized:\n(' +  n_tree_to_str(debinarize_tree(stack[0])) + ')\n\n' +
-                'Plaintext Ground Truth:\n' + '  '.join(tree_string.split()) + '\n\n' +
+                'Plaintext Ground Truth:\n' + ' '.join(tree_string.split()) + '\n\n' +
                 '-------------------end of sentence-----------------\n\n')
+
+            tst.write('(' +  n_tree_to_str(debinarize_tree(stack[0])) + ')\n')
+            gld.write(' '.join(tree_string.split()) + '\n')
+
+

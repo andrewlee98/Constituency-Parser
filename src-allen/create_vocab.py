@@ -10,8 +10,8 @@ import os
 val_data, test_data, train_data = [], [], []
 datapath = 'data/af/'
 
-for file in os.listdir(datapath):
-    if file[0] == '.': continue
+for file in sorted(os.listdir(datapath)):
+    if file[0] == '.' or file[0:2] in {'00', '01', '24'}: continue
     elif file[0:2] in {'22'}: val_data.extend(pickle.load(open(datapath + file, 'rb'))) # use folder 22 as validation set
     elif file[0:2] in {'23'}: test_data.extend(pickle.load(open(datapath + file, 'rb'))) # use folder 23 for test
     else: train_data.extend(pickle.load(open(datapath + file, 'rb'))) # training data
