@@ -67,9 +67,9 @@ def generate_actions(t, s):
     while buff or len(stack) > 1: # end when buffer consumed & stack has tree
         # print(stack_to_str(stack))
 
-        # write the stack and buffer before action is performed, filter null elements out
-        st = list(filter(lambda x: '^' not in x, list(stack)))
-        bu = list(filter(lambda x: '^' not in x, list(buff[::-1])))
+        # write the stack and buffer before action is performed
+        st = list(stack)
+        bu = list(filter(lambda x: '^' not in x.label, list(buff[::-1]))) # filter null elements out of buffer
         lab = ''
         final_action = ""
         # try to reduce top two items

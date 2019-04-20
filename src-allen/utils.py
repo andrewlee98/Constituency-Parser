@@ -26,6 +26,14 @@ def inorder_sentence(root, s = ""):
         s = inorder_sentence(root.r, s)
     return s
 
+def inorder_sentence_no_null(root, s = ""):
+    if not root.l and not root.r:
+        s += " " + root.label
+        return s
+    if root.l and root.l != '-NONE-': s = inorder_sentence(root.l, s)
+    if root.r and root.l != '-NONE-': s = inorder_sentence(root.r, s)
+    return s
+
 # util to debug
 def tree_to_str(root, s = ""):
     sr = ""
@@ -104,6 +112,7 @@ def parse_tree(tree_str):
     children = list(map(clean, children)) # clean whitespace from children
     if len(children) == 1:
         root.l = parse_tree(children[0])
+        if root.label == '-NONE-': root.l.label += '^null'
     elif len(children) == 2:
         root.l = parse_tree(children[0])
         root.r = parse_tree(children[1])
@@ -254,7 +263,7 @@ def extract_features(d):
 
 def remove_trailing(label):
     inner = False
-    if label[-1] == label[0] and label[0] == '-': return label[1:-1] #-NONE- case
+    if label[-1] == label[0] and label[0] == '-': return label #-NONE-,-RBR case
     if '_inner' in label: inner = True
     s = ((label.split("-")[0]).split('_')[0]).split('=')[0]
     if not s: print(label)

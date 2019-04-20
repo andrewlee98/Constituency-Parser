@@ -11,7 +11,7 @@ from torch.autograd import Variable
 from datetime import datetime
 from matplotlib import pyplot as plt
 import os
-from low_memory_net import *
+from new_net import *
 
 
 
@@ -43,7 +43,6 @@ def n_tree_to_str(root, s = ""):
     return s
 
 
-
 def remove_sentence_star(s):
     s = s.split()
     s = list(filter(lambda x: '*' not in x, s))
@@ -63,7 +62,6 @@ def action(b, s, p):
         except: error = 'pop on empty buffer'
 
     elif p.split()[0] == 'unary':
-        if p == 'unary ': p = 'unary ???'
         n = Node(clean(p.split()[1]))
         try:
             n.l = s.pop()
