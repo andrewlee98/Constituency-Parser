@@ -154,7 +154,7 @@ if __name__ == '__main__':
                 max_depth_stack.append(pred)
 
                 infinite_loop_count += 1
-                if infinite_loop_count >= 500: print('infinite?')
+                if infinite_loop_count >= 300: print('infinite?', stack_to_str(stack))
 
             comp_trees.write('Prediction:\n' + stack_to_str(stack)[1:-1] + '\n\n' +
                 'GROUND TRUTH:\n' + tree_to_str(t) + '\n\n' +
