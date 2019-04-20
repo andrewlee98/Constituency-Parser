@@ -69,7 +69,7 @@ def generate_actions(t, s):
 
         # write the stack and buffer before action is performed
         st = list(stack)
-        bu = list(filter(lambda x: '^' not in x.label, list(buff[::-1]))) # filter null elements out of buffer
+        bu = list(filter(lambda x: '^null' not in x.label, list(buff[::-1]))) # filter null elements out of buffer
         lab = ''
         final_action = ""
         # try to reduce top two items
@@ -96,7 +96,6 @@ def generate_actions(t, s):
                     final_action = "shift"
                     if "*" in buff[-1].label:
                         final_action += " star"
-                        # stack.append(Node('*'))
                     else: # 0 element
                         final_action += ' 0'
                     stack.append(buff.pop())
@@ -114,7 +113,7 @@ def generate_actions(t, s):
                 if "*" in buff[-1].label:
                     final_action += " star"
                 else: # 0 element
-                        final_action += ' 0'
+                    final_action += ' 0'
                 stack.append(buff.pop())
         else: # shift
             final_action = "shift"

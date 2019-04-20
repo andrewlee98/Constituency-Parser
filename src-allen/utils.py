@@ -27,11 +27,11 @@ def inorder_sentence(root, s = ""):
     return s
 
 def inorder_sentence_no_null(root, s = ""):
-    if not root.l and not root.r:
+    if not root.l and not root.r and '^null' not in root.label:
         s += " " + root.label
         return s
-    if root.l and root.l != '-NONE-': s = inorder_sentence(root.l, s)
-    if root.r and root.l != '-NONE-': s = inorder_sentence(root.r, s)
+    if root.l: s = inorder_sentence_no_null(root.l, s)
+    if root.r: s = inorder_sentence_no_null(root.r, s)
     return s
 
 # util to debug
@@ -203,7 +203,9 @@ def rearrange(f):
 def replace_if_num(s):
     def is_num(s1):
         return s1.replace(',','').replace('.','',1).isdigit()
-    if '*' in s: return '*'
+    if '^null' in s:
+        if '*' in s: return '*^null'
+        elif '0' in s: return '0^null'
     return "<num>" if is_num(s) else s
 
 def get_left(t):

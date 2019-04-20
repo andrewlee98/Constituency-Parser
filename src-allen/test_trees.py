@@ -56,6 +56,8 @@ def action(b, s, p):
         if s and (not s[-1].l) and (not s[-1].r): return b, s, 'shift on word at end of stack'
         if len(p.split()) > 1 and p.split()[1] == 'star':
             s.append(Node('*'))
+        if len(p.split()) > 1 and p.split()[1] == '0':
+            s.append(Node('0^null'))
 
         # normal shift
         try: s.append(b.pop(0))
@@ -117,7 +119,7 @@ if __name__ == '__main__':
 
     # use inorder traveral to generate sentences from trees
     sentences = []
-    for t in tree_list: sentences.append(remove_sentence_star(inorder_sentence(t).lstrip()))
+    for t in tree_list: sentences.append(inorder_sentence_no_null(t).lstrip())
 
     # testing
     with open('final_outputs/comp_trees.txt','w') as comp_trees, open('EVALB/my.tst','w') as tst, open('EVALB/my.gld','w') as gld:
