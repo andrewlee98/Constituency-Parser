@@ -67,9 +67,9 @@ def generate_actions(t, s):
     while buff or len(stack) > 1: # end when buffer consumed & stack has tree
         # print(stack_to_str(stack))
 
-        # write the stack and buffer before action is performed
-        st = list(stack)
-        bu = list(buff[::-1])
+        # write the stack and buffer before action is performed, filter null elements out
+        st = list(filter(lambda x: '^' not in x, list(stack)))
+        bu = list(filter(lambda x: '^' not in x, list(buff[::-1])))
         lab = ''
         final_action = ""
         # try to reduce top two items
@@ -89,8 +89,6 @@ def generate_actions(t, s):
                 new_node = Node(unary_label_dfs(t, child))
                 if new_node.label: # found a unary reduce
                     lab = new_node.label
-
-
                     final_action = "unary"
                     new_node.l = stack.pop()
                     stack.append(new_node)
@@ -99,6 +97,8 @@ def generate_actions(t, s):
                     if "*" in buff[-1].label:
                         final_action += " star"
                         # stack.append(Node('*'))
+                    else: # 0 element
+                        final_action += ' 0'
                     stack.append(buff.pop())
         elif len(stack) == 1: # just try unary reduce
             child = stack[len(stack) - 1]
@@ -112,15 +112,20 @@ def generate_actions(t, s):
             else: # shift
                 final_action = "shift"
                 if "*" in buff[-1].label:
-                        final_action += " star"
+                    final_action += " star"
+                else: # 0 element
+                        final_action += ' 0'
                 stack.append(buff.pop())
         else: # shift
             final_action = "shift"
             if "*" in buff[-1].label:
-                        final_action += " star"
+                final_action += " star"
+            else: # 0 element
+                final_action += ' 0'
+
             stack.append(buff.pop())
 
-        if final_action == 'shift' or final_action == 'shift star':
+        if final_action == 'shift' or final_action == 'shift star' or final_action == 'shift 0':
             d = datum(st, bu, final_action)
             f = rearrange([remove_trailing(d.label)] + extract_features(d))
         else: # unary or binary action
