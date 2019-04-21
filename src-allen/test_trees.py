@@ -64,21 +64,20 @@ def action(b, s, p):
 
     elif p.split()[0] == 'unary':
         if p == 'unary ': p = 'unary ???'
-        n = Node(clean(p.split()[1]))
-        try:
+        if len(s) >= 1:
+            n = Node(clean(p.split()[1]))
             n.l = s.pop()
             s.append(n)
-        except: error = 'unary on empty stack'
+        else: error = 'unary on empty stack'
 
     else: # p.split()[0] == 'binary':
         if s and (not s[-1].l) and (not s[-1].r): return b, s, 'binary on word at end of stack'
-        # if len(s) >= 2 and (not s[-2].l) and (not s[-2].r):
-        #     return b, s, 'binary on word at end of stack'
-        n = Node(clean(p.split()[1]))
-        try:
+
+        if len(s) >= 2:
+            n = Node(clean(p.split()[1]))
             n.r, n.l = s.pop(), s.pop()
             s.append(n)
-        except: error = 'binary on insufficient stack'
+        else: error = 'binary on insufficient stack'
 
     return b, s, error
 
@@ -119,7 +118,7 @@ if __name__ == '__main__':
 
     # use inorder traveral to generate sentences from trees
     sentences = []
-    for t in tree_list: sentences.append(remove_sentence_star(inorder_sentence(t).lstrip()))
+    for t in tree_list: sentences.append(inorder_sentence_no_null(t).lstrip())
 
     # testing
     with open('final_outputs/comp_trees.txt','w') as comp_trees, open('EVALB/my.tst','w') as tst, open('EVALB/my.gld','w') as gld:
@@ -127,6 +126,7 @@ if __name__ == '__main__':
         for s, t, tree_string in zip(sentences, tree_list, tree_string_list):
             if count % 100 == 0: print(count)
             count += 1
+            # if count != 328: continue
 
             s = [clean(x) for x in s.split()]
             max_depth_stack = [] # keeps track of how many consecutive unary's were done
@@ -135,6 +135,7 @@ if __name__ == '__main__':
             buff = list(map(Node, s))
             stack = []
             infinite_loop_count = 0 # terminate after 100 moves
+
             while buff or len(stack) > 1: # end when buff consumed & stack has tree
 
                 try: f = extract_features(datum(stack, buff, None))
@@ -154,6 +155,7 @@ if __name__ == '__main__':
                     if not error: break
                 if error: print('Cycled through and still has errors')
                 max_depth_stack.append(pred)
+                # if count == 328: print(stack_to_str(buff), stack_to_str(stack), pred, '\n\n')
 
                 infinite_loop_count += 1
                 if infinite_loop_count >= 500: print('infinite?')

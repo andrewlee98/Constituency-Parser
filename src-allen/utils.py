@@ -26,6 +26,14 @@ def inorder_sentence(root, s = ""):
         s = inorder_sentence(root.r, s)
     return s
 
+def inorder_sentence_no_null(root, s = ""):
+    if not root.l and not root.r and '^null' not in root.label:
+        s += " " + root.label
+        return s
+    if root.l: s = inorder_sentence_no_null(root.l, s)
+    if root.r: s = inorder_sentence_no_null(root.r, s)
+    return s
+
 # util to debug
 def tree_to_str(root, s = ""):
     sr = ""
