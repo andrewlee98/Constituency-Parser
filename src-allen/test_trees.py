@@ -56,6 +56,7 @@ def action(b, s, p):
     if p.split()[0] == 'shift':
         if s and (not s[-1].l) and (not s[-1].r): return b, s, 'shift on word at end of stack'
         if len(p.split()) > 1 and p.split()[1] == 'star':
+            return b, s, 'shifted star' ############# temporarily block null elements
             s.append(Node('*'))
 
         # normal shift
