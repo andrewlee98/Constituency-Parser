@@ -104,6 +104,7 @@ def parse_tree(tree_str):
     children = list(map(clean, children)) # clean whitespace from children
     if len(children) == 1:
         root.l = parse_tree(children[0])
+        if root.label == '-NONE-': root.l.label += '^null'
     elif len(children) == 2:
         root.l = parse_tree(children[0])
         root.r = parse_tree(children[1])

@@ -11,7 +11,7 @@ from torch.autograd import Variable
 from datetime import datetime
 from matplotlib import pyplot as plt
 import os
-from low_memory_net import *
+from new_net import *
 
 
 

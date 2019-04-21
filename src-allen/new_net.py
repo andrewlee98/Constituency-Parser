@@ -129,15 +129,6 @@ def test(net, data_loader, vocab, output_file = None):
 
 if __name__ == '__main__':
     datapath = 'data/af/'
-    input_size = 28       # 27 features
-    hidden_size = 250      # The number of nodes at the hidden layer
-    num_classes = 126      # The number of output classes.
-    num_epochs = 5
-    batch_size = 100
-    learning_rate = 0.0001
-    vocab_size = 100000    # keep track of some word's embeddings
-    embedding_dim = 100   # word embedding size
-
 
     # load data into dataset objects (for loading )
     val_data, test_data = [], []
@@ -150,6 +141,15 @@ if __name__ == '__main__':
     vocab = pickle.load(open('net_data/vocab.data', 'rb'))
     val_data = CPDataset(val_data, vocab)
     test_data = CPDataset(test_data, vocab)
+
+    input_size = 28       # 28 features
+    hidden_size = 250      # The number of nodes at the hidden layer
+    num_classes = len(vocab.output_acts)      # The number of output classes.
+    num_epochs = 5
+    batch_size = 100
+    learning_rate = 0.0001
+    vocab_size = 100000    # keep track of some word's embeddings
+    embedding_dim = 100   # word embedding size
 
     # convert to dataloaders
     print('Creating DataLoaders...')
@@ -167,7 +167,7 @@ if __name__ == '__main__':
     trains, validations, losses, folder_loss, folder_acc = [], [] ,[], [], []
     print('Training:')
     for file in sorted(os.listdir(datapath)):
-        if file[0:2] not in {'22','23','00','01'} and file[0] != '.':
+        if file[0:2] not in {'22','23','00','01','24'} and file[0] != '.':
             print('Training on folder:', file[0:2])
             train_list = pickle.load(open(datapath + file, 'rb'))
             train_data = CPDataset(train_list, vocab)
