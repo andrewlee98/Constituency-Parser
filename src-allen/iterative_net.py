@@ -87,10 +87,10 @@ def train(net, num_epochs, train_loader, val_loader):
             loss.backward()                     # Backward pass: compute the weight
             optimizer.step()                    # Optimizer: update the weights of hidden nodes
 
-            if (i+1) % 1000 == 0:  # Logging
-                print('    Epoch [%d/%d], Step [%d/%d], Loss: %.4f'
-                         %(epoch+1, num_epochs, i+1, len(train_data)//batch_size, loss.data))
-                losses.append(loss.data.item()) # plot loss over time
+        # Logging
+        print('    Epoch [%d/%d], %d Examples, Loss: %.4f'
+                 %(epoch+1, num_epochs, len(train_data), loss.data))
+        losses.append(loss.data.item()) # plot loss over time
 
     return net, losses
 
