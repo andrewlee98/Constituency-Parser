@@ -58,8 +58,7 @@ class Net(nn.Module):
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
         self.to(self.device)
 
-        self.embeddings = nn.Embedding(vocab_size, embedding_dim) # initialize embeddings
-
+        self.word_embeddings = nn.Embedding(len(vocab.word_dict), embedding_dim) # initialize embeddings
         embeds = torch.randn(vocab_size, embedding_dim)
         with open('glove.840B.300d.txt') as f: # replace random init with GloVe
             i = 0
@@ -67,8 +66,8 @@ class Net(nn.Module):
                 fields = line.strip().split(' ')
                 if fields[0] in vocab.word_dict: embeds[vocab.word_dict[fields[0]]] = torch.tensor(list(map(float, fields[1:])))
                 i += 1
-
-        self.embeddings.weight = nn.Parameter(embeds)
+        self.word_embeddings.weight = nn.Parameter(embeds)
+        # self.tag_embeddings = nn.Embedding(len(vocab.feat_acts_dict))
 
         self.fc1 = nn.Linear(input_size * embedding_dim, hidden_size)  # 1st Full-Connected Layer: 2700 (input data) -> 200 (hidden node)
         self.relu = nn.ReLU()  # Non-Linear ReLU Layer: max(0,x)
@@ -77,7 +76,7 @@ class Net(nn.Module):
     def forward(self, x):  # Forward pass: stacking each layer together
         x = x.to(self.device)
         x = x.cuda()
-        embeds = self.embeddings(x).view(x.shape[0],-1)
+        embeds = self.word_embeddings(x).view(x.shape[0],-1)
         out = self.fc1(embeds)
         out = self.relu(out)
         out = self.fc2(out)
