@@ -71,7 +71,9 @@ class Net(nn.Module):
 
         self.fc1 = nn.Linear(input_size * embedding_dim, hidden_size)  # 1st Full-Connected Layer: 2700 (input data) -> 200 (hidden node)
         self.relu = nn.ReLU()  # Non-Linear ReLU Layer: max(0,x)
-        self.fc2 = nn.Linear(hidden_size, num_classes) # 2nd Full-Connected Layer: 200 (hidden node) -> 89 (output class)
+        self.fc2 = nn.Linear(hidden_size, hidden_size)
+        self.fc3 = nn.Linear(hidden_size, num_classes) # 2nd Full-Connected Layer: 200 (hidden node) -> 89 (output class)
+
 
     def forward(self, x):  # Forward pass: stacking each layer together
         x = x.to(self.device)
@@ -80,6 +82,8 @@ class Net(nn.Module):
         out = self.fc1(embeds)
         out = self.relu(out)
         out = self.fc2(out)
+        out = self.relu(out)
+        out = self.fc3(out)
         return out
 
 
