@@ -119,7 +119,7 @@ if __name__ == '__main__':
 
     # use inorder traveral to generate sentences from trees
     sentences = []
-    for t in tree_list: sentences.append(inorder_sentence_no_null(t).lstrip())
+    for t in tree_list: sentences.append(inorder_buffer_gold(t))
 
     # testing
     with open('final_outputs/comp_trees.txt','w') as comp_trees, open('EVALB/my.tst','w') as tst, open('EVALB/my.gld','w') as gld:
@@ -129,11 +129,12 @@ if __name__ == '__main__':
             count += 1
             # if count != 328: continue
 
-            s = [clean(x) for x in s.split()]
+            # s = [clean(x) for x in s.split()]
             max_depth_stack = [] # keeps track of how many consecutive unary's were done
 
-            # construct tree
-            buff = list(map(Node, s))
+            # # construct tree
+            # buff = list(map(Node, s))
+            buff = s
             stack = []
             infinite_loop_count = 0 # terminate after 100 moves
 
