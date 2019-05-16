@@ -96,9 +96,9 @@ def generate_actions(t, s):
                     stack.append(new_node)
                 else: # shift
                     final_action = "shift"
-                    if "*" in buff[-1].label:
-                        final_action += " star"
-                        # stack.append(Node('*'))
+                    if "^null" in buff[-1].l.label:
+                        n_el = buff[-1].l.label
+                        final_action += ' ' + ('*T*' if '*T*' in n_el else '0' if '0' in n_el else '*')
                     stack.append(buff.pop())
         elif len(stack) == 1: # just try unary reduce
             child = stack[len(stack) - 1]
@@ -111,13 +111,15 @@ def generate_actions(t, s):
                 stack.append(new_node)
             else: # shift
                 final_action = "shift"
-                if "*" in buff[-1].label:
-                        final_action += " star"
+                if "^null" in buff[-1].l.label:
+                    n_el = buff[-1].l.label
+                    final_action += ' ' + ('*T*' if '*T*' in n_el else '0' if '0' in n_el else '*')
                 stack.append(buff.pop())
         else: # shift
             final_action = "shift"
-            if "*" in buff[-1].label:
-                        final_action += " star"
+            if "^null" in buff[-1].l.label:
+                n_el = buff[-1].l.label
+                final_action += ' ' + ('*T*' if '*T*' in n_el else '0' if '0' in n_el else '*')
             stack.append(buff.pop())
 
         if final_action == 'shift' or final_action == 'shift star':

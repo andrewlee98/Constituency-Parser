@@ -26,6 +26,14 @@ def inorder_sentence(root, s = ""):
         s = inorder_sentence(root.r, s)
     return s
 
+# generate sentences from the tree
+def inorder_buffer_gold(root, b = []):
+    if (root.l and not root.r) and (not root.l.l and not root.l.r):
+        return b + [root]
+    if root.l: b = inorder_buffer_gold(root.l, b)
+    if root.r: b = inorder_buffer_gold(root.r, b)
+    return b
+
 def inorder_sentence_no_null(root, s = ""):
     if not root.l and not root.r and '^null' not in root.label:
         s += " " + root.label
@@ -203,7 +211,10 @@ def rearrange(f):
 def replace_if_num(s):
     def is_num(s1):
         return s1.replace(',','').replace('.','',1).isdigit()
-    if '*' in s: return '*'
+    if '^null' in s:
+        if '*T*' in s: return '*T*'
+        elif '0' in s: return '0^null'
+        else: return '*'
     return "<num>" if is_num(s) else s
 
 def get_left(t):
