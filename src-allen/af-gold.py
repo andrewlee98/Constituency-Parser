@@ -69,7 +69,7 @@ def generate_actions(t, s):
 
         # write the stack and buffer before action is performed
         st = list(stack)
-        bu = list(buff[::-1])
+        bu = list(filter(lambda n: 'NONE' not in n.label, buff[::-1]))
         lab = ''
         final_action = ""
         # try to reduce top two items

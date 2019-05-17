@@ -56,9 +56,9 @@ def action(b, s, p):
     if p.split()[0] == 'shift':
         if s and (not s[-1].l) and (not s[-1].r): return b, s, 'shift on word at end of stack'
         if len(p.split()) > 1:
-            print('shifted null element')
+            print('s', end = '')
             n = Node('-NONE-')
-            n.l = Node(p.split()[1])
+            n.l = Node(p.split()[1] + '^*')
             s.append(n)
 
         # normal shift
@@ -120,7 +120,7 @@ if __name__ == '__main__':
 
     # use inorder traveral to generate sentences from trees
     sentences = []
-    for t in tree_list: sentences.append(inorder_buffer_gold(t))
+    for t in tree_list: sentences.append(inorder_buffer_gold_no_null(t))
 
     # testing
     with open('final_outputs/comp_trees_with_nulls.txt','w') as comp_trees: #open('EVALB/my.tst','w') as tst, open('EVALB/my.gld','w') as gld:
@@ -161,10 +161,13 @@ if __name__ == '__main__':
                 # if count == 328: print(stack_to_str(buff), stack_to_str(stack), pred, '\n\n')
 
                 infinite_loop_count += 1
-                if infinite_loop_count >= 500: print('infinite?')
+                if infinite_loop_count >= 500:
+                    print('infinite?')
+                    print(stack_to_str(stack))
+                    break
 
-            comp_trees.write('Prediction:\n' + stack_to_str(stack)[1:-1] + '\n\n' +
-                'GROUND TRUTH:\n' + tree_to_str(t) + '\n\n' +
+            comp_trees.write(#'Prediction:\n' + stack_to_str(stack)[1:-1] + '\n\n' +
+                # 'GROUND TRUTH:\n' + tree_to_str(t) + '\n\n' +
                 'Debinarized:\n(' +  n_tree_to_str(debinarize_tree(stack[0])) + ')\n\n' +
                 'Plaintext Ground Truth:\n' + ' '.join(tree_string.split()) + '\n\n' +
                 '-------------------end of sentence-----------------\n\n')
