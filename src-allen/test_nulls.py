@@ -168,8 +168,10 @@ if __name__ == '__main__':
 
             comp_trees.write(#'Prediction:\n' + stack_to_str(stack)[1:-1] + '\n\n' +
                 # 'GROUND TRUTH:\n' + tree_to_str(t) + '\n\n' +
-                'Debinarized:\n(' +  n_tree_to_str(debinarize_tree(stack[0])) + ')\n\n' +
-                'Plaintext Ground Truth:\n' + ' '.join(tree_string.split()) + '\n\n' +
+                #'Debinarized:
+                '\n(' +  n_tree_to_str(debinarize_tree(stack[0])) + ')\n\n' +
+                # 'Plaintext Ground Truth:
+                '\n' + ' '.join(tree_string.split()) + '\n\n' +
                 '-------------------end of sentence-----------------\n\n')
 
             # tst.write('(' +  n_tree_to_str(debinarize_tree(stack[0])) + ')\n')

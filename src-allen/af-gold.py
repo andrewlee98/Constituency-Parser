@@ -122,7 +122,7 @@ def generate_actions(t, s):
                 final_action += ' ' + ('*T*' if '*T*' in n_el else '0' if '0' in n_el else '*')
             stack.append(buff.pop())
 
-        if final_action == 'shift' or final_action == 'shift star':
+        if 'shift' in final_action:
             d = datum(st, bu, final_action)
             f = rearrange([remove_trailing(d.label)] + extract_features(d))
         else: # unary or binary action
